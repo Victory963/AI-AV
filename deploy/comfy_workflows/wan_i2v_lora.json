@@ -1,0 +1,129 @@
+{
+  "_longfilm": {
+    "name": "wan_i2v_lora",
+    "mode": "i2v",
+    "comment": "Wan 类首尾帧 I2V + LoRA 链。所有 PLACEHOLDER_ 开头的模型文件名必须按本机 models/ 目录替换，见 README.md。",
+    "bind": {
+      "positive": "5.inputs.text",
+      "negative": "6.inputs.text",
+      "seed": "12.inputs.seed",
+      "width": "11.inputs.width",
+      "height": "11.inputs.height",
+      "length": "11.inputs.length",
+      "fps": "14.inputs.frame_rate",
+      "start_image": "7.inputs.image",
+      "end_image": "8.inputs.image",
+      "filename_prefix": "14.inputs.filename_prefix"
+    },
+    "lora_node": "4",
+    "end_image_node": "8",
+    "optional_bind": ["end_image"]
+  },
+  "1": {
+    "class_type": "UNETLoader",
+    "_meta": {"title": "扩散模型"},
+    "inputs": {"unet_name": "PLACEHOLDER_wan_i2v_14b.safetensors", "weight_dtype": "fp8_e4m3fn"}
+  },
+  "2": {
+    "class_type": "CLIPLoader",
+    "_meta": {"title": "文本编码器"},
+    "inputs": {"clip_name": "PLACEHOLDER_umt5_xxl.safetensors", "type": "wan", "device": "default"}
+  },
+  "3": {
+    "class_type": "VAELoader",
+    "_meta": {"title": "VAE"},
+    "inputs": {"vae_name": "PLACEHOLDER_wan_vae.safetensors"}
+  },
+  "4": {
+    "class_type": "LoraLoaderModelOnly",
+    "_meta": {"title": "角色 LoRA（无 LoRA 时由 provider 自动旁路）"},
+    "inputs": {
+      "lora_name": "PLACEHOLDER_character.safetensors",
+      "strength_model": 0.85,
+      "model": ["1", 0]
+    }
+  },
+  "5": {
+    "class_type": "CLIPTextEncode",
+    "_meta": {"title": "正向提示词"},
+    "inputs": {"text": "", "clip": ["2", 0]}
+  },
+  "6": {
+    "class_type": "CLIPTextEncode",
+    "_meta": {"title": "负向提示词"},
+    "inputs": {"text": "", "clip": ["2", 0]}
+  },
+  "7": {
+    "class_type": "LoadImage",
+    "_meta": {"title": "首帧"},
+    "inputs": {"image": "PLACEHOLDER_start.png", "upload": "image"}
+  },
+  "8": {
+    "class_type": "LoadImage",
+    "_meta": {"title": "尾帧（可选，未提供时由 provider 摘除）"},
+    "inputs": {"image": "PLACEHOLDER_end.png", "upload": "image"}
+  },
+  "9": {
+    "class_type": "CLIPVisionLoader",
+    "_meta": {"title": "CLIP Vision"},
+    "inputs": {"clip_name": "PLACEHOLDER_clip_vision_h.safetensors"}
+  },
+  "10": {
+    "class_type": "CLIPVisionEncode",
+    "_meta": {"title": "首帧视觉编码"},
+    "inputs": {"crop": "none", "clip_vision": ["9", 0], "image": ["7", 0]}
+  },
+  "11": {
+    "class_type": "WanFirstLastFrameToVideo",
+    "_meta": {"title": "首尾帧条件"},
+    "inputs": {
+      "width": 1280,
+      "height": 720,
+      "length": 81,
+      "batch_size": 1,
+      "positive": ["5", 0],
+      "negative": ["6", 0],
+      "vae": ["3", 0],
+      "clip_vision_output": ["10", 0],
+      "start_image": ["7", 0],
+      "end_image": ["8", 0]
+    }
+  },
+  "12": {
+    "class_type": "KSampler",
+    "_meta": {"title": "采样"},
+    "inputs": {
+      "seed": 0,
+      "steps": 30,
+      "cfg": 5.0,
+      "sampler_name": "uni_pc",
+      "scheduler": "simple",
+      "denoise": 1.0,
+      "model": ["4", 0],
+      "positive": ["11", 0],
+      "negative": ["11", 1],
+      "latent_image": ["11", 2]
+    }
+  },
+  "13": {
+    "class_type": "VAEDecode",
+    "_meta": {"title": "解码"},
+    "inputs": {"samples": ["12", 0], "vae": ["3", 0]}
+  },
+  "14": {
+    "class_type": "VHS_VideoCombine",
+    "_meta": {"title": "合成视频"},
+    "inputs": {
+      "frame_rate": 24,
+      "loop_count": 0,
+      "filename_prefix": "longfilm/shot",
+      "format": "video/h264-mp4",
+      "pix_fmt": "yuv420p",
+      "crf": 16,
+      "save_metadata": true,
+      "pingpong": false,
+      "save_output": true,
+      "images": ["13", 0]
+    }
+  }
+}

@@ -1,0 +1,71 @@
+# 常驻部署：一个 ComfyUI 渲染节点 + 一个跑产线的容器。
+#
+# 两个服务共享同一个镜像，靠 command 区分角色 —— 产线容器需要跟渲染节点
+# 完全一致的 longfilm 代码版本，分成两个镜像迟早会出现「产线以为 provider
+# 支持尾帧、渲染节点其实是旧版」这类对不上的事故。
+#
+#   docker compose up -d comfy          # 只起渲染节点
+#   docker compose run --rm pipeline    # 跑一集片，跑完即退
+#   docker compose --profile bootstrap run --rm fetch-models   # 下权重
+
+services:
+  comfy:
+    build:
+      context: ..
+      dockerfile: deploy/Dockerfile
+    image: longfilm:latest
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    ports:
+      - "8188:8188"
+    volumes:
+      - models:/workspace/ComfyUI/models
+      - out:/workspace/out
+    environment:
+      - LONGFILM_OUT=/workspace/out
+    restart: unless-stopped
+    # 显存吃紧时 ComfyUI 会被 OOM killer 带走，重启比僵死好
+    shm_size: "8gb"
+
+  pipeline:
+    image: longfilm:latest
+    depends_on:
+      comfy:
+        condition: service_healthy
+    volumes:
+      - out:/workspace/out
+      - ./..:/opt/longfilm:ro      # 开发期挂载源码，改代码不用重建镜像
+    environment:
+      - COMFY_URL=http://comfy:8188
+      - PYTHONPATH=/opt/longfilm/src
+      # 密钥从宿主环境透传，不写进镜像也不写进 compose
+      - ARK_API_KEY=${ARK_API_KEY:-}
+      - DASHSCOPE_API_KEY=${DASHSCOPE_API_KEY:-}
+      - FAL_KEY=${FAL_KEY:-}
+    command: python -u scripts/run_pipeline.py --work /workspace/out/ep01
+
+  # 一次性任务：按 models.yaml 下权重到共享 volume
+  fetch-models:
+    image: longfilm:latest
+    profiles: ["bootstrap"]
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    volumes:
+      - models:/workspace/ComfyUI/models
+    environment:
+      - HF_TOKEN=${HF_TOKEN:-}
+    command: bash deploy/bootstrap_gpu.sh --profile i2v
+
+volumes:
+  models:
+  out:

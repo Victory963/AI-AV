@@ -1,0 +1,2021 @@
+{
+  "project": "deep-archive",
+  "episode": "ep01",
+  "logline": "两名探索者登上失联的深空考古站，发现那里的符号不是留给后人看的，而是在等人回应。",
+  "target_duration_s": 260.0,
+  "characters": [
+    {
+      "id": "lin_lan",
+      "name": "林岚",
+      "is_fictional": true,
+      "age_statement": "虚构角色，设定年龄 32 岁，成年深空考古学家",
+      "persona": "冷静、好奇、对失落文明有近乎固执的执着；说话简短，习惯自言自语记录观察。",
+      "appearance": {
+        "face": "东亚女性面孔，高颧骨，单眼皮，左眉尾有一道浅疤",
+        "hair": "黑色短发，右侧削短，发梢略乱",
+        "body": "中等身材，肩线利落，站姿微微前倾",
+        "skin": "冷调中性肤色，鼻梁有细小雀斑",
+        "wardrobe": "深灰色考古服，左胸有橙色任务徽标，袖口卷起，腕上戴多功能终端",
+        "distinguishing": "左眉尾浅疤 + 橙色任务徽标 + 腕部终端蓝光"
+      },
+      "voice": {
+        "timbre_ref_uri": null,
+        "tts_engine": "indextts2",
+        "tts_voice_id": null,
+        "pitch_shift": 0.0,
+        "speed": 0.97,
+        "emotion_default": "calm",
+        "language": "zh"
+      },
+      "portraits": [
+        {
+          "role": "identity",
+          "uri": "assets/cast/lin_lan/front_neutral.png",
+          "weight": 1.0,
+          "note": "source=ai_generated 正面 平光 中性",
+          "subject_id": "lin_lan"
+        },
+        {
+          "role": "identity",
+          "uri": "assets/cast/lin_lan/three_quarter_key.png",
+          "weight": 0.9,
+          "note": "source=ai_generated 3/4 侧 主光右 微笑",
+          "subject_id": "lin_lan"
+        },
+        {
+          "role": "identity",
+          "uri": "assets/cast/lin_lan/profile_rim.png",
+          "weight": 0.8,
+          "note": "source=ai_generated 正侧 轮廓光",
+          "subject_id": "lin_lan"
+        },
+        {
+          "role": "identity",
+          "uri": "assets/cast/lin_lan/closeup_eyes.png",
+          "weight": 0.85,
+          "note": "source=ai_generated 特写 眼部细节 用于近景镜",
+          "subject_id": "lin_lan"
+        },
+        {
+          "role": "wardrobe",
+          "uri": "assets/cast/lin_lan/wardrobe_full.png",
+          "weight": 0.7,
+          "note": "source=ai_generated 全身服装",
+          "subject_id": "lin_lan"
+        }
+      ],
+      "turnaround": [
+        {
+          "role": "identity",
+          "uri": "assets/cast/lin_lan/turn_0.png",
+          "weight": 0.6,
+          "note": "source=ai_generated 转身 0°",
+          "subject_id": "lin_lan"
+        },
+        {
+          "role": "identity",
+          "uri": "assets/cast/lin_lan/turn_45.png",
+          "weight": 0.6,
+          "note": "source=ai_generated 转身 45°",
+          "subject_id": "lin_lan"
+        },
+        {
+          "role": "identity",
+          "uri": "assets/cast/lin_lan/turn_90.png",
+          "weight": 0.6,
+          "note": "source=ai_generated 转身 90°",
+          "subject_id": "lin_lan"
+        },
+        {
+          "role": "identity",
+          "uri": "assets/cast/lin_lan/turn_135.png",
+          "weight": 0.6,
+          "note": "source=ai_generated 转身 135°",
+          "subject_id": "lin_lan"
+        },
+        {
+          "role": "identity",
+          "uri": "assets/cast/lin_lan/turn_180.png",
+          "weight": 0.6,
+          "note": "source=ai_generated 转身 180°",
+          "subject_id": "lin_lan"
+        }
+      ],
+      "motion_refs": [],
+      "lora": {
+        "base_model": "wan2.2-i2v-a14b",
+        "path": "loras/lin_lan_v3.safetensors",
+        "trigger_word": "linlan_char",
+        "strength": 0.82,
+        "trained_steps": 2400,
+        "dataset_hash": null
+      },
+      "negative_prompt": "双眼皮, 长发, 白大褂"
+    },
+    {
+      "id": "kai_k7",
+      "name": "凯 K-7",
+      "is_fictional": true,
+      "age_statement": "虚构角色，非人类仿生助理，外观设定为成年男性形象（相当于 40 岁）",
+      "persona": "礼貌、精确、偶尔生硬的幽默；句尾习惯补一句数据置信度。",
+      "appearance": {
+        "face": "中性成年男性面孔，哑光合成皮肤，虹膜为环形发光结构",
+        "hair": "极短银灰色，发际线处可见接缝",
+        "body": "偏高瘦，动作精确无冗余",
+        "skin": "哑光浅灰合成材质，颈侧有散热格栅",
+        "wardrobe": "白色分体外骨骼，关节处露出深色纤维束，胸口有青色指示环",
+        "distinguishing": "环形发光虹膜 + 颈侧散热格栅 + 胸口青色指示环"
+      },
+      "voice": {
+        "timbre_ref_uri": null,
+        "tts_engine": "indextts2",
+        "tts_voice_id": null,
+        "pitch_shift": 0.0,
+        "speed": 1.03,
+        "emotion_default": "neutral",
+        "language": "zh"
+      },
+      "portraits": [
+        {
+          "role": "identity",
+          "uri": "assets/cast/kai_k7/front_neutral.png",
+          "weight": 1.0,
+          "note": "source=ai_generated 正面 平光",
+          "subject_id": "kai_k7"
+        },
+        {
+          "role": "identity",
+          "uri": "assets/cast/kai_k7/three_quarter.png",
+          "weight": 0.9,
+          "note": "source=ai_generated 3/4 侧",
+          "subject_id": "kai_k7"
+        },
+        {
+          "role": "identity",
+          "uri": "assets/cast/kai_k7/closeup_iris.png",
+          "weight": 0.85,
+          "note": "source=ai_generated 虹膜特写",
+          "subject_id": "kai_k7"
+        },
+        {
+          "role": "wardrobe",
+          "uri": "assets/cast/kai_k7/exo_full.png",
+          "weight": 0.7,
+          "note": "source=ai_generated 外骨骼全身",
+          "subject_id": "kai_k7"
+        }
+      ],
+      "turnaround": [],
+      "motion_refs": [],
+      "lora": null,
+      "negative_prompt": "人类皮肤纹理, 胡须, 眼白"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "sc01",
+      "title": "接舷",
+      "synopsis": "考古学家林岚与仿生助理凯登上失联的空间站，发现会回应光的符号墙。",
+      "location": "废弃空间站 · 失重走廊",
+      "time_of_day": "night",
+      "base_grade": {
+        "palette": "teal shadows, amber practicals",
+        "contrast": 1.08,
+        "saturation": 0.92,
+        "temperature": -0.25,
+        "lut": null
+      },
+      "shots": [
+        {
+          "id": "sc01_s01",
+          "scene_id": "sc01",
+          "index": 1,
+          "duration_s": 12.0,
+          "shot_size": "extreme long shot",
+          "camera_move": "camera dollies in",
+          "lens_mm": 24,
+          "aperture": "f/2.8",
+          "fps": 24,
+          "subject_ids": [],
+          "action": "废弃空间站残骸在气态巨行星光晕里缓慢自转",
+          "environment": "废弃空间站 · 失重走廊",
+          "lighting": "practical rim light, volumetric haze, cold key from corridor",
+          "mood": "tense curiosity",
+          "style": "cinematic sci-fi, anamorphic lens flare, volumetric haze, teal and amber palette, 35mm film grain, shallow depth of field",
+          "dialogue": [],
+          "sfx": [],
+          "refs": {
+            "images": [],
+            "videos": [],
+            "audios": [],
+            "MAX_IMAGES": 9,
+            "MAX_VIDEOS": 3,
+            "MAX_AUDIOS": 3
+          },
+          "continuity": {
+            "prev_shot_id": null,
+            "next_shot_id": "sc01_s02",
+            "inherit_last_frame": false,
+            "emit_last_frame": true,
+            "extend_from_job": null,
+            "overlap_frames": 0,
+            "screen_direction": "neutral",
+            "match_on": ""
+          },
+          "grade": {
+            "palette": "teal shadows, amber practicals",
+            "contrast": 1.08,
+            "saturation": 0.92,
+            "temperature": -0.25,
+            "lut": null
+          },
+          "transition_in": "fadeblack",
+          "content_rating": "pg13",
+          "engine_hint": "hero",
+          "seed": 1000,
+          "negative_prompt": "extra fingers, deformed hands, warped face, flickering, text, watermark, logo, low resolution, jpeg artifacts, duplicate limbs, morphing identity",
+          "provider_used": null,
+          "job_id": null,
+          "render_uri": null,
+          "qc_score": null,
+          "takes": 0
+        },
+        {
+          "id": "sc01_s02",
+          "scene_id": "sc01",
+          "index": 2,
+          "duration_s": 10.0,
+          "shot_size": "long shot",
+          "camera_move": "camera pans right",
+          "lens_mm": 24,
+          "aperture": "f/2.8",
+          "fps": 24,
+          "subject_ids": [
+            "lin_lan"
+          ],
+          "action": "登陆舱靠泊，舱门泄压喷出白雾，一个身影踏入通道",
+          "environment": "废弃空间站 · 失重走廊",
+          "lighting": "practical rim light, volumetric haze, cold key from corridor",
+          "mood": "tense curiosity",
+          "style": "cinematic sci-fi, anamorphic lens flare, volumetric haze, teal and amber palette, 35mm film grain, shallow depth of field",
+          "dialogue": [],
+          "sfx": [],
+          "refs": {
+            "images": [],
+            "videos": [],
+            "audios": [],
+            "MAX_IMAGES": 9,
+            "MAX_VIDEOS": 3,
+            "MAX_AUDIOS": 3
+          },
+          "continuity": {
+            "prev_shot_id": "sc01_s01",
+            "next_shot_id": "sc01_s03",
+            "inherit_last_frame": false,
+            "emit_last_frame": true,
+            "extend_from_job": null,
+            "overlap_frames": 0,
+            "screen_direction": "l2r",
+            "match_on": ""
+          },
+          "grade": {
+            "palette": "teal shadows, amber practicals",
+            "contrast": 1.08,
+            "saturation": 0.92,
+            "temperature": -0.25,
+            "lut": null
+          },
+          "transition_in": "cut",
+          "content_rating": "pg13",
+          "engine_hint": "official",
+          "seed": 1001,
+          "negative_prompt": "extra fingers, deformed hands, warped face, flickering, text, watermark, logo, low resolution, jpeg artifacts, duplicate limbs, morphing identity",
+          "provider_used": null,
+          "job_id": null,
+          "render_uri": null,
+          "qc_score": null,
+          "takes": 0
+        },
+        {
+          "id": "sc01_s03",
+          "scene_id": "sc01",
+          "index": 3,
+          "duration_s": 9.0,
+          "shot_size": "medium shot",
+          "camera_move": "steadicam follow",
+          "lens_mm": 35,
+          "aperture": "f/2.8",
+          "fps": 24,
+          "subject_ids": [
+            "lin_lan"
+          ],
+          "action": "她举着手电沿着失重的走廊前进，漂浮的碎屑从镜头前掠过",
+          "environment": "废弃空间站 · 失重走廊",
+          "lighting": "practical rim light, volumetric haze, cold key from corridor",
+          "mood": "tense curiosity",
+          "style": "cinematic sci-fi, anamorphic lens flare, volumetric haze, teal and amber palette, 35mm film grain, shallow depth of field",
+          "dialogue": [
+            {
+              "speaker_id": "lin_lan",
+              "text": "站体自转周期 4 小时 17 分。比记录慢了三分之一。",
+              "emotion": "calm",
+              "start_s": null,
+              "end_s": null
+            }
+          ],
+          "sfx": [],
+          "refs": {
+            "images": [],
+            "videos": [],
+            "audios": [],
+            "MAX_IMAGES": 9,
+            "MAX_VIDEOS": 3,
+            "MAX_AUDIOS": 3
+          },
+          "continuity": {
+            "prev_shot_id": "sc01_s02",
+            "next_shot_id": "sc01_s04",
+            "inherit_last_frame": true,
+            "emit_last_frame": true,
+            "extend_from_job": null,
+            "overlap_frames": 0,
+            "screen_direction": "l2r",
+            "match_on": ""
+          },
+          "grade": {
+            "palette": "teal shadows, amber practicals",
+            "contrast": 1.08,
+            "saturation": 0.92,
+            "temperature": -0.25,
+            "lut": null
+          },
+          "transition_in": "cut",
+          "content_rating": "pg13",
+          "engine_hint": "auto",
+          "seed": 1002,
+          "negative_prompt": "extra fingers, deformed hands, warped face, flickering, text, watermark, logo, low resolution, jpeg artifacts, duplicate limbs, morphing identity",
+          "provider_used": null,
+          "job_id": null,
+          "render_uri": null,
+          "qc_score": null,
+          "takes": 0
+        },
+        {
+          "id": "sc01_s04",
+          "scene_id": "sc01",
+          "index": 4,
+          "duration_s": 8.0,
+          "shot_size": "medium close-up",
+          "camera_move": "static locked-off camera",
+          "lens_mm": 50,
+          "aperture": "f/2.0",
+          "fps": 24,
+          "subject_ids": [
+            "lin_lan"
+          ],
+          "action": "她停下，抬头看向一面刻满未知符号的舱壁，手电光扫过",
+          "environment": "废弃空间站 · 失重走廊",
+          "lighting": "practical rim light, volumetric haze, cold key from corridor",
+          "mood": "tense curiosity",
+          "style": "cinematic sci-fi, anamorphic lens flare, volumetric haze, teal and amber palette, 35mm film grain, shallow depth of field",
+          "dialogue": [],
+          "sfx": [],
+          "refs": {
+            "images": [],
+            "videos": [],
+            "audios": [],
+            "MAX_IMAGES": 9,
+            "MAX_VIDEOS": 3,
+            "MAX_AUDIOS": 3
+          },
+          "continuity": {
+            "prev_shot_id": "sc01_s03",
+            "next_shot_id": "sc01_s05",
+            "inherit_last_frame": true,
+            "emit_last_frame": true,
+            "extend_from_job": null,
+            "overlap_frames": 0,
+            "screen_direction": "l2r",
+            "match_on": ""
+          },
+          "grade": {
+            "palette": "teal shadows, amber practicals",
+            "contrast": 1.08,
+            "saturation": 0.92,
+            "temperature": -0.25,
+            "lut": null
+          },
+          "transition_in": "cut",
+          "content_rating": "pg13",
+          "engine_hint": "auto",
+          "seed": 1003,
+          "negative_prompt": "extra fingers, deformed hands, warped face, flickering, text, watermark, logo, low resolution, jpeg artifacts, duplicate limbs, morphing identity",
+          "provider_used": null,
+          "job_id": null,
+          "render_uri": null,
+          "qc_score": null,
+          "takes": 0
+        },
+        {
+          "id": "sc01_s05",
+          "scene_id": "sc01",
+          "index": 5,
+          "duration_s": 6.0,
+          "shot_size": "insert shot",
+          "camera_move": "camera dollies in",
+          "lens_mm": 85,
+          "aperture": "f/2.0",
+          "fps": 24,
+          "subject_ids": [],
+          "action": "舱壁符号特写，符号在光下泛起微弱磷光",
+          "environment": "废弃空间站 · 失重走廊",
+          "lighting": "practical rim light, volumetric haze, cold key from corridor",
+          "mood": "tense curiosity",
+          "style": "cinematic sci-fi, anamorphic lens flare, volumetric haze, teal and amber palette, 35mm film grain, shallow depth of field",
+          "dialogue": [],
+          "sfx": [],
+          "refs": {
+            "images": [],
+            "videos": [],
+            "audios": [],
+            "MAX_IMAGES": 9,
+            "MAX_VIDEOS": 3,
+            "MAX_AUDIOS": 3
+          },
+          "continuity": {
+            "prev_shot_id": "sc01_s04",
+            "next_shot_id": "sc01_s06",
+            "inherit_last_frame": false,
+            "emit_last_frame": true,
+            "extend_from_job": null,
+            "overlap_frames": 0,
+            "screen_direction": "neutral",
+            "match_on": "符号磷光"
+          },
+          "grade": {
+            "palette": "teal shadows, amber practicals",
+            "contrast": 1.08,
+            "saturation": 0.92,
+            "temperature": -0.25,
+            "lut": null
+          },
+          "transition_in": "match_cut",
+          "content_rating": "pg13",
+          "engine_hint": "open",
+          "seed": 1004,
+          "negative_prompt": "extra fingers, deformed hands, warped face, flickering, text, watermark, logo, low resolution, jpeg artifacts, duplicate limbs, morphing identity",
+          "provider_used": null,
+          "job_id": null,
+          "render_uri": null,
+          "qc_score": null,
+          "takes": 0
+        },
+        {
+          "id": "sc01_s06",
+          "scene_id": "sc01",
+          "index": 6,
+          "duration_s": 7.0,
+          "shot_size": "close-up",
+          "camera_move": "static locked-off camera",
+          "lens_mm": 85,
+          "aperture": "f/2.0",
+          "fps": 24,
+          "subject_ids": [
+            "lin_lan"
+          ],
+          "action": "她的眼睛映着磷光，瞳孔收缩",
+          "environment": "废弃空间站 · 失重走廊",
+          "lighting": "practical rim light, volumetric haze, cold key from corridor",
+          "mood": "tense curiosity",
+          "style": "cinematic sci-fi, anamorphic lens flare, volumetric haze, teal and amber palette, 35mm film grain, shallow depth of field",
+          "dialogue": [
+            {
+              "speaker_id": "lin_lan",
+              "text": "凯，看这个。它在回应光。",
+              "emotion": "curious",
+              "start_s": null,
+              "end_s": null
+            }
+          ],
+          "sfx": [],
+          "refs": {
+            "images": [],
+            "videos": [],
+            "audios": [],
+            "MAX_IMAGES": 9,
+            "MAX_VIDEOS": 3,
+            "MAX_AUDIOS": 3
+          },
+          "continuity": {
+            "prev_shot_id": "sc01_s05",
+            "next_shot_id": "sc01_s07",
+            "inherit_last_frame": false,
+            "emit_last_frame": true,
+            "extend_from_job": null,
+            "overlap_frames": 0,
+            "screen_direction": "l2r",
+            "match_on": ""
+          },
+          "grade": {
+            "palette": "teal shadows, amber practicals",
+            "contrast": 1.08,
+            "saturation": 0.92,
+            "temperature": -0.25,
+            "lut": null
+          },
+          "transition_in": "cut",
+          "content_rating": "pg13",
+          "engine_hint": "auto",
+          "seed": 1005,
+          "negative_prompt": "extra fingers, deformed hands, warped face, flickering, text, watermark, logo, low resolution, jpeg artifacts, duplicate limbs, morphing identity",
+          "provider_used": null,
+          "job_id": null,
+          "render_uri": null,
+          "qc_score": null,
+          "takes": 0
+        },
+        {
+          "id": "sc01_s07",
+          "scene_id": "sc01",
+          "index": 7,
+          "duration_s": 9.0,
+          "shot_size": "medium shot",
+          "camera_move": "camera trucks left",
+          "lens_mm": 35,
+          "aperture": "f/2.8",
+          "fps": 24,
+          "subject_ids": [
+            "kai_k7"
+          ],
+          "action": "仿生助理沿走廊滑行而来，胸口指示环由青转黄",
+          "environment": "废弃空间站 · 失重走廊",
+          "lighting": "practical rim light, volumetric haze, cold key from corridor",
+          "mood": "tense curiosity",
+          "style": "cinematic sci-fi, anamorphic lens flare, volumetric haze, teal and amber palette, 35mm film grain, shallow depth of field",
+          "dialogue": [
+            {
+              "speaker_id": "kai_k7",
+              "text": "检测到非随机磷光响应。置信度 0.87。",
+              "emotion": "neutral",
+              "start_s": null,
+              "end_s": null
+            }
+          ],
+          "sfx": [],
+          "refs": {
+            "images": [],
+            "videos": [],
+            "audios": [],
+            "MAX_IMAGES": 9,
+            "MAX_VIDEOS": 3,
+            "MAX_AUDIOS": 3
+          },
+          "continuity": {
+            "prev_shot_id": "sc01_s06",
+            "next_shot_id": "sc01_s08",
+            "inherit_last_frame": false,
+            "emit_last_frame": true,
+            "extend_from_job": null,
+            "overlap_frames": 0,
+            "screen_direction": "r2l",
+            "match_on": ""
+          },
+          "grade": {
+            "palette": "teal shadows, amber practicals",
+            "contrast": 1.08,
+            "saturation": 0.92,
+            "temperature": -0.25,
+            "lut": null
+          },
+          "transition_in": "cut",
+          "content_rating": "pg13",
+          "engine_hint": "auto",
+          "seed": 1006,
+          "negative_prompt": "extra fingers, deformed hands, warped face, flickering, text, watermark, logo, low resolution, jpeg artifacts, duplicate limbs, morphing identity",
+          "provider_used": null,
+          "job_id": null,
+          "render_uri": null,
+          "qc_score": null,
+          "takes": 0
+        },
+        {
+          "id": "sc01_s08",
+          "scene_id": "sc01",
+          "index": 8,
+          "duration_s": 11.0,
+          "shot_size": "two shot",
+          "camera_move": "camera orbits right around subject",
+          "lens_mm": 35,
+          "aperture": "f/2.8",
+          "fps": 24,
+          "subject_ids": [
+            "lin_lan",
+            "kai_k7"
+          ],
+          "action": "两人并肩站在符号墙前，镜头绕行半圈",
+          "environment": "废弃空间站 · 失重走廊",
+          "lighting": "practical rim light, volumetric haze, cold key from corridor",
+          "mood": "tense curiosity",
+          "style": "cinematic sci-fi, anamorphic lens flare, volumetric haze, teal and amber palette, 35mm film grain, shallow depth of field",
+          "dialogue": [
+            {
+              "speaker_id": "kai_k7",
+              "text": "建议不要触碰。上一支勘探队的记录在这里中断。",
+              "emotion": "neutral",
+              "start_s": null,
+              "end_s": null
+            }
+          ],
+          "sfx": [],
+          "refs": {
+            "images": [],
+            "videos": [],
+            "audios": [],
+            "MAX_IMAGES": 9,
+            "MAX_VIDEOS": 3,
+            "MAX_AUDIOS": 3
+          },
+          "continuity": {
+            "prev_shot_id": "sc01_s07",
+            "next_shot_id": "sc01_s09",
+            "inherit_last_frame": false,
+            "emit_last_frame": true,
+            "extend_from_job": null,
+            "overlap_frames": 0,
+            "screen_direction": "neutral",
+            "match_on": ""
+          },
+          "grade": {
+            "palette": "teal shadows, amber practicals",
+            "contrast": 1.08,
+            "saturation": 0.92,
+            "temperature": -0.25,
+            "lut": null
+          },
+          "transition_in": "cut",
+          "content_rating": "pg13",
+          "engine_hint": "official",
+          "seed": 1007,
+          "negative_prompt": "extra fingers, deformed hands, warped face, flickering, text, watermark, logo, low resolution, jpeg artifacts, duplicate limbs, morphing identity",
+          "provider_used": null,
+          "job_id": null,
+          "render_uri": null,
+          "qc_score": null,
+          "takes": 0
+        },
+        {
+          "id": "sc01_s09",
+          "scene_id": "sc01",
+          "index": 9,
+          "duration_s": 8.0,
+          "shot_size": "over-the-shoulder shot",
+          "camera_move": "static locked-off camera",
+          "lens_mm": 50,
+          "aperture": "f/2.0",
+          "fps": 24,
+          "subject_ids": [
+            "lin_lan",
+            "kai_k7"
+          ],
+          "action": "越过凯的肩看林岚，她伸出戴着手套的手",
+          "environment": "废弃空间站 · 失重走廊",
+          "lighting": "practical rim light, volumetric haze, cold key from corridor",
+          "mood": "tense curiosity",
+          "style": "cinematic sci-fi, anamorphic lens flare, volumetric haze, teal and amber palette, 35mm film grain, shallow depth of field",
+          "dialogue": [
+            {
+              "speaker_id": "lin_lan",
+              "text": "上一支队没带你。",
+              "emotion": "dry",
+              "start_s": null,
+              "end_s": null
+            }
+          ],
+          "sfx": [],
+          "refs": {
+            "images": [],
+            "videos": [],
+            "audios": [],
+            "MAX_IMAGES": 9,
+            "MAX_VIDEOS": 3,
+            "MAX_AUDIOS": 3
+          },
+          "continuity": {
+            "prev_shot_id": "sc01_s08",
+            "next_shot_id": "sc01_s10",
+            "inherit_last_frame": true,
+            "emit_last_frame": true,
+            "extend_from_job": null,
+            "overlap_frames": 0,
+            "screen_direction": "neutral",
+            "match_on": ""
+          },
+          "grade": {
+            "palette": "teal shadows, amber practicals",
+            "contrast": 1.08,
+            "saturation": 0.92,
+            "temperature": -0.25,
+            "lut": null
+          },
+          "transition_in": "cut",
+          "content_rating": "pg13",
+          "engine_hint": "auto",
+          "seed": 1008,
+          "negative_prompt": "extra fingers, deformed hands, warped face, flickering, text, watermark, logo, low resolution, jpeg artifacts, duplicate limbs, morphing identity",
+          "provider_used": null,
+          "job_id": null,
+          "render_uri": null,
+          "qc_score": null,
+          "takes": 0
+        },
+        {
+          "id": "sc01_s10",
+          "scene_id": "sc01",
+          "index": 10,
+          "duration_s": 6.0,
+          "shot_size": "extreme close-up",
+          "camera_move": "camera dollies in",
+          "lens_mm": 100,
+          "aperture": "f/2.0",
+          "fps": 24,
+          "subject_ids": [
+            "lin_lan"
+          ],
+          "action": "手套指尖逼近符号，磷光骤然加强",
+          "environment": "废弃空间站 · 失重走廊",
+          "lighting": "practical rim light, volumetric haze, cold key from corridor",
+          "mood": "tense curiosity",
+          "style": "cinematic sci-fi, anamorphic lens flare, volumetric haze, teal and amber palette, 35mm film grain, shallow depth of field",
+          "dialogue": [],
+          "sfx": [],
+          "refs": {
+            "images": [],
+            "videos": [],
+            "audios": [],
+            "MAX_IMAGES": 9,
+            "MAX_VIDEOS": 3,
+            "MAX_AUDIOS": 3
+          },
+          "continuity": {
+            "prev_shot_id": "sc01_s09",
+            "next_shot_id": null,
+            "inherit_last_frame": false,
+            "emit_last_frame": true,
+            "extend_from_job": null,
+            "overlap_frames": 0,
+            "screen_direction": "l2r",
+            "match_on": ""
+          },
+          "grade": {
+            "palette": "teal shadows, amber practicals",
+            "contrast": 1.08,
+            "saturation": 0.92,
+            "temperature": -0.25,
+            "lut": null
+          },
+          "transition_in": "cut",
+          "content_rating": "pg13",
+          "engine_hint": "hero",
+          "seed": 1009,
+          "negative_prompt": "extra fingers, deformed hands, warped face, flickering, text, watermark, logo, low resolution, jpeg artifacts, duplicate limbs, morphing identity",
+          "provider_used": null,
+          "job_id": null,
+          "render_uri": null,
+          "qc_score": null,
+          "takes": 0
+        }
+      ]
+    },
+    {
+      "id": "sc02",
+      "title": "唤醒",
+      "synopsis": "符号被激活，整座站体苏醒，隔离门开启，露出环形舱与悬浮几何体。",
+      "location": "废弃空间站 · 隔离门与环形舱",
+      "time_of_day": "night",
+      "base_grade": {
+        "palette": "cyan bloom, deep blue shadows",
+        "contrast": 1.15,
+        "saturation": 1.05,
+        "temperature": -0.35,
+        "lut": null
+      },
+      "shots": [
+        {
+          "id": "sc02_s01",
+          "scene_id": "sc02",
+          "index": 1,
+          "duration_s": 10.0,
+          "shot_size": "full shot",
+          "camera_move": "handheld camera, subtle organic shake",
+          "lens_mm": 28,
+          "aperture": "f/2.8",
+          "fps": 24,
+          "subject_ids": [
+            "lin_lan",
+            "kai_k7"
+          ],
+          "action": "整面舱壁亮起，符号像活物一样重排，两人后退",
+          "environment": "废弃空间站 · 隔离门与环形舱",
+          "lighting": "practical rim light, volumetric haze, cold key from corridor",
+          "mood": "tense curiosity",
+          "style": "cinematic sci-fi, anamorphic lens flare, volumetric haze, teal and amber palette, 35mm film grain, shallow depth of field",
+          "dialogue": [],
+          "sfx": [],
+          "refs": {
+            "images": [],
+            "videos": [],
+            "audios": [],
+            "MAX_IMAGES": 9,
+            "MAX_VIDEOS": 3,
+            "MAX_AUDIOS": 3
+          },
+          "continuity": {
+            "prev_shot_id": "sc01_s10",
+            "next_shot_id": "sc02_s02",
+            "inherit_last_frame": true,
+            "emit_last_frame": true,
+            "extend_from_job": null,
+            "overlap_frames": 0,
+            "screen_direction": "neutral",
+            "match_on": ""
+          },
+          "grade": {
+            "palette": "cyan bloom, deep blue shadows",
+            "contrast": 1.15,
+            "saturation": 1.05,
+            "temperature": -0.35,
+            "lut": null
+          },
+          "transition_in": "cut",
+          "content_rating": "pg13",
+          "engine_hint": "hero",
+          "seed": 1100,
+          "negative_prompt": "extra fingers, deformed hands, warped face, flickering, text, watermark, logo, low resolution, jpeg artifacts, duplicate limbs, morphing identity",
+          "provider_used": null,
+          "job_id": null,
+          "render_uri": null,
+          "qc_score": null,
+          "takes": 0
+        },
+        {
+          "id": "sc02_s02",
+          "scene_id": "sc02",
+          "index": 2,
+          "duration_s": 7.0,
+          "shot_size": "medium close-up",
+          "camera_move": "handheld camera, subtle organic shake",
+          "lens_mm": 50,
+          "aperture": "f/2.0",
+          "fps": 24,
+          "subject_ids": [
+            "kai_k7"
+          ],
+          "action": "凯的虹膜环快速旋转，指示环转红",
+          "environment": "废弃空间站 · 隔离门与环形舱",
+          "lighting": "practical rim light, volumetric haze, cold key from corridor",
+          "mood": "tense curiosity",
+          "style": "cinematic sci-fi, anamorphic lens flare, volumetric haze, teal and amber palette, 35mm film grain, shallow depth of field",
+          "dialogue": [
+            {
+              "speaker_id": "kai_k7",
+              "text": "它在读取我。这不是刻痕，是接口。",
+              "emotion": "alarmed",
+              "start_s": null,
+              "end_s": null
+            }
+          ],
+          "sfx": [],
+          "refs": {
+            "images": [],
+            "videos": [],
+            "audios": [],
+            "MAX_IMAGES": 9,
+            "MAX_VIDEOS": 3,
+            "MAX_AUDIOS": 3
+          },
+          "continuity": {
+            "prev_shot_id": "sc02_s01",
+            "next_shot_id": "sc02_s03",
+            "inherit_last_frame": false,
+            "emit_last_frame": true,
+            "extend_from_job": null,
+            "overlap_frames": 0,
+            "screen_direction": "r2l",
+            "match_on": ""
+          },
+          "grade": {
+            "palette": "cyan bloom, deep blue shadows",
+            "contrast": 1.15,
+            "saturation": 1.05,
+            "temperature": -0.35,
+            "lut": null
+          },
+          "transition_in": "cut",
+          "content_rating": "pg13",
+          "engine_hint": "auto",
+          "seed": 1101,
+          "negative_prompt": "extra fingers, deformed hands, warped face, flickering, text, watermark, logo, low resolution, jpeg artifacts, duplicate limbs, morphing identity",
+          "provider_used": null,
+          "job_id": null,
+          "render_uri": null,
+          "qc_score": null,
+          "takes": 0
+        },
+        {
+          "id": "sc02_s03",
+          "scene_id": "sc02",
+          "index": 3,
+          "duration_s": 5.0,
+          "shot_size": "medium shot",
+          "camera_move": "whip pan",
+          "lens_mm": 35,
+          "aperture": "f/2.8",
+          "fps": 24,
+          "subject_ids": [
+            "lin_lan"
+          ],
+          "action": "林岚猛转头看向走廊深处",
+          "environment": "废弃空间站 · 隔离门与环形舱",
+          "lighting": "practical rim light, volumetric haze, cold key from corridor",
+          "mood": "tense curiosity",
+          "style": "cinematic sci-fi, anamorphic lens flare, volumetric haze, teal and amber palette, 35mm film grain, shallow depth of field",
+          "dialogue": [],
+          "sfx": [],
+          "refs": {
+            "images": [],
+            "videos": [],
+            "audios": [],
+            "MAX_IMAGES": 9,
+            "MAX_VIDEOS": 3,
+            "MAX_AUDIOS": 3
+          },
+          "continuity": {
+            "prev_shot_id": "sc02_s02",
+            "next_shot_id": "sc02_s04",
+            "inherit_last_frame": false,
+            "emit_last_frame": true,
+            "extend_from_job": null,
+            "overlap_frames": 0,
+            "screen_direction": "l2r",
+            "match_on": ""
+          },
+          "grade": {
+            "palette": "cyan bloom, deep blue shadows",
+            "contrast": 1.15,
+            "saturation": 1.05,
+            "temperature": -0.35,
+            "lut": null
+          },
+          "transition_in": "cut",
+          "content_rating": "pg13",
+          "engine_hint": "open",
+          "seed": 1102,
+          "negative_prompt": "extra fingers, deformed hands, warped face, flickering, text, watermark, logo, low resolution, jpeg artifacts, duplicate limbs, morphing identity",
+          "provider_used": null,
+          "job_id": null,
+          "render_uri": null,
+          "qc_score": null,
+          "takes": 0
+        },
+        {
+          "id": "sc02_s04",
+          "scene_id": "sc02",
+          "index": 4,
+          "duration_s": 9.0,
+          "shot_size": "long shot",
+          "camera_move": "static locked-off camera",
+          "lens_mm": 24,
+          "aperture": "f/2.8",
+          "fps": 24,
+          "subject_ids": [],
+          "action": "走廊尽头的隔离门正在逐层开启，蓝光从缝隙涌出",
+          "environment": "废弃空间站 · 隔离门与环形舱",
+          "lighting": "practical rim light, volumetric haze, cold key from corridor",
+          "mood": "tense curiosity",
+          "style": "cinematic sci-fi, anamorphic lens flare, volumetric haze, teal and amber palette, 35mm film grain, shallow depth of field",
+          "dialogue": [],
+          "sfx": [],
+          "refs": {
+            "images": [],
+            "videos": [],
+            "audios": [],
+            "MAX_IMAGES": 9,
+            "MAX_VIDEOS": 3,
+            "MAX_AUDIOS": 3
+          },
+          "continuity": {
+            "prev_shot_id": "sc02_s03",
+            "next_shot_id": "sc02_s05",
+            "inherit_last_frame": false,
+            "emit_last_frame": true,
+            "extend_from_job": null,
+            "overlap_frames": 0,
+            "screen_direction": "neutral",
+            "match_on": ""
+          },
+          "grade": {
+            "palette": "cyan bloom, deep blue shadows",
+            "contrast": 1.15,
+            "saturation": 1.05,
+            "temperature": -0.35,
+            "lut": null
+          },
+          "transition_in": "cut",
+          "content_rating": "pg13",
+          "engine_hint": "official",
+          "seed": 1103,
+          "negative_prompt": "extra fingers, deformed hands, warped face, flickering, text, watermark, logo, low resolution, jpeg artifacts, duplicate limbs, morphing identity",
+          "provider_used": null,
+          "job_id": null,
+          "render_uri": null,
+          "qc_score": null,
+          "takes": 0
+        },
+        {
+          "id": "sc02_s05",
+          "scene_id": "sc02",
+          "index": 5,
+          "duration_s": 8.0,
+          "shot_size": "medium close-up",
+          "camera_move": "camera dollies out",
+          "lens_mm": 50,
+          "aperture": "f/2.0",
+          "fps": 24,
+          "subject_ids": [
+            "lin_lan"
+          ],
+          "action": "她后退半步，手电熄灭，脸被蓝光照亮",
+          "environment": "废弃空间站 · 隔离门与环形舱",
+          "lighting": "practical rim light, volumetric haze, cold key from corridor",
+          "mood": "tense curiosity",
+          "style": "cinematic sci-fi, anamorphic lens flare, volumetric haze, teal and amber palette, 35mm film grain, shallow depth of field",
+          "dialogue": [
+            {
+              "speaker_id": "lin_lan",
+              "text": "它不是在回应光。",
+              "emotion": "quiet",
+              "start_s": null,
+              "end_s": null
+            }
+          ],
+          "sfx": [],
+          "refs": {
+            "images": [],
+            "videos": [],
+            "audios": [],
+            "MAX_IMAGES": 9,
+            "MAX_VIDEOS": 3,
+            "MAX_AUDIOS": 3
+          },
+          "continuity": {
+            "prev_shot_id": "sc02_s04",
+            "next_shot_id": "sc02_s06",
+            "inherit_last_frame": true,
+            "emit_last_frame": true,
+            "extend_from_job": null,
+            "overlap_frames": 0,
+            "screen_direction": "l2r",
+            "match_on": ""
+          },
+          "grade": {
+            "palette": "cyan bloom, deep blue shadows",
+            "contrast": 1.15,
+            "saturation": 1.05,
+            "temperature": -0.35,
+            "lut": null
+          },
+          "transition_in": "cut",
+          "content_rating": "pg13",
+          "engine_hint": "auto",
+          "seed": 1104,
+          "negative_prompt": "extra fingers, deformed hands, warped face, flickering, text, watermark, logo, low resolution, jpeg artifacts, duplicate limbs, morphing identity",
+          "provider_used": null,
+          "job_id": null,
+          "render_uri": null,
+          "qc_score": null,
+          "takes": 0
+        },
+        {
+          "id": "sc02_s06",
+          "scene_id": "sc02",
+          "index": 6,
+          "duration_s": 6.0,
+          "shot_size": "close-up",
+          "camera_move": "static locked-off camera",
+          "lens_mm": 85,
+          "aperture": "f/2.0",
+          "fps": 24,
+          "subject_ids": [
+            "lin_lan"
+          ],
+          "action": "特写：她轻声补完",
+          "environment": "废弃空间站 · 隔离门与环形舱",
+          "lighting": "practical rim light, volumetric haze, cold key from corridor",
+          "mood": "tense curiosity",
+          "style": "cinematic sci-fi, anamorphic lens flare, volumetric haze, teal and amber palette, 35mm film grain, shallow depth of field",
+          "dialogue": [
+            {
+              "speaker_id": "lin_lan",
+              "text": "它是在回应我们。",
+              "emotion": "quiet",
+              "start_s": null,
+              "end_s": null
+            }
+          ],
+          "sfx": [],
+          "refs": {
+            "images": [],
+            "videos": [],
+            "audios": [],
+            "MAX_IMAGES": 9,
+            "MAX_VIDEOS": 3,
+            "MAX_AUDIOS": 3
+          },
+          "continuity": {
+            "prev_shot_id": "sc02_s05",
+            "next_shot_id": "sc02_s07",
+            "inherit_last_frame": true,
+            "emit_last_frame": true,
+            "extend_from_job": null,
+            "overlap_frames": 0,
+            "screen_direction": "l2r",
+            "match_on": ""
+          },
+          "grade": {
+            "palette": "cyan bloom, deep blue shadows",
+            "contrast": 1.15,
+            "saturation": 1.05,
+            "temperature": -0.35,
+            "lut": null
+          },
+          "transition_in": "cut",
+          "content_rating": "pg13",
+          "engine_hint": "hero",
+          "seed": 1105,
+          "negative_prompt": "extra fingers, deformed hands, warped face, flickering, text, watermark, logo, low resolution, jpeg artifacts, duplicate limbs, morphing identity",
+          "provider_used": null,
+          "job_id": null,
+          "render_uri": null,
+          "qc_score": null,
+          "takes": 0
+        },
+        {
+          "id": "sc02_s07",
+          "scene_id": "sc02",
+          "index": 7,
+          "duration_s": 12.0,
+          "shot_size": "extreme long shot",
+          "camera_move": "crane shot rising",
+          "lens_mm": 24,
+          "aperture": "f/2.8",
+          "fps": 24,
+          "subject_ids": [],
+          "action": "镜头拉升穿过残骸，整座空间站的外壳纹路依次点亮",
+          "environment": "废弃空间站 · 隔离门与环形舱",
+          "lighting": "practical rim light, volumetric haze, cold key from corridor",
+          "mood": "tense curiosity",
+          "style": "cinematic sci-fi, anamorphic lens flare, volumetric haze, teal and amber palette, 35mm film grain, shallow depth of field",
+          "dialogue": [],
+          "sfx": [],
+          "refs": {
+            "images": [],
+            "videos": [],
+            "audios": [],
+            "MAX_IMAGES": 9,
+            "MAX_VIDEOS": 3,
+            "MAX_AUDIOS": 3
+          },
+          "continuity": {
+            "prev_shot_id": "sc02_s06",
+            "next_shot_id": "sc02_s08",
+            "inherit_last_frame": false,
+            "emit_last_frame": true,
+            "extend_from_job": null,
+            "overlap_frames": 0,
+            "screen_direction": "neutral",
+            "match_on": ""
+          },
+          "grade": {
+            "palette": "cyan bloom, deep blue shadows",
+            "contrast": 1.15,
+            "saturation": 1.05,
+            "temperature": -0.35,
+            "lut": null
+          },
+          "transition_in": "dissolve",
+          "content_rating": "pg13",
+          "engine_hint": "hero",
+          "seed": 1106,
+          "negative_prompt": "extra fingers, deformed hands, warped face, flickering, text, watermark, logo, low resolution, jpeg artifacts, duplicate limbs, morphing identity",
+          "provider_used": null,
+          "job_id": null,
+          "render_uri": null,
+          "qc_score": null,
+          "takes": 0
+        },
+        {
+          "id": "sc02_s08",
+          "scene_id": "sc02",
+          "index": 8,
+          "duration_s": 10.0,
+          "shot_size": "medium shot",
+          "camera_move": "steadicam follow",
+          "lens_mm": 35,
+          "aperture": "f/2.8",
+          "fps": 24,
+          "subject_ids": [
+            "lin_lan",
+            "kai_k7"
+          ],
+          "action": "两人穿过开启的隔离门，进入一个巨大的环形舱",
+          "environment": "废弃空间站 · 隔离门与环形舱",
+          "lighting": "practical rim light, volumetric haze, cold key from corridor",
+          "mood": "tense curiosity",
+          "style": "cinematic sci-fi, anamorphic lens flare, volumetric haze, teal and amber palette, 35mm film grain, shallow depth of field",
+          "dialogue": [],
+          "sfx": [],
+          "refs": {
+            "images": [],
+            "videos": [],
+            "audios": [],
+            "MAX_IMAGES": 9,
+            "MAX_VIDEOS": 3,
+            "MAX_AUDIOS": 3
+          },
+          "continuity": {
+            "prev_shot_id": "sc02_s07",
+            "next_shot_id": "sc02_s09",
+            "inherit_last_frame": false,
+            "emit_last_frame": true,
+            "extend_from_job": null,
+            "overlap_frames": 0,
+            "screen_direction": "neutral",
+            "match_on": ""
+          },
+          "grade": {
+            "palette": "cyan bloom, deep blue shadows",
+            "contrast": 1.15,
+            "saturation": 1.05,
+            "temperature": -0.35,
+            "lut": null
+          },
+          "transition_in": "cut",
+          "content_rating": "pg13",
+          "engine_hint": "official",
+          "seed": 1107,
+          "negative_prompt": "extra fingers, deformed hands, warped face, flickering, text, watermark, logo, low resolution, jpeg artifacts, duplicate limbs, morphing identity",
+          "provider_used": null,
+          "job_id": null,
+          "render_uri": null,
+          "qc_score": null,
+          "takes": 0
+        },
+        {
+          "id": "sc02_s09",
+          "scene_id": "sc02",
+          "index": 9,
+          "duration_s": 11.0,
+          "shot_size": "long shot",
+          "camera_move": "camera tilts up",
+          "lens_mm": 24,
+          "aperture": "f/2.8",
+          "fps": 24,
+          "subject_ids": [
+            "lin_lan",
+            "kai_k7"
+          ],
+          "action": "镜头上摇，环形舱顶部悬浮着一个缓慢旋转的几何体",
+          "environment": "废弃空间站 · 隔离门与环形舱",
+          "lighting": "practical rim light, volumetric haze, cold key from corridor",
+          "mood": "tense curiosity",
+          "style": "cinematic sci-fi, anamorphic lens flare, volumetric haze, teal and amber palette, 35mm film grain, shallow depth of field",
+          "dialogue": [
+            {
+              "speaker_id": "kai_k7",
+              "text": "质量读数为零。它不在这里。",
+              "emotion": "neutral",
+              "start_s": null,
+              "end_s": null
+            }
+          ],
+          "sfx": [],
+          "refs": {
+            "images": [],
+            "videos": [],
+            "audios": [],
+            "MAX_IMAGES": 9,
+            "MAX_VIDEOS": 3,
+            "MAX_AUDIOS": 3
+          },
+          "continuity": {
+            "prev_shot_id": "sc02_s08",
+            "next_shot_id": "sc02_s10",
+            "inherit_last_frame": true,
+            "emit_last_frame": true,
+            "extend_from_job": null,
+            "overlap_frames": 0,
+            "screen_direction": "neutral",
+            "match_on": ""
+          },
+          "grade": {
+            "palette": "cyan bloom, deep blue shadows",
+            "contrast": 1.15,
+            "saturation": 1.05,
+            "temperature": -0.35,
+            "lut": null
+          },
+          "transition_in": "cut",
+          "content_rating": "pg13",
+          "engine_hint": "hero",
+          "seed": 1108,
+          "negative_prompt": "extra fingers, deformed hands, warped face, flickering, text, watermark, logo, low resolution, jpeg artifacts, duplicate limbs, morphing identity",
+          "provider_used": null,
+          "job_id": null,
+          "render_uri": null,
+          "qc_score": null,
+          "takes": 0
+        },
+        {
+          "id": "sc02_s10",
+          "scene_id": "sc02",
+          "index": 10,
+          "duration_s": 8.0,
+          "shot_size": "medium close-up",
+          "camera_move": "static locked-off camera",
+          "lens_mm": 50,
+          "aperture": "f/2.0",
+          "fps": 24,
+          "subject_ids": [
+            "lin_lan"
+          ],
+          "action": "她仰头，橙色徽标被顶部的光染成白色",
+          "environment": "废弃空间站 · 隔离门与环形舱",
+          "lighting": "practical rim light, volumetric haze, cold key from corridor",
+          "mood": "tense curiosity",
+          "style": "cinematic sci-fi, anamorphic lens flare, volumetric haze, teal and amber palette, 35mm film grain, shallow depth of field",
+          "dialogue": [
+            {
+              "speaker_id": "lin_lan",
+              "text": "记录时间。我们找到了。",
+              "emotion": "awed",
+              "start_s": null,
+              "end_s": null
+            }
+          ],
+          "sfx": [],
+          "refs": {
+            "images": [],
+            "videos": [],
+            "audios": [],
+            "MAX_IMAGES": 9,
+            "MAX_VIDEOS": 3,
+            "MAX_AUDIOS": 3
+          },
+          "continuity": {
+            "prev_shot_id": "sc02_s09",
+            "next_shot_id": null,
+            "inherit_last_frame": false,
+            "emit_last_frame": true,
+            "extend_from_job": null,
+            "overlap_frames": 0,
+            "screen_direction": "l2r",
+            "match_on": ""
+          },
+          "grade": {
+            "palette": "cyan bloom, deep blue shadows",
+            "contrast": 1.15,
+            "saturation": 1.05,
+            "temperature": -0.35,
+            "lut": null
+          },
+          "transition_in": "cut",
+          "content_rating": "pg13",
+          "engine_hint": "auto",
+          "seed": 1109,
+          "negative_prompt": "extra fingers, deformed hands, warped face, flickering, text, watermark, logo, low resolution, jpeg artifacts, duplicate limbs, morphing identity",
+          "provider_used": null,
+          "job_id": null,
+          "render_uri": null,
+          "qc_score": null,
+          "takes": 0
+        }
+      ]
+    },
+    {
+      "id": "sc03",
+      "title": "接触",
+      "synopsis": "倒计时中的最后接触。",
+      "location": "环形舱 · 悬浮几何体下方",
+      "time_of_day": "night",
+      "base_grade": {
+        "palette": "white key, near-monochrome",
+        "contrast": 1.22,
+        "saturation": 0.78,
+        "temperature": 0.1,
+        "lut": null
+      },
+      "shots": [
+        {
+          "id": "sc03_s01",
+          "scene_id": "sc03",
+          "index": 1,
+          "duration_s": 6.0,
+          "shot_size": "insert shot",
+          "camera_move": "static locked-off camera",
+          "lens_mm": 85,
+          "aperture": "f/2.0",
+          "fps": 24,
+          "subject_ids": [],
+          "action": "腕部终端屏幕：坐标与时间戳在跳动",
+          "environment": "环形舱 · 悬浮几何体下方",
+          "lighting": "practical rim light, volumetric haze, cold key from corridor",
+          "mood": "tense curiosity",
+          "style": "cinematic sci-fi, anamorphic lens flare, volumetric haze, teal and amber palette, 35mm film grain, shallow depth of field",
+          "dialogue": [],
+          "sfx": [],
+          "refs": {
+            "images": [],
+            "videos": [],
+            "audios": [],
+            "MAX_IMAGES": 9,
+            "MAX_VIDEOS": 3,
+            "MAX_AUDIOS": 3
+          },
+          "continuity": {
+            "prev_shot_id": "sc02_s10",
+            "next_shot_id": "sc03_s02",
+            "inherit_last_frame": false,
+            "emit_last_frame": true,
+            "extend_from_job": null,
+            "overlap_frames": 0,
+            "screen_direction": "neutral",
+            "match_on": ""
+          },
+          "grade": {
+            "palette": "white key, near-monochrome",
+            "contrast": 1.22,
+            "saturation": 0.78,
+            "temperature": 0.1,
+            "lut": null
+          },
+          "transition_in": "cut",
+          "content_rating": "pg13",
+          "engine_hint": "open",
+          "seed": 1200,
+          "negative_prompt": "extra fingers, deformed hands, warped face, flickering, text, watermark, logo, low resolution, jpeg artifacts, duplicate limbs, morphing identity",
+          "provider_used": null,
+          "job_id": null,
+          "render_uri": null,
+          "qc_score": null,
+          "takes": 0
+        },
+        {
+          "id": "sc03_s02",
+          "scene_id": "sc03",
+          "index": 2,
+          "duration_s": 10.0,
+          "shot_size": "medium shot",
+          "camera_move": "camera orbits left around subject",
+          "lens_mm": 35,
+          "aperture": "f/2.8",
+          "fps": 24,
+          "subject_ids": [
+            "kai_k7"
+          ],
+          "action": "凯绕着几何体走，指示环在青红之间闪烁",
+          "environment": "环形舱 · 悬浮几何体下方",
+          "lighting": "practical rim light, volumetric haze, cold key from corridor",
+          "mood": "tense curiosity",
+          "style": "cinematic sci-fi, anamorphic lens flare, volumetric haze, teal and amber palette, 35mm film grain, shallow depth of field",
+          "dialogue": [
+            {
+              "speaker_id": "kai_k7",
+              "text": "我需要提醒你，我的电源还有 41 分钟。",
+              "emotion": "dry",
+              "start_s": null,
+              "end_s": null
+            }
+          ],
+          "sfx": [],
+          "refs": {
+            "images": [],
+            "videos": [],
+            "audios": [],
+            "MAX_IMAGES": 9,
+            "MAX_VIDEOS": 3,
+            "MAX_AUDIOS": 3
+          },
+          "continuity": {
+            "prev_shot_id": "sc03_s01",
+            "next_shot_id": "sc03_s03",
+            "inherit_last_frame": false,
+            "emit_last_frame": true,
+            "extend_from_job": null,
+            "overlap_frames": 0,
+            "screen_direction": "r2l",
+            "match_on": ""
+          },
+          "grade": {
+            "palette": "white key, near-monochrome",
+            "contrast": 1.22,
+            "saturation": 0.78,
+            "temperature": 0.1,
+            "lut": null
+          },
+          "transition_in": "cut",
+          "content_rating": "pg13",
+          "engine_hint": "auto",
+          "seed": 1201,
+          "negative_prompt": "extra fingers, deformed hands, warped face, flickering, text, watermark, logo, low resolution, jpeg artifacts, duplicate limbs, morphing identity",
+          "provider_used": null,
+          "job_id": null,
+          "render_uri": null,
+          "qc_score": null,
+          "takes": 0
+        },
+        {
+          "id": "sc03_s03",
+          "scene_id": "sc03",
+          "index": 3,
+          "duration_s": 7.0,
+          "shot_size": "medium close-up",
+          "camera_move": "static locked-off camera",
+          "lens_mm": 50,
+          "aperture": "f/2.0",
+          "fps": 24,
+          "subject_ids": [
+            "lin_lan"
+          ],
+          "action": "她没回头，只是笑了一下",
+          "environment": "环形舱 · 悬浮几何体下方",
+          "lighting": "practical rim light, volumetric haze, cold key from corridor",
+          "mood": "tense curiosity",
+          "style": "cinematic sci-fi, anamorphic lens flare, volumetric haze, teal and amber palette, 35mm film grain, shallow depth of field",
+          "dialogue": [
+            {
+              "speaker_id": "lin_lan",
+              "text": "那就 41 分钟。",
+              "emotion": "warm",
+              "start_s": null,
+              "end_s": null
+            }
+          ],
+          "sfx": [],
+          "refs": {
+            "images": [],
+            "videos": [],
+            "audios": [],
+            "MAX_IMAGES": 9,
+            "MAX_VIDEOS": 3,
+            "MAX_AUDIOS": 3
+          },
+          "continuity": {
+            "prev_shot_id": "sc03_s02",
+            "next_shot_id": "sc03_s04",
+            "inherit_last_frame": true,
+            "emit_last_frame": true,
+            "extend_from_job": null,
+            "overlap_frames": 0,
+            "screen_direction": "l2r",
+            "match_on": ""
+          },
+          "grade": {
+            "palette": "white key, near-monochrome",
+            "contrast": 1.22,
+            "saturation": 0.78,
+            "temperature": 0.1,
+            "lut": null
+          },
+          "transition_in": "cut",
+          "content_rating": "pg13",
+          "engine_hint": "auto",
+          "seed": 1202,
+          "negative_prompt": "extra fingers, deformed hands, warped face, flickering, text, watermark, logo, low resolution, jpeg artifacts, duplicate limbs, morphing identity",
+          "provider_used": null,
+          "job_id": null,
+          "render_uri": null,
+          "qc_score": null,
+          "takes": 0
+        },
+        {
+          "id": "sc03_s04",
+          "scene_id": "sc03",
+          "index": 4,
+          "duration_s": 11.0,
+          "shot_size": "two shot",
+          "camera_move": "camera dollies in",
+          "lens_mm": 35,
+          "aperture": "f/2.8",
+          "fps": 24,
+          "subject_ids": [
+            "lin_lan",
+            "kai_k7"
+          ],
+          "action": "两人站在几何体下方，镜头缓缓推进",
+          "environment": "环形舱 · 悬浮几何体下方",
+          "lighting": "practical rim light, volumetric haze, cold key from corridor",
+          "mood": "tense curiosity",
+          "style": "cinematic sci-fi, anamorphic lens flare, volumetric haze, teal and amber palette, 35mm film grain, shallow depth of field",
+          "dialogue": [],
+          "sfx": [],
+          "refs": {
+            "images": [],
+            "videos": [],
+            "audios": [],
+            "MAX_IMAGES": 9,
+            "MAX_VIDEOS": 3,
+            "MAX_AUDIOS": 3
+          },
+          "continuity": {
+            "prev_shot_id": "sc03_s03",
+            "next_shot_id": "sc03_s05",
+            "inherit_last_frame": false,
+            "emit_last_frame": true,
+            "extend_from_job": null,
+            "overlap_frames": 0,
+            "screen_direction": "neutral",
+            "match_on": ""
+          },
+          "grade": {
+            "palette": "white key, near-monochrome",
+            "contrast": 1.22,
+            "saturation": 0.78,
+            "temperature": 0.1,
+            "lut": null
+          },
+          "transition_in": "cut",
+          "content_rating": "pg13",
+          "engine_hint": "official",
+          "seed": 1203,
+          "negative_prompt": "extra fingers, deformed hands, warped face, flickering, text, watermark, logo, low resolution, jpeg artifacts, duplicate limbs, morphing identity",
+          "provider_used": null,
+          "job_id": null,
+          "render_uri": null,
+          "qc_score": null,
+          "takes": 0
+        },
+        {
+          "id": "sc03_s05",
+          "scene_id": "sc03",
+          "index": 5,
+          "duration_s": 7.0,
+          "shot_size": "close-up",
+          "camera_move": "static locked-off camera",
+          "lens_mm": 85,
+          "aperture": "f/2.0",
+          "fps": 24,
+          "subject_ids": [
+            "lin_lan"
+          ],
+          "action": "她伸手，几何体的一角朝她的方向缓缓转动",
+          "environment": "环形舱 · 悬浮几何体下方",
+          "lighting": "practical rim light, volumetric haze, cold key from corridor",
+          "mood": "tense curiosity",
+          "style": "cinematic sci-fi, anamorphic lens flare, volumetric haze, teal and amber palette, 35mm film grain, shallow depth of field",
+          "dialogue": [],
+          "sfx": [],
+          "refs": {
+            "images": [],
+            "videos": [],
+            "audios": [],
+            "MAX_IMAGES": 9,
+            "MAX_VIDEOS": 3,
+            "MAX_AUDIOS": 3
+          },
+          "continuity": {
+            "prev_shot_id": "sc03_s04",
+            "next_shot_id": "sc03_s06",
+            "inherit_last_frame": true,
+            "emit_last_frame": true,
+            "extend_from_job": null,
+            "overlap_frames": 0,
+            "screen_direction": "l2r",
+            "match_on": ""
+          },
+          "grade": {
+            "palette": "white key, near-monochrome",
+            "contrast": 1.22,
+            "saturation": 0.78,
+            "temperature": 0.1,
+            "lut": null
+          },
+          "transition_in": "cut",
+          "content_rating": "pg13",
+          "engine_hint": "hero",
+          "seed": 1204,
+          "negative_prompt": "extra fingers, deformed hands, warped face, flickering, text, watermark, logo, low resolution, jpeg artifacts, duplicate limbs, morphing identity",
+          "provider_used": null,
+          "job_id": null,
+          "render_uri": null,
+          "qc_score": null,
+          "takes": 0
+        },
+        {
+          "id": "sc03_s06",
+          "scene_id": "sc03",
+          "index": 6,
+          "duration_s": 5.0,
+          "shot_size": "extreme close-up",
+          "camera_move": "camera dollies in",
+          "lens_mm": 100,
+          "aperture": "f/2.0",
+          "fps": 24,
+          "subject_ids": [],
+          "action": "几何体表面浮现出与舱壁相同的符号",
+          "environment": "环形舱 · 悬浮几何体下方",
+          "lighting": "practical rim light, volumetric haze, cold key from corridor",
+          "mood": "tense curiosity",
+          "style": "cinematic sci-fi, anamorphic lens flare, volumetric haze, teal and amber palette, 35mm film grain, shallow depth of field",
+          "dialogue": [],
+          "sfx": [],
+          "refs": {
+            "images": [],
+            "videos": [],
+            "audios": [],
+            "MAX_IMAGES": 9,
+            "MAX_VIDEOS": 3,
+            "MAX_AUDIOS": 3
+          },
+          "continuity": {
+            "prev_shot_id": "sc03_s05",
+            "next_shot_id": "sc03_s07",
+            "inherit_last_frame": false,
+            "emit_last_frame": true,
+            "extend_from_job": null,
+            "overlap_frames": 0,
+            "screen_direction": "neutral",
+            "match_on": "符号磷光"
+          },
+          "grade": {
+            "palette": "white key, near-monochrome",
+            "contrast": 1.22,
+            "saturation": 0.78,
+            "temperature": 0.1,
+            "lut": null
+          },
+          "transition_in": "match_cut",
+          "content_rating": "pg13",
+          "engine_hint": "open",
+          "seed": 1205,
+          "negative_prompt": "extra fingers, deformed hands, warped face, flickering, text, watermark, logo, low resolution, jpeg artifacts, duplicate limbs, morphing identity",
+          "provider_used": null,
+          "job_id": null,
+          "render_uri": null,
+          "qc_score": null,
+          "takes": 0
+        },
+        {
+          "id": "sc03_s07",
+          "scene_id": "sc03",
+          "index": 7,
+          "duration_s": 10.0,
+          "shot_size": "full shot",
+          "camera_move": "camera pedestals up",
+          "lens_mm": 28,
+          "aperture": "f/2.8",
+          "fps": 24,
+          "subject_ids": [
+            "lin_lan",
+            "kai_k7"
+          ],
+          "action": "整个环形舱的光暗下去，只剩几何体与两人",
+          "environment": "环形舱 · 悬浮几何体下方",
+          "lighting": "practical rim light, volumetric haze, cold key from corridor",
+          "mood": "tense curiosity",
+          "style": "cinematic sci-fi, anamorphic lens flare, volumetric haze, teal and amber palette, 35mm film grain, shallow depth of field",
+          "dialogue": [],
+          "sfx": [],
+          "refs": {
+            "images": [],
+            "videos": [],
+            "audios": [],
+            "MAX_IMAGES": 9,
+            "MAX_VIDEOS": 3,
+            "MAX_AUDIOS": 3
+          },
+          "continuity": {
+            "prev_shot_id": "sc03_s06",
+            "next_shot_id": "sc03_s08",
+            "inherit_last_frame": false,
+            "emit_last_frame": true,
+            "extend_from_job": null,
+            "overlap_frames": 0,
+            "screen_direction": "neutral",
+            "match_on": ""
+          },
+          "grade": {
+            "palette": "white key, near-monochrome",
+            "contrast": 1.22,
+            "saturation": 0.78,
+            "temperature": 0.1,
+            "lut": null
+          },
+          "transition_in": "cut",
+          "content_rating": "pg13",
+          "engine_hint": "hero",
+          "seed": 1206,
+          "negative_prompt": "extra fingers, deformed hands, warped face, flickering, text, watermark, logo, low resolution, jpeg artifacts, duplicate limbs, morphing identity",
+          "provider_used": null,
+          "job_id": null,
+          "render_uri": null,
+          "qc_score": null,
+          "takes": 0
+        },
+        {
+          "id": "sc03_s08",
+          "scene_id": "sc03",
+          "index": 8,
+          "duration_s": 9.0,
+          "shot_size": "long shot",
+          "camera_move": "static locked-off camera",
+          "lens_mm": 24,
+          "aperture": "f/2.8",
+          "fps": 24,
+          "subject_ids": [
+            "lin_lan"
+          ],
+          "action": "她独自走向几何体，凯留在原地",
+          "environment": "环形舱 · 悬浮几何体下方",
+          "lighting": "practical rim light, volumetric haze, cold key from corridor",
+          "mood": "tense curiosity",
+          "style": "cinematic sci-fi, anamorphic lens flare, volumetric haze, teal and amber palette, 35mm film grain, shallow depth of field",
+          "dialogue": [],
+          "sfx": [],
+          "refs": {
+            "images": [],
+            "videos": [],
+            "audios": [],
+            "MAX_IMAGES": 9,
+            "MAX_VIDEOS": 3,
+            "MAX_AUDIOS": 3
+          },
+          "continuity": {
+            "prev_shot_id": "sc03_s07",
+            "next_shot_id": "sc03_s09",
+            "inherit_last_frame": true,
+            "emit_last_frame": true,
+            "extend_from_job": null,
+            "overlap_frames": 0,
+            "screen_direction": "l2r",
+            "match_on": ""
+          },
+          "grade": {
+            "palette": "white key, near-monochrome",
+            "contrast": 1.22,
+            "saturation": 0.78,
+            "temperature": 0.1,
+            "lut": null
+          },
+          "transition_in": "cut",
+          "content_rating": "pg13",
+          "engine_hint": "official",
+          "seed": 1207,
+          "negative_prompt": "extra fingers, deformed hands, warped face, flickering, text, watermark, logo, low resolution, jpeg artifacts, duplicate limbs, morphing identity",
+          "provider_used": null,
+          "job_id": null,
+          "render_uri": null,
+          "qc_score": null,
+          "takes": 0
+        },
+        {
+          "id": "sc03_s09",
+          "scene_id": "sc03",
+          "index": 9,
+          "duration_s": 8.0,
+          "shot_size": "medium close-up",
+          "camera_move": "camera dollies in",
+          "lens_mm": 50,
+          "aperture": "f/2.0",
+          "fps": 24,
+          "subject_ids": [
+            "lin_lan"
+          ],
+          "action": "她闭上眼，光覆盖她的脸",
+          "environment": "环形舱 · 悬浮几何体下方",
+          "lighting": "practical rim light, volumetric haze, cold key from corridor",
+          "mood": "tense curiosity",
+          "style": "cinematic sci-fi, anamorphic lens flare, volumetric haze, teal and amber palette, 35mm film grain, shallow depth of field",
+          "dialogue": [],
+          "sfx": [],
+          "refs": {
+            "images": [],
+            "videos": [],
+            "audios": [],
+            "MAX_IMAGES": 9,
+            "MAX_VIDEOS": 3,
+            "MAX_AUDIOS": 3
+          },
+          "continuity": {
+            "prev_shot_id": "sc03_s08",
+            "next_shot_id": "sc03_s10",
+            "inherit_last_frame": true,
+            "emit_last_frame": true,
+            "extend_from_job": null,
+            "overlap_frames": 0,
+            "screen_direction": "l2r",
+            "match_on": ""
+          },
+          "grade": {
+            "palette": "white key, near-monochrome",
+            "contrast": 1.22,
+            "saturation": 0.78,
+            "temperature": 0.1,
+            "lut": null
+          },
+          "transition_in": "cut",
+          "content_rating": "pg13",
+          "engine_hint": "hero",
+          "seed": 1208,
+          "negative_prompt": "extra fingers, deformed hands, warped face, flickering, text, watermark, logo, low resolution, jpeg artifacts, duplicate limbs, morphing identity",
+          "provider_used": null,
+          "job_id": null,
+          "render_uri": null,
+          "qc_score": null,
+          "takes": 0
+        },
+        {
+          "id": "sc03_s10",
+          "scene_id": "sc03",
+          "index": 10,
+          "duration_s": 12.0,
+          "shot_size": "extreme long shot",
+          "camera_move": "static locked-off camera",
+          "lens_mm": 24,
+          "aperture": "f/2.8",
+          "fps": 24,
+          "subject_ids": [],
+          "action": "空间站在巨行星光晕中完全点亮，随后归于黑暗",
+          "environment": "环形舱 · 悬浮几何体下方",
+          "lighting": "practical rim light, volumetric haze, cold key from corridor",
+          "mood": "tense curiosity",
+          "style": "cinematic sci-fi, anamorphic lens flare, volumetric haze, teal and amber palette, 35mm film grain, shallow depth of field",
+          "dialogue": [],
+          "sfx": [],
+          "refs": {
+            "images": [],
+            "videos": [],
+            "audios": [],
+            "MAX_IMAGES": 9,
+            "MAX_VIDEOS": 3,
+            "MAX_AUDIOS": 3
+          },
+          "continuity": {
+            "prev_shot_id": "sc03_s09",
+            "next_shot_id": null,
+            "inherit_last_frame": false,
+            "emit_last_frame": true,
+            "extend_from_job": null,
+            "overlap_frames": 0,
+            "screen_direction": "neutral",
+            "match_on": ""
+          },
+          "grade": {
+            "palette": "white key, near-monochrome",
+            "contrast": 1.22,
+            "saturation": 0.78,
+            "temperature": 0.1,
+            "lut": null
+          },
+          "transition_in": "fadeblack",
+          "content_rating": "pg13",
+          "engine_hint": "hero",
+          "seed": 1209,
+          "negative_prompt": "extra fingers, deformed hands, warped face, flickering, text, watermark, logo, low resolution, jpeg artifacts, duplicate limbs, morphing identity",
+          "provider_used": null,
+          "job_id": null,
+          "render_uri": null,
+          "qc_score": null,
+          "takes": 0
+        }
+      ]
+    }
+  ],
+  "audio": {
+    "dialogue_track": null,
+    "foley_track": null,
+    "music_track": null,
+    "ambience_track": null,
+    "audio_first": true,
+    "loudness_lufs": -16.0
+  },
+  "delivery": {
+    "resolution": [
+      1280,
+      720
+    ],
+    "upscale_to": [
+      1920,
+      1080
+    ],
+    "fps": 24,
+    "interpolate_to_fps": null,
+    "codec": "h264",
+    "crf": 18,
+    "aspect": "16:9",
+    "burn_subtitles": true,
+    "ai_disclosure": true,
+    "c2pa": true
+  },
+  "style_bible": "cinematic sci-fi, anamorphic lens flare, volumetric haze, teal and amber palette, 35mm film grain, shallow depth of field",
+  "global_negative": "extra fingers, deformed hands, warped face, flickering, text, watermark, logo, low resolution, jpeg artifacts, duplicate limbs, morphing identity"
+}

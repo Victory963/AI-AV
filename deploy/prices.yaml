@@ -1,0 +1,312 @@
+# longfilm 成本模型价目表
+#
+# cost_calculator.py 的唯一数据源。价格会变，代码不该跟着改 —— 所以全部外置在这里，
+# 每条都带 verified/source/verified_at。
+#
+# 三类数据的可信度完全不同，别混着看：
+#   verified: true   —— 今天亲自打开官方价目页核对过
+#   verified: false  —— 只有二手来源（测评站/聚合站），当量级看，排期前必须复核
+#   estimate: true   —— 没有公开基准，是按硬件规格外推的量级估计，**必须用一次实测校准**
+#
+# 已知的口径陷阱：
+#   - RunPod 的 Community / Secure 是两条不同的可用性曲线，价差近 2 倍。长片批量渲染
+#     可以吃 Community（断了重排队就行），LoRA 训练别吃（断在 80% 等于白烧）。
+#   - Serverless 按「活跃 worker 秒」计费，冷启动拉 30GB 权重那段也算钱，
+#     所以 serverless 的实际单价要按 cold_start_overhead_s 往上抬，见 calculator 里的处理。
+#   - 各家 API 的「每秒」定义不含排队与重试。重拍率是成本模型里最大的单一变量，
+#     不是小数点后的修正项。
+
+meta:
+  schema_version: 1
+  verified_at: "2026-09-20"
+  currency: USD
+  fx:
+    usd_cny: 6.70
+    verified: true
+    verified_at: "2026-09-18"
+    source: "https://tradingeconomics.com/china/currency （2026-09-18 收 6.6971）"
+    note: "人民币计价的国内 API（火山方舟/百炼）按这个折算成 USD 好横向比"
+  sources:
+    runpod: "https://www.runpod.io/pricing"
+    vast: "https://vast.ai/pricing/gpu/RTX-4090 与 https://computecomparison.com/provider/vast-ai"
+    paperspace: "https://docs.digitalocean.com/products/paperspace/pricing/ （2026-09-20 核对）"
+    ark_token_formula: "src/longfilm/providers/ark_seedance.py（队友 2026-09-19 查证）"
+
+# ------------------------------------------------------------------ 机时价格
+
+gpus:
+  - key: H100_SXM
+    label: "H100 SXM 80GB"
+    vram_gb: 80
+    runpod_community: 2.69
+    runpod_secure: 3.49
+    runpod_serverless: 4.79
+    vast_typical: 1.89
+    paperspace: 5.95
+    rel_throughput: 1.00
+    verified: true
+    note: "vast_typical 是二手来源的「起价」，实际按 reliability 过滤后普遍更高"
+  - key: H200
+    label: "H200 141GB"
+    vram_gb: 141
+    runpod_community: 3.59
+    runpod_secure: 4.59
+    runpod_serverless: 5.93
+    vast_typical: 0.0
+    paperspace: 0.0
+    rel_throughput: 1.15
+    verified: true
+  - key: A100_SXM
+    label: "A100 SXM 80GB"
+    vram_gb: 80
+    runpod_community: 1.39
+    runpod_secure: 1.59
+    runpod_serverless: 2.72
+    vast_typical: 0.90
+    paperspace: 3.18
+    rel_throughput: 0.45
+    verified: true
+  - key: RTX_PRO_6000
+    label: "RTX PRO 6000 96GB"
+    vram_gb: 96
+    runpod_community: 1.69
+    runpod_secure: 2.09
+    runpod_serverless: 3.49
+    vast_typical: 0.0
+    paperspace: 0.0
+    rel_throughput: 0.75
+    verified: true
+    note: "96GB 显存 + 消费级架构，跑 A14B fp16 不用 block swap；rel_throughput 是估计值"
+  - key: L40S
+    label: "L40S 48GB"
+    vram_gb: 48
+    runpod_community: 0.79
+    runpod_secure: 1.09
+    runpod_serverless: 1.75
+    vast_typical: 0.60
+    paperspace: 0.0
+    rel_throughput: 0.33
+    verified: true
+  - key: RTX_5090
+    label: "RTX 5090 32GB"
+    vram_gb: 32
+    runpod_community: 0.69
+    runpod_secure: 0.99
+    runpod_serverless: 0.0
+    vast_typical: 0.45
+    paperspace: 0.0
+    rel_throughput: 0.45
+    verified: true
+    note: "runpod serverless 价目页未单列 5090，填 0 表示该路不可选"
+  - key: RTX_4090
+    label: "RTX 4090 24GB"
+    vram_gb: 24
+    runpod_community: 0.34
+    runpod_secure: 0.74
+    runpod_serverless: 1.10
+    vast_typical: 0.39
+    paperspace: 0.0
+    rel_throughput: 0.30
+    verified: true
+    note: "24GB 跑 A14B fp8 要 blocks_to_swap，步时会被 PCIe 拖慢，rel_throughput 已含这份惩罚"
+  - key: RTX_A6000
+    label: "RTX A6000 48GB"
+    vram_gb: 48
+    runpod_community: 0.33
+    runpod_secure: 0.53
+    runpod_serverless: 1.22
+    vast_typical: 0.30
+    paperspace: 1.89
+    rel_throughput: 0.20
+    verified: true
+    note: "最便宜的 48GB。Ampere 没有 fp8 原生支持，fp8 权重要反量化，慢但装得下"
+
+  - key: RTX_A5000
+    label: "RTX A5000 24GB"
+    vram_gb: 24
+    runpod_community: 0.0
+    runpod_secure: 0.0
+    runpod_serverless: 0.0
+    vast_typical: 0.22
+    paperspace: 1.38
+    rel_throughput: 0.18
+    verified: true
+    note: "Paperspace 上最便宜的能训 14B 的卡，但要 Growth 订阅（$39/月）才解锁。Ampere 无 fp8 原生支持"
+  - key: RTX_3090
+    label: "RTX 3090 24GB"
+    vram_gb: 24
+    runpod_community: 0.0
+    runpod_secure: 0.0
+    runpod_serverless: 0.0
+    vast_typical: 0.10
+    paperspace: 0.0
+    rel_throughput: 0.18
+    verified: false
+    note: "二手来源：Vast 最低报价 $0.10/h，是 24GB 里最便宜的。无 fp8，步时约为 4090 的 1.6 倍，算总价要按吞吐折"
+  - key: RTX_A4000
+    label: "RTX A4000 16GB"
+    vram_gb: 16
+    runpod_community: 0.0
+    runpod_secure: 0.0
+    runpod_serverless: 0.0
+    vast_typical: 0.0
+    paperspace: 0.76
+    rel_throughput: 0.10
+    verified: true
+    note: "16GB 训不动 Wan 2.2 A14B（musubi 门槛 24GB）；只能训 5B 档或做推理。列出来是为了让选型时看见它不够"
+
+# 订阅费。为什么单列：Paperspace 的高端卡要先买 Growth 订阅才解锁，
+# 这笔钱与用量无关，按月固定 —— 只训一个 LoRA 时它能占总成本的一半。
+subscriptions:
+  paperspace_growth:
+    usd_per_month: 39.0
+    unlocks: ["RTX_A5000", "RTX_A6000", "A100_SXM", "V100"]
+    verified: true
+    source: "https://docs.digitalocean.com/products/paperspace/pricing/"
+    note: "A4000/RTX5000 只要 Pro（$8/月），M4000/P4000/RTX4000 免费层可用"
+  paperspace_pro:
+    usd_per_month: 8.0
+    unlocks: ["RTX_A4000"]
+    verified: false
+
+storage_usd_per_gb_month:
+  container_disk: 0.10
+  volume_running: 0.10
+  volume_idle: 0.20
+  network_standard: 0.07
+  network_over_1tb: 0.05
+  network_high_perf: 0.14
+  verified: true
+  source: "https://www.runpod.io/pricing"
+
+# 自建路线的固定开销。为什么单列：这些钱跟出片量无关，是「开一次机就要付」的，
+# 小批量时它们能占到总成本的一半以上，被折进每秒单价就看不见了。
+selfhost_overheads:
+  model_disk_gb: 120
+  model_disk_note: "i2v profile 约 36GB，full 约 130GB；120 取中位，按 network_standard 计月费"
+  cold_download_minutes: 25
+  cold_download_note: "HF 拉 36GB，实测带宽差异极大；25 分钟是 200Mbps 的量级"
+  warmup_minutes_per_session: 8
+  warmup_note: "起 ComfyUI + 加载双专家权重进显存；每次开机付一次"
+  failed_shot_gpu_ratio: 0.55
+  failed_shot_note: "被 QC 打回的镜头平均烧掉成功镜头 55% 的机时（OOM/崩在中途的占比）"
+
+# ------------------------------------------------------------------ 推理吞吐
+
+# H100 基准：生成 1 秒成品视频要烧多少秒 GPU。其余卡按 gpus[].rel_throughput 线性换算。
+# TODO(2026-09-20)：未检索到 Wan2.2 A14B 在 ComfyUI 下的公开吞吐基准。
+# 这里是按「双专家各跑一半步数、14B fp8、A100/H100 公开算力规格」外推的量级估计。
+# 上线前必须跑一次 `deploy/bootstrap_gpu.sh --smoke` 记录真实耗时，用 --calibrate 覆盖。
+presets:
+  - key: hero_720p_20step
+    label: "英雄镜 720p / A14B 双专家 / 20 步"
+    resolution: [1280, 720]
+    fps: 24
+    h100_gpu_seconds_per_output_second_low: 55.0
+    h100_gpu_seconds_per_output_second_high: 95.0
+    min_vram_gb: 24
+    estimate: true
+  - key: normal_720p_12step
+    label: "常规镜 720p / A14B / 12 步"
+    resolution: [1280, 720]
+    fps: 24
+    h100_gpu_seconds_per_output_second_low: 33.0
+    h100_gpu_seconds_per_output_second_high: 60.0
+    min_vram_gb: 24
+    estimate: true
+  - key: draft_480p_4step
+    label: "草片 480p / A14B + LightX2V 4 步蒸馏"
+    resolution: [832, 480]
+    fps: 16
+    h100_gpu_seconds_per_output_second_low: 4.5
+    h100_gpu_seconds_per_output_second_high: 9.0
+    min_vram_gb: 24
+    estimate: true
+  - key: previz_5b_480p
+    label: "预演 480p / TI2V-5B 单体"
+    resolution: [832, 480]
+    fps: 16
+    h100_gpu_seconds_per_output_second_low: 3.0
+    h100_gpu_seconds_per_output_second_high: 6.0
+    min_vram_gb: 16
+    estimate: true
+
+# ------------------------------------------------------------------ API 价格
+
+api_models:
+  - key: ark_seedance_1_0_pro
+    label: "火山方舟 Seedance 1.0 Pro"
+    vendor: volcengine_ark
+    billing: token
+    price_cny_per_mtoken: 15.0
+    token_formula: "width * height * fps * duration_s / 1024"
+    quality_tier: 5
+    moderated: true
+    verified: true
+    verified_at: "2026-09-19"
+    source: "队友在 providers/ark_seedance.py 查证并落盘的 MODEL_CATALOG"
+    note: "按 token 计费，分辨率一上 1080p 单价接近翻倍 —— 比价必须带分辨率说"
+  - key: ark_seedance_1_0_lite_i2v
+    label: "火山方舟 Seedance 1.0 Lite I2V"
+    vendor: volcengine_ark
+    billing: token
+    price_cny_per_mtoken: 15.0
+    token_formula: "width * height * fps * duration_s / 1024"
+    quality_tier: 4
+    moderated: true
+    verified: false
+    verified_at: "2026-09-20"
+    source: "MODEL_CATALOG 里 lite 档单价未单独核对，暂与 pro 同价 —— 几乎肯定偏高"
+    note: "TODO(2026-09-20)：去火山引擎计费页核 lite 档真实单价再改"
+  - key: kling_3_0_std
+    label: "Kling 3.0 Standard"
+    vendor: kuaishou
+    billing: per_second
+    usd_per_second: 0.07
+    quality_tier: 5
+    moderated: true
+    verified: false
+    verified_at: "2026-09-20"
+    source: "https://fluxnote.io/guides/ai-video-model-pricing-comparison-2026 （二手）"
+    note: "TODO(2026-09-20)：官方价目页是 JS 渲染抓不到，需人工复核"
+  - key: veo_3_1_lite
+    label: "Veo 3.1 Lite"
+    vendor: google
+    billing: per_second
+    usd_per_second: 0.05
+    quality_tier: 4
+    moderated: true
+    verified: false
+    verified_at: "2026-09-20"
+    source: "二手汇总（nodetool / fluxnote），未核官方 Vertex 价目"
+  - key: veo_3_full
+    label: "Veo 3 (full)"
+    vendor: google
+    billing: per_second
+    usd_per_second: 0.40
+    quality_tier: 5
+    moderated: true
+    verified: false
+    verified_at: "2026-09-20"
+    source: "二手汇总；列在这里是为了给「天花板价」一个锚"
+  - key: wan_2_6_api
+    label: "Wan 2.6（第三方 API）"
+    vendor: third_party
+    billing: per_second
+    usd_per_second: 0.05
+    quality_tier: 4
+    moderated: true
+    verified: false
+    verified_at: "2026-09-20"
+    source: "二手汇总；同一模型不同经销商价差可达 2 倍"
+    note: "自建 Wan 的真正对手就是它 —— 比它贵的自建方案没有存在理由"
+  - key: seedance_2_0_fast
+    label: "Seedance 2.0 Fast"
+    vendor: third_party
+    billing: per_second
+    usd_per_second: 0.09
+    quality_tier: 5
+    moderated: true
+    verified: false
+    verified_at: "2026-09-20"
+    source: "二手汇总（1080p 档）"

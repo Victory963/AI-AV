@@ -1,0 +1,46 @@
+# ---- Python
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+build/
+dist/
+
+# ---- Keys and local config (keys are only read from environment variables; see .env.example)
+.env
+.env.*
+!.env.example
+
+# ---- Build output and runtime state (demo videos, render cache, SQLite queue)
+out/
+data/
+*.mp4
+*.mov
+*.m4a
+*.wav
+*.sqlite
+*.db
+
+# ---- Third-party binaries (static ffmpeg/ffprobe; ffprobe exceeds GitHub's 100MB per-file limit)
+bin/
+
+# ---- Assets that cannot be redistributed
+# Microsoft YaHei / SimHei licenses do not permit redistribution. See assets/fonts/README.md for how to obtain fonts.
+assets/fonts/*
+!assets/fonts/README.md
+# Character reference images: provenance must be declared per image; the repo ships no real-person images. See assets/cast/README.md.
+assets/cast/*
+!assets/cast/README.md
+
+# ---- Model weights and training artifacts
+*.safetensors
+*.ckpt
+*.pth
+*-state/
+
+# ---- Editor / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

@@ -1,0 +1,246 @@
+# longfilm 权重清单
+#
+# 这是 bootstrap_gpu.sh 与 train_lora_pod.sh 的唯一下载依据。
+# 规则：
+#   1. size_bytes 全部来自 HuggingFace 仓库 API（https://huggingface.co/api/models/<repo>?blobs=true）
+#      的实测值，查证日期见 meta.verified_at。**写实测字节数而不是 "约 14GB"**，
+#      因为 bootstrap 的幂等判断就是拿本地文件大小跟它比 —— 写个约数等于关掉校验。
+#   2. 查不到的一律 verified: false，并写清楚为什么查不到。下载器对 verified:false 的条目
+#      只做「存在即跳过」的弱校验，并在日志里喊一声。
+#   3. sha256 目前一律 unverified：HF 的 blobs API 返回的是 git-lfs oid（sha256 of file），
+#      但对 <10MB 的非 LFS 文件返回的是 git blob sha1，两者混在一起比不了，
+#      与其写一半不如不写。TODO(2026-09-20)：改用 `hf download` 自带的 etag 校验。
+#
+# 关键坑（musubi 训练 vs ComfyUI 推理用的不是同一套文件）：
+#   - ComfyUI 推理：diffusion_models/ 下的 fp8_scaled safetensors + text_encoders/umt5 safetensors
+#     + vae/wan2.2_vae.safetensors
+#   - musubi-tuner 训练：DiT 用同一批 safetensors，但 VAE 必须用 **Wan2.1_VAE.pth**
+#     （musubi docs/wan.md 明写 Wan2.2_VAE.pth 与 14B 不兼容），T5 必须用
+#     **models_t5_umt5-xxl-enc-bf16.pth**（.safetensors 版本 musubi 不吃）。
+#     这两条是踩过最多次的坑，所以分成两个 profile，不共用。
+
+meta:
+  schema_version: 1
+  verified_at: "2026-09-20"
+  verified_by: "HuggingFace models API (?blobs=true) 实测 size，license 取 cardData.license"
+  sources:
+    - "https://huggingface.co/api/models/Comfy-Org/Wan_2.2_ComfyUI_Repackaged"
+    - "https://huggingface.co/api/models/Wan-AI/Wan2.1-I2V-14B-720P"
+    - "https://huggingface.co/api/models/Wan-AI/Wan2.2-I2V-A14B"
+    - "https://github.com/kohya-ss/musubi-tuner/blob/main/docs/wan.md"
+  comfy_root: "/workspace/ComfyUI"
+  train_root: "/workspace/models"
+  # profile -> 用途。bootstrap_gpu.sh --profile 取这里的 key。
+  profiles:
+    minimal: "只下 5B ti2v + VAE + fp8 文本编码器，约 17GB，用于开机冒烟"
+    i2v: "产线主力：Wan2.2 I2V A14B 双专家 + VAE + 文本编码器"
+    t2v: "无首帧的空镜/环境镜用"
+    train: "musubi-tuner LoRA 训练所需（注意 VAE/T5 用 .pth 版本）"
+    full: "以上全部 + animate/s2v/fun-camera 扩展"
+
+groups:
+
+  - id: wan22_text_encoder
+    purpose: "UMT5-XXL 文本编码器。所有 Wan2.x 工作流共用，不下它任何图都出不来。"
+    profiles: [minimal, i2v, t2v, full]
+    license: apache-2.0
+    files:
+      - repo: Comfy-Org/Wan_2.2_ComfyUI_Repackaged
+        file: split_files/text_encoders/umt5_xxl_fp8_e4m3fn_scaled.safetensors
+        dest: models/text_encoders/umt5_xxl_fp8_e4m3fn_scaled.safetensors
+        size_bytes: 6735906897
+        verified: true
+        note: "24GB 卡必须用 fp8 这版，fp16 那版光文本编码器就吃掉一半显存"
+      - repo: Comfy-Org/Wan_2.2_ComfyUI_Repackaged
+        file: split_files/text_encoders/umt5_xxl_fp16.safetensors
+        dest: models/text_encoders/umt5_xxl_fp16.safetensors
+        size_bytes: 11366399385
+        verified: true
+        optional: true
+        note: "≥48GB 卡可用；提示词长且语义细的镜头，fp16 文本编码器的差别看得出来"
+
+  - id: wan22_vae
+    purpose: "VAE。2.2 的 14B 系列在 ComfyUI 侧用 wan2.2_vae，5B ti2v 也用它。"
+    profiles: [minimal, i2v, t2v, full]
+    license: apache-2.0
+    files:
+      - repo: Comfy-Org/Wan_2.2_ComfyUI_Repackaged
+        file: split_files/vae/wan2.2_vae.safetensors
+        dest: models/vae/wan2.2_vae.safetensors
+        size_bytes: 1409400960
+        verified: true
+      - repo: Comfy-Org/Wan_2.2_ComfyUI_Repackaged
+        file: split_files/vae/wan_2.1_vae.safetensors
+        dest: models/vae/wan_2.1_vae.safetensors
+        size_bytes: 253815318
+        verified: true
+        note: "2.1 工作流与部分社区 14B 工作流要这个；253MB，顺手下了省得半夜缺件"
+
+  - id: wan22_ti2v_5b
+    purpose: "Wan2.2 TI2V 5B 单体模型。冒烟测试与预演镜（EngineHint.DRAFT）走它。"
+    profiles: [minimal, full]
+    license: apache-2.0
+    files:
+      - repo: Comfy-Org/Wan_2.2_ComfyUI_Repackaged
+        file: split_files/diffusion_models/wan2.2_ti2v_5B_fp16.safetensors
+        dest: models/diffusion_models/wan2.2_ti2v_5B_fp16.safetensors
+        size_bytes: 9999658848
+        verified: true
+        note: "单文件、无高低噪双专家，16GB 卡也能跑；画质不是天花板但够看构图"
+
+  - id: wan22_i2v_a14b
+    purpose: "产线主力 I2V。高噪/低噪两个专家必须成对，缺一个 ComfyUI 会在采样中途报错。"
+    profiles: [i2v, full]
+    license: apache-2.0
+    files:
+      - repo: Comfy-Org/Wan_2.2_ComfyUI_Repackaged
+        file: split_files/diffusion_models/wan2.2_i2v_high_noise_14B_fp8_scaled.safetensors
+        dest: models/diffusion_models/wan2.2_i2v_high_noise_14B_fp8_scaled.safetensors
+        size_bytes: 14294742832
+        verified: true
+      - repo: Comfy-Org/Wan_2.2_ComfyUI_Repackaged
+        file: split_files/diffusion_models/wan2.2_i2v_low_noise_14B_fp8_scaled.safetensors
+        dest: models/diffusion_models/wan2.2_i2v_low_noise_14B_fp8_scaled.safetensors
+        size_bytes: 14294742832
+        verified: true
+      - repo: Comfy-Org/Wan_2.2_ComfyUI_Repackaged
+        file: split_files/diffusion_models/wan2.2_i2v_high_noise_14B_fp16.safetensors
+        dest: models/diffusion_models/wan2.2_i2v_high_noise_14B_fp16.safetensors
+        size_bytes: 28577914792
+        verified: true
+        optional: true
+        note: "fp16 原精度，单文件 28.6GB。只有 80GB 卡且做英雄镜时才值得"
+      - repo: Comfy-Org/Wan_2.2_ComfyUI_Repackaged
+        file: split_files/diffusion_models/wan2.2_i2v_low_noise_14B_fp16.safetensors
+        dest: models/diffusion_models/wan2.2_i2v_low_noise_14B_fp16.safetensors
+        size_bytes: 28577914792
+        verified: true
+        optional: true
+
+  - id: wan22_t2v_a14b
+    purpose: "T2V A14B。没有首帧可锁的空镜、环境镜走它。同样是高低噪成对。"
+    profiles: [t2v, full]
+    license: apache-2.0
+    files:
+      - repo: Comfy-Org/Wan_2.2_ComfyUI_Repackaged
+        file: split_files/diffusion_models/wan2.2_t2v_high_noise_14B_fp8_scaled.safetensors
+        dest: models/diffusion_models/wan2.2_t2v_high_noise_14B_fp8_scaled.safetensors
+        size_bytes: 14293923632
+        verified: true
+      - repo: Comfy-Org/Wan_2.2_ComfyUI_Repackaged
+        file: split_files/diffusion_models/wan2.2_t2v_low_noise_14B_fp8_scaled.safetensors
+        dest: models/diffusion_models/wan2.2_t2v_low_noise_14B_fp8_scaled.safetensors
+        size_bytes: 14293923632
+        verified: true
+
+  - id: wan22_animate
+    purpose: "Wan2.2-Animate：拿驱动视频驱动角色。对口型与表演一致性的备选路径。"
+    profiles: [full]
+    license: apache-2.0
+    files:
+      - repo: Comfy-Org/Wan_2.2_ComfyUI_Repackaged
+        file: split_files/diffusion_models/wan2.2_animate_14B_int8_convrot.safetensors
+        dest: models/diffusion_models/wan2.2_animate_14B_int8_convrot.safetensors
+        size_bytes: 18413068672
+        verified: true
+        note: "int8 版 18.4GB；bf16 版 34.5GB（同目录 wan2.2_animate_14B_bf16.safetensors）"
+
+  - id: wan22_s2v
+    purpose: "Wan2.2-S2V：音频驱动。音频先行产线里用来让口型跟着对白轨走。"
+    profiles: [full]
+    license: apache-2.0
+    files:
+      - repo: Comfy-Org/Wan_2.2_ComfyUI_Repackaged
+        file: split_files/diffusion_models/wan2.2_s2v_14B_fp8_scaled.safetensors
+        dest: models/diffusion_models/wan2.2_s2v_14B_fp8_scaled.safetensors
+        size_bytes: 16394832474
+        verified: true
+
+  - id: wan22_fun_camera
+    purpose: "Wan2.2-Fun-Camera：显式运镜控制。CameraMove 枚举里那些 orbit/crane 靠它落地。"
+    profiles: [full]
+    license: apache-2.0
+    files:
+      - repo: Comfy-Org/Wan_2.2_ComfyUI_Repackaged
+        file: split_files/diffusion_models/wan2.2_fun_camera_high_noise_14B_fp8_scaled.safetensors
+        dest: models/diffusion_models/wan2.2_fun_camera_high_noise_14B_fp8_scaled.safetensors
+        size_bytes: 15301408048
+        verified: true
+      - repo: Comfy-Org/Wan_2.2_ComfyUI_Repackaged
+        file: split_files/diffusion_models/wan2.2_fun_camera_low_noise_14B_fp8_scaled.safetensors
+        dest: models/diffusion_models/wan2.2_fun_camera_low_noise_14B_fp8_scaled.safetensors
+        size_bytes: 15301408048
+        verified: true
+
+  # ------------------------------------------------------------------ 训练侧
+  # 注意 dest 的根不是 ComfyUI/models 而是 train_root。两套目录故意分开：
+  # 训练机和推理机常常不是同一台，混在一起同步时会把 30GB 的东西白传一遍。
+
+  - id: musubi_train_deps
+    purpose: "musubi-tuner 训练 Wan2.2 LoRA 需要的 VAE 与 T5。必须是 .pth 版本。"
+    profiles: [train]
+    license: apache-2.0
+    files:
+      - repo: Wan-AI/Wan2.1-I2V-14B-720P
+        file: Wan2.1_VAE.pth
+        dest: "@train:vae/Wan2.1_VAE.pth"
+        size_bytes: 507609880
+        verified: true
+        note: "musubi docs/wan.md：Wan2.2_VAE.pth 与 14B 不兼容，训练一律用 2.1 这个"
+      - repo: Wan-AI/Wan2.1-I2V-14B-720P
+        file: models_t5_umt5-xxl-enc-bf16.pth
+        dest: "@train:t5/models_t5_umt5-xxl-enc-bf16.pth"
+        size_bytes: 11361920418
+        verified: true
+        note: "docs/wan.md：T5 与 2.1 相同；musubi 的 --t5 只吃这个 .pth"
+      - repo: Wan-AI/Wan2.1-I2V-14B-720P
+        file: models_clip_open-clip-xlm-roberta-large-vit-huge-14.pth
+        dest: "@train:clip/models_clip_open-clip-xlm-roberta-large-vit-huge-14.pth"
+        size_bytes: 4772359047
+        verified: true
+        optional: true
+        note: "只有训 Wan2.1 I2V 才需要（--clip）。Wan2.2 不需要 CLIP。"
+
+  - id: musubi_train_dit
+    purpose: "训练用的 DiT。与推理共用同一批 fp8_scaled 文件，但落在 train_root 下。"
+    profiles: [train]
+    license: apache-2.0
+    files:
+      - repo: Comfy-Org/Wan_2.2_ComfyUI_Repackaged
+        file: split_files/diffusion_models/wan2.2_i2v_high_noise_14B_fp8_scaled.safetensors
+        dest: "@train:dit/wan2.2_i2v_high_noise_14B_fp8_scaled.safetensors"
+        size_bytes: 14294742832
+        verified: true
+      - repo: Comfy-Org/Wan_2.2_ComfyUI_Repackaged
+        file: split_files/diffusion_models/wan2.2_i2v_low_noise_14B_fp8_scaled.safetensors
+        dest: "@train:dit/wan2.2_i2v_low_noise_14B_fp8_scaled.safetensors"
+        size_bytes: 14294742832
+        verified: true
+        note: "Wan2.2 双专家要分两次训：先低噪（决定细节与身份），再按需训高噪"
+
+  # ------------------------------------------------------------------ 未查证
+  # 下面这些用得上但今天没拿到可信的尺寸/路径，一律 verified:false。
+  # 下载器会下，但不做尺寸校验，并在日志里标 UNVERIFIED。
+
+  - id: lightx2v_distill_lora
+    purpose: "LightX2V 4-step 蒸馏 LoRA。把 Wan2.2 的采样步数从 20+ 砍到 4，批量出草片时省 4-5 倍钱。"
+    profiles: []
+    license: unverified
+    files:
+      - repo: lightx2v/Wan2.2-Distill-Loras
+        file: wan2.2_t2v_A14b_high_noise_lora_rank64_lightx2v_4step_1217.safetensors
+        dest: models/loras/wan2.2_t2v_A14b_high_noise_lightx2v_4step.safetensors
+        size_bytes: 0
+        verified: false
+        note: "TODO(2026-09-20)：仓库与文件名在 HF 搜索结果里出现过，但未逐个核对 blobs size 与 license；I2V 对应文件名未确认。用前先 hf download 列一遍再回填这里。"
+
+  - id: realesrgan_anime_video
+    purpose: "Real-ESRGAN animevideov3，upscale.py 的 RealESRGANUpscaler 后端。"
+    profiles: []
+    license: BSD-3-Clause
+    files:
+      - url: "https://github.com/xinntao/Real-ESRGAN/releases/download/v0.2.5.0/realesr-animevideov3.pth"
+        dest: models/upscale_models/realesr-animevideov3.pth
+        size_bytes: 0
+        verified: false
+        note: "TODO(2026-09-20)：GitHub release 资产大小未查证。这条走 url 而不是 repo/file，下载器按 URL 分支处理。"
