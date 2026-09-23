@@ -1,0 +1,2577 @@
+{
+ "project": "deep-archive/ep01",
+ "logline": "两名探索者登上失联的深空考古站，发现那里的符号不是留给后人看的，而是在等人回应。",
+ "total_s": 534.3,
+ "characters": [
+  {
+   "id": "lin_lan",
+   "name": "林岚",
+   "age_statement": "虚构角色，设定年龄 32 岁，成年深空考古学家",
+   "persona": "冷静、好奇、对失落文明有近乎固执的执着；说话简短，习惯自言自语记录观察。",
+   "fictional": true
+  },
+  {
+   "id": "kai_k7",
+   "name": "凯 K-7",
+   "age_statement": "虚构角色，非人类仿生助理，外观设定为成年男性形象（相当于 40 岁）",
+   "persona": "礼貌、精确、偶尔生硬的幽默；句尾习惯补一句数据置信度。",
+   "fictional": true
+  }
+ ],
+ "scenes": [
+  {
+   "id": "sc01",
+   "title": "接舷",
+   "location": "废弃空间站 · 失重走廊",
+   "time_of_day": "night",
+   "shots": 10
+  },
+  {
+   "id": "sc02",
+   "title": "唤醒",
+   "location": "废弃空间站 · 隔离门与环形舱",
+   "time_of_day": "night",
+   "shots": 10
+  },
+  {
+   "id": "sc03",
+   "title": "接触",
+   "location": "环形舱 · 悬浮几何体下方",
+   "time_of_day": "night",
+   "shots": 10
+  }
+ ],
+ "stages": [
+  {
+   "name": "audio",
+   "ok": true,
+   "elapsed_s": 0.7,
+   "detail": {
+    "backend": "edge-tts",
+    "cues": 12,
+    "speech_s": 42.43,
+    "retime_changes": 12,
+    "retime_sample": [
+     "[sc01_s03] 对白实测需 6.68s（1 句），时长 6.75s -> 7.00s",
+     "[sc01_s06] 对白实测需 4.40s（1 句），时长 5.25s -> 4.50s",
+     "[sc01_s07] 对白实测需 5.58s（1 句），时长 6.75s -> 6.00s",
+     "[sc01_s08] 对白实测需 5.79s（1 句），时长 8.25s -> 6.00s",
+     "[sc01_s09] 对白实测需 2.94s（1 句），时长 6.00s -> 3.00s",
+     "[sc02_s02] 对白实测需 5.02s（1 句），时长 5.25s -> 5.50s"
+    ],
+    "audio_refs": 12,
+    "shots_after_retime": 30,
+    "episode_s": 172.0
+   }
+  },
+  {
+   "name": "render",
+   "ok": true,
+   "elapsed_s": 229.1,
+   "detail": {
+    "shots": 30,
+    "ok": 29,
+    "qc_pass": 12,
+    "retakes": 17,
+    "chain_links": 19,
+    "cost_usd": 19.3686,
+    "by_provider": {
+     "mock-official": 19.2,
+     "mock-open-spot": 0.0956,
+     "mock-open": 0.073
+    },
+    "calls_by_provider": {
+     "mock-official": 27,
+     "mock-open-spot": 33,
+     "mock-open": 5
+    }
+   }
+  },
+  {
+   "name": "grade",
+   "ok": true,
+   "elapsed_s": 110.2,
+   "detail": {
+    "scenes": [
+     {
+      "scene": "sc01",
+      "clips": 10,
+      "ref_luma": 73.32,
+      "ref_cct": 6307.0,
+      "max_drift_before": 44.52,
+      "max_drift_after": 7.92,
+      "improvement": 36.6
+     },
+     {
+      "scene": "sc02",
+      "clips": 10,
+      "ref_luma": 78.61,
+      "ref_cct": 6331.0,
+      "max_drift_before": 29.43,
+      "max_drift_after": 7.93,
+      "improvement": 21.51
+     },
+     {
+      "scene": "sc03",
+      "clips": 10,
+      "ref_luma": 107.04,
+      "ref_cct": 4979.0,
+      "max_drift_before": 44.37,
+      "max_drift_after": 12.07,
+      "improvement": 32.3
+     }
+    ],
+    "graded": 30,
+    "total_improvement": 90.41
+   }
+  },
+  {
+   "name": "assemble",
+   "ok": true,
+   "elapsed_s": 148.6,
+   "detail": {
+    "clips": 30,
+    "batches": 5,
+    "out": "out/work/full/deliver/episode_720p.mp4",
+    "duration_s": 164.5,
+    "resolution": "1280x720",
+    "fps": 24.0,
+    "size_mb": 24.96,
+    "subtitles": "out/work/full/deliver/subs.ass",
+    "edl": "out/work/full/deliver/episode.edl",
+    "subtitle_lines": 12
+   }
+  },
+  {
+   "name": "post",
+   "ok": true,
+   "elapsed_s": 185.8,
+   "detail": {
+    "hardware": "cuda=False vram=0.0GB cpu=8c ram=3.7G comfy=None",
+    "steps": [
+     "PostStep(kind='upscale', engine='ffmpeg', detail='1280x720 -> 1920x1080（1.50x）', est_s=624.7, est_known=True)"
+    ],
+    "warnings": [
+     "跳过 seedvr2：seedvr2 需要 CUDA GPU（≥80GB 显存），本机无 GPU",
+     "跳过 comfy：未配置 COMFY_URL，无法访问远端 ComfyUI",
+     "跳过 realesrgan：realesrgan 需要 CUDA GPU（≥8GB 显存），本机无 GPU",
+     "所有 GPU 超分均不可用，降级到 ffmpeg CPU 基线（不补细节，4x 会偏软）"
+    ],
+    "from": "1280x720",
+    "to": "1920x1080",
+    "out": "out/work/full/deliver/episode_1080p.mp4",
+    "size_mb": 68.65,
+    "est_minutes": 0.0
+   }
+  },
+  {
+   "name": "deliver",
+   "ok": true,
+   "elapsed_s": 199.2,
+   "detail": {
+    "compliance_problems": [
+     "sc01_s03 参考音频 /home/zsl/work/aifilm/out/work/full/dialogue/stems/sc01_s03_dialogue.wav 未标注来源类型，请在 note 里写 source=<ai_generated|licensed|own_creation|public_domain|real_person_photo>",
+     "sc01_s06 参考音频 /home/zsl/work/aifilm/out/work/full/dialogue/stems/sc01_s06_dialogue.wav 未标注来源类型，请在 note 里写 source=<ai_generated|licensed|own_creation|public_domain|real_person_photo>",
+     "sc01_s07 参考音频 /home/zsl/work/aifilm/out/work/full/dialogue/stems/sc01_s07_dialogue.wav 未标注来源类型，请在 note 里写 source=<ai_generated|licensed|own_creation|public_domain|real_person_photo>",
+     "sc01_s08 参考音频 /home/zsl/work/aifilm/out/work/full/dialogue/stems/sc01_s08_dialogue.wav 未标注来源类型，请在 note 里写 source=<ai_generated|licensed|own_creation|public_domain|real_person_photo>",
+     "sc01_s09 参考音频 /home/zsl/work/aifilm/out/work/full/dialogue/stems/sc01_s09_dialogue.wav 未标注来源类型，请在 note 里写 source=<ai_generated|licensed|own_creation|public_domain|real_person_photo>",
+     "sc02_s02 参考音频 /home/zsl/work/aifilm/out/work/full/dialogue/stems/sc02_s02_dialogue.wav 未标注来源类型，请在 note 里写 source=<ai_generated|licensed|own_creation|public_domain|real_person_photo>",
+     "sc02_s05 参考音频 /home/zsl/work/aifilm/out/work/full/dialogue/stems/sc02_s05_dialogue.wav 未标注来源类型，请在 note 里写 source=<ai_generated|licensed|own_creation|public_domain|real_person_photo>",
+     "sc02_s06 参考音频 /home/zsl/work/aifilm/out/work/full/dialogue/stems/sc02_s06_dialogue.wav 未标注来源类型，请在 note 里写 source=<ai_generated|licensed|own_creation|public_domain|real_person_photo>",
+     "sc02_s09 参考音频 /home/zsl/work/aifilm/out/work/full/dialogue/stems/sc02_s09_dialogue.wav 未标注来源类型，请在 note 里写 source=<ai_generated|licensed|own_creation|public_domain|real_person_photo>",
+     "sc02_s10 参考音频 /home/zsl/work/aifilm/out/work/full/dialogue/stems/sc02_s10_dialogue.wav 未标注来源类型，请在 note 里写 source=<ai_generated|licensed|own_creation|public_domain|real_person_photo>",
+     "sc03_s02 参考音频 /home/zsl/work/aifilm/out/work/full/dialogue/stems/sc03_s02_dialogue.wav 未标注来源类型，请在 note 里写 source=<ai_generated|licensed|own_creation|public_domain|real_person_photo>",
+     "sc03_s03 参考音频 /home/zsl/work/aifilm/out/work/full/dialogue/stems/sc03_s03_dialogue.wav 未标注来源类型，请在 note 里写 source=<ai_generated|licensed|own_creation|public_domain|real_person_photo>"
+    ],
+    "manifest": "out/work/full/deliver/provenance.json",
+    "manifest_shots": 30,
+    "out": "out/work/full/deliver/episode_final.mp4",
+    "size_mb": 57.87
+   }
+  }
+ ],
+ "render": {
+  "shots": 30,
+  "ok": 29,
+  "qc_pass": 12,
+  "retakes": 17,
+  "chain_links": 19,
+  "cost_usd": 19.3686,
+  "by_provider": {
+   "mock-official": 19.2,
+   "mock-open-spot": 0.0956,
+   "mock-open": 0.073
+  },
+  "calls_by_provider": {
+   "mock-official": 27,
+   "mock-open-spot": 33,
+   "mock-open": 5
+  }
+ },
+ "shots": [
+  {
+   "id": "sc01_s01",
+   "scene": "sc01",
+   "scene_title": "接舷",
+   "duration_s": 9.0,
+   "shot_size": "extreme long shot",
+   "camera_move": "camera dollies in",
+   "lens_mm": 24,
+   "subjects": [],
+   "engine_hint": "hero",
+   "provider": "mock-official",
+   "take": 1,
+   "cost": 0.96,
+   "qc_score": 0.968,
+   "qc_verdict": "pass",
+   "qc_metrics": [
+    {
+     "name": "freeze",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "black",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "conformance",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "temporal_flicker",
+     "value": 0.1692,
+     "passed": true
+    },
+    {
+     "name": "color_drift",
+     "value": 1.9143,
+     "passed": true
+    },
+    {
+     "name": "motion_sanity",
+     "value": 0.7032,
+     "passed": true
+    },
+    {
+     "name": "seam",
+     "value": null,
+     "passed": true
+    }
+   ],
+   "qc_advice": [],
+   "chain": null,
+   "chain_strategy": "anchor",
+   "drift_after": 0.0,
+   "reanchor": false,
+   "refs": {
+    "images": 0,
+    "videos": 0,
+    "audios": 0
+   },
+   "refs_dropped": 0,
+   "degradations": [
+    "时长 9s → 8s（mock-official 档位 (4.0, 8.0, 12.0, 15.0)）"
+   ],
+   "dialogue": [],
+   "status": "succeeded"
+  },
+  {
+   "id": "sc01_s02",
+   "scene": "sc01",
+   "scene_title": "接舷",
+   "duration_s": 7.5,
+   "shot_size": "long shot",
+   "camera_move": "camera pans right",
+   "lens_mm": 24,
+   "subjects": [
+    "lin_lan"
+   ],
+   "engine_hint": "official",
+   "provider": "mock-official",
+   "take": 1,
+   "cost": 0.96,
+   "qc_score": 0.897,
+   "qc_verdict": "pass",
+   "qc_metrics": [
+    {
+     "name": "freeze",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "black",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "conformance",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "temporal_flicker",
+     "value": 0.2898,
+     "passed": true
+    },
+    {
+     "name": "color_drift",
+     "value": 7.0867,
+     "passed": false
+    },
+    {
+     "name": "motion_sanity",
+     "value": 0.612,
+     "passed": true
+    },
+    {
+     "name": "seam",
+     "value": null,
+     "passed": true
+    }
+   ],
+   "qc_advice": [],
+   "chain": {
+    "strategy": "official_extend",
+    "inputs": {
+     "extend_from_job": "mock-a22cc92390-000",
+     "provider": "mock-official"
+    },
+    "notes": [
+     "用 mock-official 的官方延长接口接 job mock-a22cc92390-000"
+    ]
+   },
+   "chain_strategy": "official_extend",
+   "drift_after": 0.166,
+   "reanchor": false,
+   "refs": {
+    "images": 7,
+    "videos": 0,
+    "audios": 0
+   },
+   "refs_dropped": 0,
+   "degradations": [
+    "时长 7.5s → 8s（mock-official 档位 (4.0, 8.0, 12.0, 15.0)）",
+    "mock-official 不能挂 lin_lan 的 LoRA → 身份只靠 identity 参考图，漂移预算需上浮"
+   ],
+   "dialogue": [],
+   "status": "succeeded"
+  },
+  {
+   "id": "sc01_s03",
+   "scene": "sc01",
+   "scene_title": "接舷",
+   "duration_s": 7.0,
+   "shot_size": "medium shot",
+   "camera_move": "steadicam follow",
+   "lens_mm": 35,
+   "subjects": [
+    "lin_lan"
+   ],
+   "engine_hint": "auto",
+   "provider": "mock-open",
+   "take": 1,
+   "cost": 0.028,
+   "qc_score": 0.816,
+   "qc_verdict": "escalate",
+   "qc_metrics": [
+    {
+     "name": "freeze",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "black",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "conformance",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "temporal_flicker",
+     "value": 0.6783,
+     "passed": true
+    },
+    {
+     "name": "color_drift",
+     "value": 17.5769,
+     "passed": false
+    },
+    {
+     "name": "motion_sanity",
+     "value": 1.1219,
+     "passed": true
+    },
+    {
+     "name": "seam",
+     "value": null,
+     "passed": true
+    }
+   ],
+   "qc_advice": [
+    "单项严重超标：color_drift（已超阈值 1.5 倍以上，不参与加权表决）。",
+    "首尾亮度漂移 +17.6 码值（阈值 ±6.0）。建议：①给 Continuity 加尾帧锚（上一镜 emit_last_frame + 本镜 inherit_last_frame），让模型有固定的收尾目标；②降低 CFG / 去掉过强的 style 参考位；③把 duration_s 拆短（漂移随时长累积，>8s 的镜优先拆）；④确属轻微时可交给 grade.py 统一到场景 base_grade，不必重拍。",
+    "已重拍 4 次（上限 3），继续重摇是在烧额度；建议改工单：拆短时长、换引擎（EngineHint.HERO/OPEN）或改写这条镜头的动作描述。"
+   ],
+   "chain": {
+    "strategy": "last_frame",
+    "inputs": {
+     "first_frame_uri": "out/work/full/renders/official/mock-f98cc1e87f-001/last_frame.png"
+    },
+    "notes": [
+     "provider 直出尾帧 last_frame.png（清晰度 611）"
+    ]
+   },
+   "chain_strategy": "last_frame",
+   "drift_after": 0.439,
+   "reanchor": false,
+   "refs": {
+    "images": 7,
+    "videos": 0,
+    "audios": 1
+   },
+   "refs_dropped": 1,
+   "degradations": [],
+   "dialogue": [
+    "站体自转周期 4 小时 17 分。比记录慢了三分之一。"
+   ],
+   "status": "succeeded"
+  },
+  {
+   "id": "sc01_s04",
+   "scene": "sc01",
+   "scene_title": "接舷",
+   "duration_s": 6.0,
+   "shot_size": "medium close-up",
+   "camera_move": "static locked-off camera",
+   "lens_mm": 50,
+   "subjects": [
+    "lin_lan"
+   ],
+   "engine_hint": "auto",
+   "provider": "mock-open-spot",
+   "take": 2,
+   "cost": 0.009,
+   "qc_score": 0.83,
+   "qc_verdict": "escalate",
+   "qc_metrics": [
+    {
+     "name": "freeze",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "black",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "conformance",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "temporal_flicker",
+     "value": 0.3794,
+     "passed": true
+    },
+    {
+     "name": "color_drift",
+     "value": 12.1852,
+     "passed": false
+    },
+    {
+     "name": "motion_sanity",
+     "value": 1.0526,
+     "passed": true
+    },
+    {
+     "name": "seam",
+     "value": null,
+     "passed": true
+    }
+   ],
+   "qc_advice": [
+    "单项严重超标：color_drift（已超阈值 1.5 倍以上，不参与加权表决）。",
+    "首尾亮度漂移 +12.2 码值（阈值 ±6.0）。建议：①给 Continuity 加尾帧锚（上一镜 emit_last_frame + 本镜 inherit_last_frame），让模型有固定的收尾目标；②降低 CFG / 去掉过强的 style 参考位；③把 duration_s 拆短（漂移随时长累积，>8s 的镜优先拆）；④确属轻微时可交给 grade.py 统一到场景 base_grade，不必重拍。",
+    "已重拍 2 次（上限 3），继续重摇是在烧额度；建议改工单：拆短时长、换引擎（EngineHint.HERO/OPEN）或改写这条镜头的动作描述。"
+   ],
+   "chain": null,
+   "chain_strategy": "official_extend",
+   "drift_after": 0.6,
+   "reanchor": false,
+   "refs": {
+    "images": 7,
+    "videos": 0,
+    "audios": 0
+   },
+   "refs_dropped": 0,
+   "degradations": [],
+   "dialogue": [],
+   "status": "succeeded"
+  },
+  {
+   "id": "sc01_s05",
+   "scene": "sc01",
+   "scene_title": "接舷",
+   "duration_s": 4.5,
+   "shot_size": "insert shot",
+   "camera_move": "camera dollies in",
+   "lens_mm": 85,
+   "subjects": [],
+   "engine_hint": "open",
+   "provider": "mock-open-spot",
+   "take": 1,
+   "cost": 0.0067,
+   "qc_score": 0.82,
+   "qc_verdict": "retake",
+   "qc_metrics": [
+    {
+     "name": "freeze",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "black",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "conformance",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "temporal_flicker",
+     "value": 0.5923,
+     "passed": true
+    },
+    {
+     "name": "color_drift",
+     "value": 14.5559,
+     "passed": false
+    },
+    {
+     "name": "motion_sanity",
+     "value": 1.9039,
+     "passed": true
+    },
+    {
+     "name": "seam",
+     "value": null,
+     "passed": true
+    }
+   ],
+   "qc_advice": [
+    "单项严重超标：color_drift（已超阈值 1.5 倍以上，不参与加权表决）。",
+    "首尾红青轴漂移 -14.6 码值（阈值 ±6.0）。建议：①给 Continuity 加尾帧锚（上一镜 emit_last_frame + 本镜 inherit_last_frame），让模型有固定的收尾目标；②降低 CFG / 去掉过强的 style 参考位；③把 duration_s 拆短（漂移随时长累积，>8s 的镜优先拆）；④确属轻微时可交给 grade.py 统一到场景 base_grade，不必重拍。"
+   ],
+   "chain": {
+    "strategy": "official_extend",
+    "inputs": {
+     "extend_from_job": "mock-7e999921da-002",
+     "provider": "mock-open-spot"
+    },
+    "notes": [
+     "用 mock-open-spot 的官方延长接口接 job mock-7e999921da-002"
+    ]
+   },
+   "chain_strategy": "official_extend",
+   "drift_after": 0.846,
+   "reanchor": false,
+   "refs": {
+    "images": 0,
+    "videos": 0,
+    "audios": 0
+   },
+   "refs_dropped": 0,
+   "degradations": [],
+   "dialogue": [],
+   "status": "error"
+  },
+  {
+   "id": "sc01_s06",
+   "scene": "sc01",
+   "scene_title": "接舷",
+   "duration_s": 4.5,
+   "shot_size": "close-up",
+   "camera_move": "static locked-off camera",
+   "lens_mm": 85,
+   "subjects": [
+    "lin_lan"
+   ],
+   "engine_hint": "auto",
+   "provider": "mock-open-spot",
+   "take": 1,
+   "cost": 0.0067,
+   "qc_score": 0.939,
+   "qc_verdict": "pass",
+   "qc_metrics": [
+    {
+     "name": "freeze",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "black",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "conformance",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "temporal_flicker",
+     "value": 0.1683,
+     "passed": true
+    },
+    {
+     "name": "color_drift",
+     "value": 4.1644,
+     "passed": true
+    },
+    {
+     "name": "motion_sanity",
+     "value": 1.2905,
+     "passed": true
+    },
+    {
+     "name": "seam",
+     "value": null,
+     "passed": true
+    }
+   ],
+   "qc_advice": [],
+   "chain": null,
+   "chain_strategy": "reanchor",
+   "drift_after": 0.15,
+   "reanchor": true,
+   "refs": {
+    "images": 7,
+    "videos": 0,
+    "audios": 1
+   },
+   "refs_dropped": 0,
+   "degradations": [],
+   "dialogue": [
+    "凯，看这个。它在回应光。"
+   ],
+   "status": "succeeded"
+  },
+  {
+   "id": "sc01_s07",
+   "scene": "sc01",
+   "scene_title": "接舷",
+   "duration_s": 6.0,
+   "shot_size": "medium shot",
+   "camera_move": "camera trucks left",
+   "lens_mm": 35,
+   "subjects": [
+    "kai_k7"
+   ],
+   "engine_hint": "auto",
+   "provider": "mock-open-spot",
+   "take": 2,
+   "cost": 0.009,
+   "qc_score": 0.797,
+   "qc_verdict": "escalate",
+   "qc_metrics": [
+    {
+     "name": "freeze",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "black",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "conformance",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "temporal_flicker",
+     "value": 1.071,
+     "passed": true
+    },
+    {
+     "name": "color_drift",
+     "value": 15.4524,
+     "passed": false
+    },
+    {
+     "name": "motion_sanity",
+     "value": 1.5506,
+     "passed": true
+    },
+    {
+     "name": "seam",
+     "value": null,
+     "passed": true
+    }
+   ],
+   "qc_advice": [
+    "单项严重超标：color_drift（已超阈值 1.5 倍以上，不参与加权表决）。",
+    "首尾红青轴漂移 +15.5 码值（阈值 ±6.0）。建议：①给 Continuity 加尾帧锚（上一镜 emit_last_frame + 本镜 inherit_last_frame），让模型有固定的收尾目标；②降低 CFG / 去掉过强的 style 参考位；③把 duration_s 拆短（漂移随时长累积，>8s 的镜优先拆）；④确属轻微时可交给 grade.py 统一到场景 base_grade，不必重拍。",
+    "已重拍 2 次（上限 3），继续重摇是在烧额度；建议改工单：拆短时长、换引擎（EngineHint.HERO/OPEN）或改写这条镜头的动作描述。"
+   ],
+   "chain": {
+    "strategy": "official_extend",
+    "inputs": {
+     "extend_from_job": "mock-8b36c0a3a1-005",
+     "provider": "mock-open-spot"
+    },
+    "notes": [
+     "用 mock-open-spot 的官方延长接口接 job mock-8b36c0a3a1-005"
+    ]
+   },
+   "chain_strategy": "official_extend",
+   "drift_after": 0.352,
+   "reanchor": false,
+   "refs": {
+    "images": 4,
+    "videos": 0,
+    "audios": 1
+   },
+   "refs_dropped": 0,
+   "degradations": [],
+   "dialogue": [
+    "检测到非随机磷光响应。置信度 0.87。"
+   ],
+   "status": "succeeded"
+  },
+  {
+   "id": "sc01_s08",
+   "scene": "sc01",
+   "scene_title": "接舷",
+   "duration_s": 6.0,
+   "shot_size": "two shot",
+   "camera_move": "camera orbits right around subject",
+   "lens_mm": 35,
+   "subjects": [
+    "lin_lan",
+    "kai_k7"
+   ],
+   "engine_hint": "official",
+   "provider": "mock-official",
+   "take": 2,
+   "cost": 0.48,
+   "qc_score": 0.892,
+   "qc_verdict": "pass",
+   "qc_metrics": [
+    {
+     "name": "freeze",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "black",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "conformance",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "temporal_flicker",
+     "value": 0.4905,
+     "passed": true
+    },
+    {
+     "name": "color_drift",
+     "value": 6.6967,
+     "passed": false
+    },
+    {
+     "name": "motion_sanity",
+     "value": 2.1447,
+     "passed": true
+    },
+    {
+     "name": "seam",
+     "value": null,
+     "passed": true
+    }
+   ],
+   "qc_advice": [],
+   "chain": {
+    "strategy": "last_frame",
+    "inputs": {
+     "first_frame_uri": "out/work/full/renders/spot/mock-1b28bee213-007/last_frame.png"
+    },
+    "notes": [
+     "provider 直出尾帧 last_frame.png（清晰度 610）"
+    ]
+   },
+   "chain_strategy": "last_frame",
+   "drift_after": 0.62,
+   "reanchor": false,
+   "refs": {
+    "images": 8,
+    "videos": 0,
+    "audios": 1
+   },
+   "refs_dropped": 1,
+   "degradations": [
+    "时长 6s → 4s（mock-official 档位 (4.0, 8.0, 12.0, 15.0)）",
+    "mock-official 不能挂 lin_lan 的 LoRA → 身份只靠 identity 参考图，漂移预算需上浮"
+   ],
+   "dialogue": [
+    "建议不要触碰。上一支勘探队的记录在这里中断。"
+   ],
+   "status": "succeeded"
+  },
+  {
+   "id": "sc01_s09",
+   "scene": "sc01",
+   "scene_title": "接舷",
+   "duration_s": 3.0,
+   "shot_size": "over-the-shoulder shot",
+   "camera_move": "static locked-off camera",
+   "lens_mm": 50,
+   "subjects": [
+    "lin_lan",
+    "kai_k7"
+   ],
+   "engine_hint": "auto",
+   "provider": "mock-open-spot",
+   "take": 2,
+   "cost": 0.0045,
+   "qc_score": 0.827,
+   "qc_verdict": "escalate",
+   "qc_metrics": [
+    {
+     "name": "freeze",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "black",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "conformance",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "temporal_flicker",
+     "value": 0.4524,
+     "passed": true
+    },
+    {
+     "name": "color_drift",
+     "value": 13.3871,
+     "passed": false
+    },
+    {
+     "name": "motion_sanity",
+     "value": 3.312,
+     "passed": true
+    },
+    {
+     "name": "seam",
+     "value": null,
+     "passed": true
+    }
+   ],
+   "qc_advice": [
+    "单项严重超标：color_drift（已超阈值 1.5 倍以上，不参与加权表决）。",
+    "首尾亮度漂移 +13.4 码值（阈值 ±6.0）。建议：①给 Continuity 加尾帧锚（上一镜 emit_last_frame + 本镜 inherit_last_frame），让模型有固定的收尾目标；②降低 CFG / 去掉过强的 style 参考位；③把 duration_s 拆短（漂移随时长累积，>8s 的镜优先拆）；④确属轻微时可交给 grade.py 统一到场景 base_grade，不必重拍。",
+    "已重拍 2 次（上限 3），继续重摇是在烧额度；建议改工单：拆短时长、换引擎（EngineHint.HERO/OPEN）或改写这条镜头的动作描述。"
+   ],
+   "chain": {
+    "strategy": "last_frame",
+    "inputs": {
+     "first_frame_uri": "out/work/full/renders/official/mock-6b53c5a635-003/last_frame.png"
+    },
+    "notes": [
+     "provider 直出尾帧 last_frame.png（清晰度 681）"
+    ]
+   },
+   "chain_strategy": "last_frame",
+   "drift_after": 0.875,
+   "reanchor": false,
+   "refs": {
+    "images": 8,
+    "videos": 0,
+    "audios": 1
+   },
+   "refs_dropped": 1,
+   "degradations": [],
+   "dialogue": [
+    "上一支队没带你。"
+   ],
+   "status": "succeeded"
+  },
+  {
+   "id": "sc01_s10",
+   "scene": "sc01",
+   "scene_title": "接舷",
+   "duration_s": 4.5,
+   "shot_size": "extreme close-up",
+   "camera_move": "camera dollies in",
+   "lens_mm": 100,
+   "subjects": [
+    "lin_lan"
+   ],
+   "engine_hint": "hero",
+   "provider": "mock-official",
+   "take": 1,
+   "cost": 0.48,
+   "qc_score": 0.885,
+   "qc_verdict": "pass",
+   "qc_metrics": [
+    {
+     "name": "freeze",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "black",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "conformance",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "temporal_flicker",
+     "value": 0.1502,
+     "passed": true
+    },
+    {
+     "name": "color_drift",
+     "value": 8.5458,
+     "passed": false
+    },
+    {
+     "name": "motion_sanity",
+     "value": 0.7038,
+     "passed": true
+    },
+    {
+     "name": "seam",
+     "value": null,
+     "passed": true
+    }
+   ],
+   "qc_advice": [],
+   "chain": null,
+   "chain_strategy": "reanchor",
+   "drift_after": 0.15,
+   "reanchor": true,
+   "refs": {
+    "images": 7,
+    "videos": 0,
+    "audios": 0
+   },
+   "refs_dropped": 0,
+   "degradations": [
+    "时长 4.5s → 4s（mock-official 档位 (4.0, 8.0, 12.0, 15.0)）",
+    "mock-official 不能挂 lin_lan 的 LoRA → 身份只靠 identity 参考图，漂移预算需上浮"
+   ],
+   "dialogue": [],
+   "status": "succeeded"
+  },
+  {
+   "id": "sc02_s01",
+   "scene": "sc02",
+   "scene_title": "唤醒",
+   "duration_s": 7.5,
+   "shot_size": "full shot",
+   "camera_move": "handheld camera, subtle organic shake",
+   "lens_mm": 28,
+   "subjects": [
+    "lin_lan",
+    "kai_k7"
+   ],
+   "engine_hint": "hero",
+   "provider": "mock-official",
+   "take": 1,
+   "cost": 0.96,
+   "qc_score": 0.865,
+   "qc_verdict": "pass",
+   "qc_metrics": [
+    {
+     "name": "freeze",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "black",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "conformance",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "temporal_flicker",
+     "value": 1.4638,
+     "passed": true
+    },
+    {
+     "name": "color_drift",
+     "value": 5.1963,
+     "passed": true
+    },
+    {
+     "name": "motion_sanity",
+     "value": 1.6554,
+     "passed": true
+    },
+    {
+     "name": "seam",
+     "value": null,
+     "passed": true
+    }
+   ],
+   "qc_advice": [],
+   "chain": null,
+   "chain_strategy": "anchor",
+   "drift_after": 0.0,
+   "reanchor": false,
+   "refs": {
+    "images": 8,
+    "videos": 0,
+    "audios": 0
+   },
+   "refs_dropped": 0,
+   "degradations": [
+    "时长 7.5s → 8s（mock-official 档位 (4.0, 8.0, 12.0, 15.0)）",
+    "mock-official 不能挂 lin_lan 的 LoRA → 身份只靠 identity 参考图，漂移预算需上浮"
+   ],
+   "dialogue": [],
+   "status": "succeeded"
+  },
+  {
+   "id": "sc02_s02",
+   "scene": "sc02",
+   "scene_title": "唤醒",
+   "duration_s": 5.5,
+   "shot_size": "medium close-up",
+   "camera_move": "handheld camera, subtle organic shake",
+   "lens_mm": 50,
+   "subjects": [
+    "kai_k7"
+   ],
+   "engine_hint": "auto",
+   "provider": "mock-official",
+   "take": 1,
+   "cost": 0.48,
+   "qc_score": 0.659,
+   "qc_verdict": "escalate",
+   "qc_metrics": [
+    {
+     "name": "freeze",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "black",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "conformance",
+     "value": 0.2727,
+     "passed": false
+    },
+    {
+     "name": "temporal_flicker",
+     "value": 1.3228,
+     "passed": true
+    },
+    {
+     "name": "color_drift",
+     "value": 18.8863,
+     "passed": false
+    },
+    {
+     "name": "motion_sanity",
+     "value": 3.0656,
+     "passed": true
+    },
+    {
+     "name": "seam",
+     "value": null,
+     "passed": true
+    }
+   ],
+   "qc_advice": [
+    "硬性否决项未通过：conformance（这类问题重摇 seed 通常即可解决）。",
+    "单项严重超标：color_drift（已超阈值 1.5 倍以上，不参与加权表决）。",
+    "时长 4.00s ≠ 工单 5.50s（偏差 27.3%）。建议：①先核对 router 是否按 caps.clamp_duration / nearest_resolution 归整过工单，规格不符多半是工单本身越界被 provider 静默改写；②确认后重提工单，不要用重摇 seed 解决规格问题；③时长偏短且尾部冻结时，按 extend 链补足而不是整条重拍。"
+   ],
+   "chain": {
+    "strategy": "last_frame",
+    "inputs": {
+     "first_frame_uri": "out/work/full/renders/official/mock-ae44083d3b-005/last_frame.png"
+    },
+    "notes": [
+     "provider 直出尾帧 last_frame.png（清晰度 651）"
+    ]
+   },
+   "chain_strategy": "last_frame",
+   "drift_after": 0.333,
+   "reanchor": false,
+   "refs": {
+    "images": 5,
+    "videos": 0,
+    "audios": 1
+   },
+   "refs_dropped": 1,
+   "degradations": [],
+   "dialogue": [
+    "它在读取我。这不是刻痕，是接口。"
+   ],
+   "status": "succeeded"
+  },
+  {
+   "id": "sc02_s03",
+   "scene": "sc02",
+   "scene_title": "唤醒",
+   "duration_s": 3.75,
+   "shot_size": "medium shot",
+   "camera_move": "whip pan",
+   "lens_mm": 35,
+   "subjects": [
+    "lin_lan"
+   ],
+   "engine_hint": "open",
+   "provider": "mock-open-spot",
+   "take": 2,
+   "cost": 0.0056,
+   "qc_score": 0.835,
+   "qc_verdict": "escalate",
+   "qc_metrics": [
+    {
+     "name": "freeze",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "black",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "conformance",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "temporal_flicker",
+     "value": 0.2865,
+     "passed": true
+    },
+    {
+     "name": "color_drift",
+     "value": 21.6087,
+     "passed": false
+    },
+    {
+     "name": "motion_sanity",
+     "value": 1.985,
+     "passed": true
+    },
+    {
+     "name": "seam",
+     "value": null,
+     "passed": true
+    }
+   ],
+   "qc_advice": [
+    "单项严重超标：color_drift（已超阈值 1.5 倍以上，不参与加权表决）。",
+    "首尾亮度漂移 -21.6 码值（阈值 ±6.0）。建议：①给 Continuity 加尾帧锚（上一镜 emit_last_frame + 本镜 inherit_last_frame），让模型有固定的收尾目标；②降低 CFG / 去掉过强的 style 参考位；③把 duration_s 拆短（漂移随时长累积，>8s 的镜优先拆）；④确属轻微时可交给 grade.py 统一到场景 base_grade，不必重拍。",
+    "已重拍 2 次（上限 3），继续重摇是在烧额度；建议改工单：拆短时长、换引擎（EngineHint.HERO/OPEN）或改写这条镜头的动作描述。"
+   ],
+   "chain": null,
+   "chain_strategy": "official_extend",
+   "drift_after": 0.488,
+   "reanchor": false,
+   "refs": {
+    "images": 7,
+    "videos": 0,
+    "audios": 0
+   },
+   "refs_dropped": 0,
+   "degradations": [],
+   "dialogue": [],
+   "status": "succeeded"
+  },
+  {
+   "id": "sc02_s04",
+   "scene": "sc02",
+   "scene_title": "唤醒",
+   "duration_s": 6.75,
+   "shot_size": "long shot",
+   "camera_move": "static locked-off camera",
+   "lens_mm": 24,
+   "subjects": [],
+   "engine_hint": "official",
+   "provider": "mock-official",
+   "take": 1,
+   "cost": 0.96,
+   "qc_score": 0.902,
+   "qc_verdict": "pass",
+   "qc_metrics": [
+    {
+     "name": "freeze",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "black",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "conformance",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "temporal_flicker",
+     "value": 0.3336,
+     "passed": true
+    },
+    {
+     "name": "color_drift",
+     "value": 6.4997,
+     "passed": false
+    },
+    {
+     "name": "motion_sanity",
+     "value": 0.9373,
+     "passed": true
+    },
+    {
+     "name": "seam",
+     "value": null,
+     "passed": true
+    }
+   ],
+   "qc_advice": [],
+   "chain": {
+    "strategy": "last_frame",
+    "inputs": {
+     "first_frame_uri": "out/work/full/renders/spot/mock-53d51d86a5-012/last_frame.png"
+    },
+    "notes": [
+     "provider 直出尾帧 last_frame.png（清晰度 616）"
+    ]
+   },
+   "chain_strategy": "last_frame",
+   "drift_after": 0.913,
+   "reanchor": false,
+   "refs": {
+    "images": 1,
+    "videos": 0,
+    "audios": 0
+   },
+   "refs_dropped": 1,
+   "degradations": [
+    "时长 6.75s → 8s（mock-official 档位 (4.0, 8.0, 12.0, 15.0)）"
+   ],
+   "dialogue": [],
+   "status": "succeeded"
+  },
+  {
+   "id": "sc02_s05",
+   "scene": "sc02",
+   "scene_title": "唤醒",
+   "duration_s": 3.0,
+   "shot_size": "medium close-up",
+   "camera_move": "camera dollies out",
+   "lens_mm": 50,
+   "subjects": [
+    "lin_lan"
+   ],
+   "engine_hint": "auto",
+   "provider": "mock-open-spot",
+   "take": 2,
+   "cost": 0.0045,
+   "qc_score": 0.801,
+   "qc_verdict": "escalate",
+   "qc_metrics": [
+    {
+     "name": "freeze",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "black",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "conformance",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "temporal_flicker",
+     "value": 1.0018,
+     "passed": true
+    },
+    {
+     "name": "color_drift",
+     "value": 19.3177,
+     "passed": false
+    },
+    {
+     "name": "motion_sanity",
+     "value": 2.0224,
+     "passed": true
+    },
+    {
+     "name": "seam",
+     "value": null,
+     "passed": true
+    }
+   ],
+   "qc_advice": [
+    "单项严重超标：color_drift（已超阈值 1.5 倍以上，不参与加权表决）。",
+    "首尾亮度漂移 +19.3 码值（阈值 ±6.0）。建议：①给 Continuity 加尾帧锚（上一镜 emit_last_frame + 本镜 inherit_last_frame），让模型有固定的收尾目标；②降低 CFG / 去掉过强的 style 参考位；③把 duration_s 拆短（漂移随时长累积，>8s 的镜优先拆）；④确属轻微时可交给 grade.py 统一到场景 base_grade，不必重拍。",
+    "已重拍 2 次（上限 3），继续重摇是在烧额度；建议改工单：拆短时长、换引擎（EngineHint.HERO/OPEN）或改写这条镜头的动作描述。"
+   ],
+   "chain": null,
+   "chain_strategy": "reanchor",
+   "drift_after": 0.15,
+   "reanchor": true,
+   "refs": {
+    "images": 7,
+    "videos": 0,
+    "audios": 1
+   },
+   "refs_dropped": 0,
+   "degradations": [],
+   "dialogue": [
+    "它不是在回应光。"
+   ],
+   "status": "succeeded"
+  },
+  {
+   "id": "sc02_s06",
+   "scene": "sc02",
+   "scene_title": "唤醒",
+   "duration_s": 3.0,
+   "shot_size": "close-up",
+   "camera_move": "static locked-off camera",
+   "lens_mm": 85,
+   "subjects": [
+    "lin_lan"
+   ],
+   "engine_hint": "hero",
+   "provider": "mock-official",
+   "take": 2,
+   "cost": 0.48,
+   "qc_score": 0.688,
+   "qc_verdict": "escalate",
+   "qc_metrics": [
+    {
+     "name": "freeze",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "black",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "conformance",
+     "value": 0.25,
+     "passed": false
+    },
+    {
+     "name": "temporal_flicker",
+     "value": 0.7086,
+     "passed": true
+    },
+    {
+     "name": "color_drift",
+     "value": 16.568,
+     "passed": false
+    },
+    {
+     "name": "motion_sanity",
+     "value": 1.2291,
+     "passed": true
+    },
+    {
+     "name": "seam",
+     "value": null,
+     "passed": true
+    }
+   ],
+   "qc_advice": [
+    "硬性否决项未通过：conformance（这类问题重摇 seed 通常即可解决）。",
+    "单项严重超标：color_drift（已超阈值 1.5 倍以上，不参与加权表决）。",
+    "时长 3.00s ≠ 工单 4.00s（偏差 25.0%）。建议：①先核对 router 是否按 caps.clamp_duration / nearest_resolution 归整过工单，规格不符多半是工单本身越界被 provider 静默改写；②确认后重提工单，不要用重摇 seed 解决规格问题；③时长偏短且尾部冻结时，按 extend 链补足而不是整条重拍。"
+   ],
+   "chain": {
+    "strategy": "last_frame",
+    "inputs": {
+     "first_frame_uri": "out/work/full/renders/spot/mock-b6c4992883-014/last_frame.png"
+    },
+    "notes": [
+     "provider 直出尾帧 last_frame.png（清晰度 694）"
+    ]
+   },
+   "chain_strategy": "last_frame",
+   "drift_after": 0.404,
+   "reanchor": false,
+   "refs": {
+    "images": 7,
+    "videos": 0,
+    "audios": 1
+   },
+   "refs_dropped": 1,
+   "degradations": [
+    "时长 3s → 4s（mock-official 档位 (4.0, 8.0, 12.0, 15.0)）",
+    "mock-official 不能挂 lin_lan 的 LoRA → 身份只靠 identity 参考图，漂移预算需上浮"
+   ],
+   "dialogue": [
+    "它是在回应我们。"
+   ],
+   "status": "succeeded"
+  },
+  {
+   "id": "sc02_s07",
+   "scene": "sc02",
+   "scene_title": "唤醒",
+   "duration_s": 9.0,
+   "shot_size": "extreme long shot",
+   "camera_move": "crane shot rising",
+   "lens_mm": 24,
+   "subjects": [],
+   "engine_hint": "hero",
+   "provider": "mock-official",
+   "take": 2,
+   "cost": 0.96,
+   "qc_score": 0.878,
+   "qc_verdict": "pass",
+   "qc_metrics": [
+    {
+     "name": "freeze",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "black",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "conformance",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "temporal_flicker",
+     "value": 0.3292,
+     "passed": true
+    },
+    {
+     "name": "color_drift",
+     "value": 8.4418,
+     "passed": false
+    },
+    {
+     "name": "motion_sanity",
+     "value": 0.5329,
+     "passed": true
+    },
+    {
+     "name": "seam",
+     "value": null,
+     "passed": true
+    }
+   ],
+   "qc_advice": [],
+   "chain": {
+    "strategy": "official_extend",
+    "inputs": {
+     "extend_from_job": "mock-5a2b854265-009",
+     "provider": "mock-official"
+    },
+    "notes": [
+     "用 mock-official 的官方延长接口接 job mock-5a2b854265-009"
+    ]
+   },
+   "chain_strategy": "official_extend",
+   "drift_after": 0.67,
+   "reanchor": false,
+   "refs": {
+    "images": 0,
+    "videos": 0,
+    "audios": 0
+   },
+   "refs_dropped": 0,
+   "degradations": [
+    "时长 9s → 8s（mock-official 档位 (4.0, 8.0, 12.0, 15.0)）"
+   ],
+   "dialogue": [],
+   "status": "succeeded"
+  },
+  {
+   "id": "sc02_s08",
+   "scene": "sc02",
+   "scene_title": "唤醒",
+   "duration_s": 7.5,
+   "shot_size": "medium shot",
+   "camera_move": "steadicam follow",
+   "lens_mm": 35,
+   "subjects": [
+    "lin_lan",
+    "kai_k7"
+   ],
+   "engine_hint": "official",
+   "provider": "mock-official",
+   "take": 1,
+   "cost": 0.96,
+   "qc_score": 0.892,
+   "qc_verdict": "pass",
+   "qc_metrics": [
+    {
+     "name": "freeze",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "black",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "conformance",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "temporal_flicker",
+     "value": 0.2709,
+     "passed": true
+    },
+    {
+     "name": "color_drift",
+     "value": 7.5076,
+     "passed": false
+    },
+    {
+     "name": "motion_sanity",
+     "value": 1.2557,
+     "passed": true
+    },
+    {
+     "name": "seam",
+     "value": null,
+     "passed": true
+    }
+   ],
+   "qc_advice": [],
+   "chain": {
+    "strategy": "official_extend",
+    "inputs": {
+     "extend_from_job": "mock-aa52ce83e2-011",
+     "provider": "mock-official"
+    },
+    "notes": [
+     "用 mock-official 的官方延长接口接 job mock-aa52ce83e2-011"
+    ]
+   },
+   "chain_strategy": "official_extend",
+   "drift_after": 0.836,
+   "reanchor": false,
+   "refs": {
+    "images": 8,
+    "videos": 0,
+    "audios": 0
+   },
+   "refs_dropped": 0,
+   "degradations": [
+    "时长 7.5s → 8s（mock-official 档位 (4.0, 8.0, 12.0, 15.0)）",
+    "mock-official 不能挂 lin_lan 的 LoRA → 身份只靠 identity 参考图，漂移预算需上浮"
+   ],
+   "dialogue": [],
+   "status": "succeeded"
+  },
+  {
+   "id": "sc02_s09",
+   "scene": "sc02",
+   "scene_title": "唤醒",
+   "duration_s": 4.5,
+   "shot_size": "long shot",
+   "camera_move": "camera tilts up",
+   "lens_mm": 24,
+   "subjects": [
+    "lin_lan",
+    "kai_k7"
+   ],
+   "engine_hint": "hero",
+   "provider": "mock-official",
+   "take": 2,
+   "cost": 0.48,
+   "qc_score": 0.824,
+   "qc_verdict": "escalate",
+   "qc_metrics": [
+    {
+     "name": "freeze",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "black",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "conformance",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "temporal_flicker",
+     "value": 0.5026,
+     "passed": true
+    },
+    {
+     "name": "color_drift",
+     "value": 20.9986,
+     "passed": false
+    },
+    {
+     "name": "motion_sanity",
+     "value": 1.4474,
+     "passed": true
+    },
+    {
+     "name": "seam",
+     "value": null,
+     "passed": true
+    }
+   ],
+   "qc_advice": [
+    "单项严重超标：color_drift（已超阈值 1.5 倍以上，不参与加权表决）。",
+    "首尾蓝黄轴漂移 -21.0 码值（阈值 ±6.0）。建议：①给 Continuity 加尾帧锚（上一镜 emit_last_frame + 本镜 inherit_last_frame），让模型有固定的收尾目标；②降低 CFG / 去掉过强的 style 参考位；③把 duration_s 拆短（漂移随时长累积，>8s 的镜优先拆）；④确属轻微时可交给 grade.py 统一到场景 base_grade，不必重拍。",
+    "已重拍 2 次（上限 3），继续重摇是在烧额度；建议改工单：拆短时长、换引擎（EngineHint.HERO/OPEN）或改写这条镜头的动作描述。"
+   ],
+   "chain": {
+    "strategy": "official_extend",
+    "inputs": {
+     "extend_from_job": "mock-8af7a95c42-012",
+     "provider": "mock-official"
+    },
+    "notes": [
+     "用 mock-official 的官方延长接口接 job mock-8af7a95c42-012"
+    ]
+   },
+   "chain_strategy": "official_extend",
+   "drift_after": 0.992,
+   "reanchor": false,
+   "refs": {
+    "images": 8,
+    "videos": 0,
+    "audios": 1
+   },
+   "refs_dropped": 0,
+   "degradations": [
+    "时长 4.5s → 4s（mock-official 档位 (4.0, 8.0, 12.0, 15.0)）",
+    "mock-official 不能挂 lin_lan 的 LoRA → 身份只靠 identity 参考图，漂移预算需上浮"
+   ],
+   "dialogue": [
+    "质量读数为零。它不在这里。"
+   ],
+   "status": "succeeded"
+  },
+  {
+   "id": "sc02_s10",
+   "scene": "sc02",
+   "scene_title": "唤醒",
+   "duration_s": 4.5,
+   "shot_size": "medium close-up",
+   "camera_move": "static locked-off camera",
+   "lens_mm": 50,
+   "subjects": [
+    "lin_lan"
+   ],
+   "engine_hint": "auto",
+   "provider": "mock-open-spot",
+   "take": 1,
+   "cost": 0.0067,
+   "qc_score": 0.965,
+   "qc_verdict": "pass",
+   "qc_metrics": [
+    {
+     "name": "freeze",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "black",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "conformance",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "temporal_flicker",
+     "value": 0.2494,
+     "passed": true
+    },
+    {
+     "name": "color_drift",
+     "value": 1.8378,
+     "passed": true
+    },
+    {
+     "name": "motion_sanity",
+     "value": 1.5357,
+     "passed": true
+    },
+    {
+     "name": "seam",
+     "value": null,
+     "passed": true
+    }
+   ],
+   "qc_advice": [],
+   "chain": null,
+   "chain_strategy": "reanchor",
+   "drift_after": 0.15,
+   "reanchor": true,
+   "refs": {
+    "images": 7,
+    "videos": 0,
+    "audios": 1
+   },
+   "refs_dropped": 0,
+   "degradations": [],
+   "dialogue": [
+    "记录时间。我们找到了。"
+   ],
+   "status": "succeeded"
+  },
+  {
+   "id": "sc03_s01",
+   "scene": "sc03",
+   "scene_title": "接触",
+   "duration_s": 4.5,
+   "shot_size": "insert shot",
+   "camera_move": "static locked-off camera",
+   "lens_mm": 85,
+   "subjects": [],
+   "engine_hint": "open",
+   "provider": "mock-open",
+   "take": 1,
+   "cost": 0.018,
+   "qc_score": 0.845,
+   "qc_verdict": "escalate",
+   "qc_metrics": [
+    {
+     "name": "freeze",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "black",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "conformance",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "temporal_flicker",
+     "value": 0.1512,
+     "passed": true
+    },
+    {
+     "name": "color_drift",
+     "value": 11.649,
+     "passed": false
+    },
+    {
+     "name": "motion_sanity",
+     "value": 1.4074,
+     "passed": true
+    },
+    {
+     "name": "seam",
+     "value": null,
+     "passed": true
+    }
+   ],
+   "qc_advice": [
+    "单项严重超标：color_drift（已超阈值 1.5 倍以上，不参与加权表决）。",
+    "首尾亮度漂移 +11.6 码值（阈值 ±6.0）。建议：①给 Continuity 加尾帧锚（上一镜 emit_last_frame + 本镜 inherit_last_frame），让模型有固定的收尾目标；②降低 CFG / 去掉过强的 style 参考位；③把 duration_s 拆短（漂移随时长累积，>8s 的镜优先拆）；④确属轻微时可交给 grade.py 统一到场景 base_grade，不必重拍。",
+    "已重拍 4 次（上限 3），继续重摇是在烧额度；建议改工单：拆短时长、换引擎（EngineHint.HERO/OPEN）或改写这条镜头的动作描述。"
+   ],
+   "chain": null,
+   "chain_strategy": "anchor",
+   "drift_after": 0.0,
+   "reanchor": false,
+   "refs": {
+    "images": 0,
+    "videos": 0,
+    "audios": 0
+   },
+   "refs_dropped": 0,
+   "degradations": [],
+   "dialogue": [],
+   "status": "succeeded"
+  },
+  {
+   "id": "sc03_s02",
+   "scene": "sc03",
+   "scene_title": "接触",
+   "duration_s": 5.0,
+   "shot_size": "medium shot",
+   "camera_move": "camera orbits left around subject",
+   "lens_mm": 35,
+   "subjects": [
+    "kai_k7"
+   ],
+   "engine_hint": "auto",
+   "provider": "mock-official",
+   "take": 2,
+   "cost": 0.48,
+   "qc_score": 0.807,
+   "qc_verdict": "escalate",
+   "qc_metrics": [
+    {
+     "name": "freeze",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "black",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "conformance",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "temporal_flicker",
+     "value": 0.8555,
+     "passed": true
+    },
+    {
+     "name": "color_drift",
+     "value": 14.2647,
+     "passed": false
+    },
+    {
+     "name": "motion_sanity",
+     "value": 2.1079,
+     "passed": true
+    },
+    {
+     "name": "seam",
+     "value": null,
+     "passed": true
+    }
+   ],
+   "qc_advice": [
+    "单项严重超标：color_drift（已超阈值 1.5 倍以上，不参与加权表决）。",
+    "首尾亮度漂移 -14.3 码值（阈值 ±6.0）。建议：①给 Continuity 加尾帧锚（上一镜 emit_last_frame + 本镜 inherit_last_frame），让模型有固定的收尾目标；②降低 CFG / 去掉过强的 style 参考位；③把 duration_s 拆短（漂移随时长累积，>8s 的镜优先拆）；④确属轻微时可交给 grade.py 统一到场景 base_grade，不必重拍。",
+    "已重拍 2 次（上限 3），继续重摇是在烧额度；建议改工单：拆短时长、换引擎（EngineHint.HERO/OPEN）或改写这条镜头的动作描述。"
+   ],
+   "chain": {
+    "strategy": "last_frame",
+    "inputs": {
+     "first_frame_uri": "out/work/full/renders/open/mock-504e681491-001/last_frame.png"
+    },
+    "notes": [
+     "provider 直出尾帧 last_frame.png（清晰度 525）"
+    ]
+   },
+   "chain_strategy": "last_frame",
+   "drift_after": 0.33,
+   "reanchor": false,
+   "refs": {
+    "images": 5,
+    "videos": 0,
+    "audios": 1
+   },
+   "refs_dropped": 1,
+   "degradations": [
+    "时长 5s → 4s（mock-official 档位 (4.0, 8.0, 12.0, 15.0)）"
+   ],
+   "dialogue": [
+    "我需要提醒你，我的电源还有 41 分钟。"
+   ],
+   "status": "succeeded"
+  },
+  {
+   "id": "sc03_s03",
+   "scene": "sc03",
+   "scene_title": "接触",
+   "duration_s": 3.0,
+   "shot_size": "medium close-up",
+   "camera_move": "static locked-off camera",
+   "lens_mm": 50,
+   "subjects": [
+    "lin_lan"
+   ],
+   "engine_hint": "auto",
+   "provider": "mock-open",
+   "take": 2,
+   "cost": 0.012,
+   "qc_score": 0.807,
+   "qc_verdict": "escalate",
+   "qc_metrics": [
+    {
+     "name": "freeze",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "black",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "conformance",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "temporal_flicker",
+     "value": 0.8757,
+     "passed": true
+    },
+    {
+     "name": "color_drift",
+     "value": 14.7816,
+     "passed": false
+    },
+    {
+     "name": "motion_sanity",
+     "value": 1.6247,
+     "passed": true
+    },
+    {
+     "name": "seam",
+     "value": null,
+     "passed": true
+    }
+   ],
+   "qc_advice": [
+    "单项严重超标：color_drift（已超阈值 1.5 倍以上，不参与加权表决）。",
+    "首尾红青轴漂移 +14.8 码值（阈值 ±6.0）。建议：①给 Continuity 加尾帧锚（上一镜 emit_last_frame + 本镜 inherit_last_frame），让模型有固定的收尾目标；②降低 CFG / 去掉过强的 style 参考位；③把 duration_s 拆短（漂移随时长累积，>8s 的镜优先拆）；④确属轻微时可交给 grade.py 统一到场景 base_grade，不必重拍。",
+    "已重拍 5 次（上限 3），继续重摇是在烧额度；建议改工单：拆短时长、换引擎（EngineHint.HERO/OPEN）或改写这条镜头的动作描述。"
+   ],
+   "chain": {
+    "strategy": "last_frame",
+    "inputs": {
+     "first_frame_uri": "out/work/full/renders/official/mock-6d91448406-016/last_frame.png"
+    },
+    "notes": [
+     "provider 直出尾帧 last_frame.png（清晰度 458）"
+    ]
+   },
+   "chain_strategy": "last_frame",
+   "drift_after": 0.584,
+   "reanchor": false,
+   "refs": {
+    "images": 7,
+    "videos": 0,
+    "audios": 1
+   },
+   "refs_dropped": 1,
+   "degradations": [],
+   "dialogue": [
+    "那就 41 分钟。"
+   ],
+   "status": "succeeded"
+  },
+  {
+   "id": "sc03_s04",
+   "scene": "sc03",
+   "scene_title": "接触",
+   "duration_s": 8.25,
+   "shot_size": "two shot",
+   "camera_move": "camera dollies in",
+   "lens_mm": 35,
+   "subjects": [
+    "lin_lan",
+    "kai_k7"
+   ],
+   "engine_hint": "official",
+   "provider": "mock-official",
+   "take": 1,
+   "cost": 0.96,
+   "qc_score": 0.873,
+   "qc_verdict": "pass",
+   "qc_metrics": [
+    {
+     "name": "freeze",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "black",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "conformance",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "temporal_flicker",
+     "value": 0.3149,
+     "passed": true
+    },
+    {
+     "name": "color_drift",
+     "value": 8.8208,
+     "passed": false
+    },
+    {
+     "name": "motion_sanity",
+     "value": 1.2056,
+     "passed": true
+    },
+    {
+     "name": "seam",
+     "value": null,
+     "passed": true
+    }
+   ],
+   "qc_advice": [],
+   "chain": {
+    "strategy": "last_frame",
+    "inputs": {
+     "first_frame_uri": "out/work/full/renders/open/mock-01b30c2835-002/last_frame.png"
+    },
+    "notes": [
+     "provider 直出尾帧 last_frame.png（清晰度 676）"
+    ]
+   },
+   "chain_strategy": "last_frame",
+   "drift_after": 0.864,
+   "reanchor": false,
+   "refs": {
+    "images": 8,
+    "videos": 0,
+    "audios": 0
+   },
+   "refs_dropped": 1,
+   "degradations": [
+    "时长 8.25s → 8s（mock-official 档位 (4.0, 8.0, 12.0, 15.0)）",
+    "mock-official 不能挂 lin_lan 的 LoRA → 身份只靠 identity 参考图，漂移预算需上浮"
+   ],
+   "dialogue": [],
+   "status": "succeeded"
+  },
+  {
+   "id": "sc03_s05",
+   "scene": "sc03",
+   "scene_title": "接触",
+   "duration_s": 5.25,
+   "shot_size": "close-up",
+   "camera_move": "static locked-off camera",
+   "lens_mm": 85,
+   "subjects": [
+    "lin_lan"
+   ],
+   "engine_hint": "hero",
+   "provider": "mock-official",
+   "take": 2,
+   "cost": 0.48,
+   "qc_score": 0.82,
+   "qc_verdict": "escalate",
+   "qc_metrics": [
+    {
+     "name": "freeze",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "black",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "conformance",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "temporal_flicker",
+     "value": 0.5921,
+     "passed": true
+    },
+    {
+     "name": "color_drift",
+     "value": 12.1811,
+     "passed": false
+    },
+    {
+     "name": "motion_sanity",
+     "value": 1.1911,
+     "passed": true
+    },
+    {
+     "name": "seam",
+     "value": null,
+     "passed": true
+    }
+   ],
+   "qc_advice": [
+    "单项严重超标：color_drift（已超阈值 1.5 倍以上，不参与加权表决）。",
+    "首尾红青轴漂移 -12.2 码值（阈值 ±6.0）。建议：①给 Continuity 加尾帧锚（上一镜 emit_last_frame + 本镜 inherit_last_frame），让模型有固定的收尾目标；②降低 CFG / 去掉过强的 style 参考位；③把 duration_s 拆短（漂移随时长累积，>8s 的镜优先拆）；④确属轻微时可交给 grade.py 统一到场景 base_grade，不必重拍。",
+    "已重拍 2 次（上限 3），继续重摇是在烧额度；建议改工单：拆短时长、换引擎（EngineHint.HERO/OPEN）或改写这条镜头的动作描述。"
+   ],
+   "chain": null,
+   "chain_strategy": "reanchor",
+   "drift_after": 0.15,
+   "reanchor": true,
+   "refs": {
+    "images": 7,
+    "videos": 0,
+    "audios": 0
+   },
+   "refs_dropped": 0,
+   "degradations": [
+    "时长 5.25s → 4s（mock-official 档位 (4.0, 8.0, 12.0, 15.0)）",
+    "mock-official 不能挂 lin_lan 的 LoRA → 身份只靠 identity 参考图，漂移预算需上浮"
+   ],
+   "dialogue": [],
+   "status": "succeeded"
+  },
+  {
+   "id": "sc03_s06",
+   "scene": "sc03",
+   "scene_title": "接触",
+   "duration_s": 3.75,
+   "shot_size": "extreme close-up",
+   "camera_move": "camera dollies in",
+   "lens_mm": 100,
+   "subjects": [],
+   "engine_hint": "open",
+   "provider": "mock-open",
+   "take": 2,
+   "cost": 0.015,
+   "qc_score": 0.812,
+   "qc_verdict": "escalate",
+   "qc_metrics": [
+    {
+     "name": "freeze",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "black",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "conformance",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "temporal_flicker",
+     "value": 0.7561,
+     "passed": true
+    },
+    {
+     "name": "color_drift",
+     "value": 32.1578,
+     "passed": false
+    },
+    {
+     "name": "motion_sanity",
+     "value": 0.638,
+     "passed": true
+    },
+    {
+     "name": "seam",
+     "value": null,
+     "passed": true
+    }
+   ],
+   "qc_advice": [
+    "单项严重超标：color_drift（已超阈值 1.5 倍以上，不参与加权表决）。",
+    "首尾亮度漂移 +32.2 码值（阈值 ±6.0）。建议：①给 Continuity 加尾帧锚（上一镜 emit_last_frame + 本镜 inherit_last_frame），让模型有固定的收尾目标；②降低 CFG / 去掉过强的 style 参考位；③把 duration_s 拆短（漂移随时长累积，>8s 的镜优先拆）；④确属轻微时可交给 grade.py 统一到场景 base_grade，不必重拍。",
+    "已重拍 5 次（上限 3），继续重摇是在烧额度；建议改工单：拆短时长、换引擎（EngineHint.HERO/OPEN）或改写这条镜头的动作描述。"
+   ],
+   "chain": {
+    "strategy": "last_frame",
+    "inputs": {
+     "first_frame_uri": "out/work/full/renders/official/mock-20adaf7260-019/last_frame.png"
+    },
+    "notes": [
+     "provider 直出尾帧 last_frame.png（清晰度 730）"
+    ]
+   },
+   "chain_strategy": "last_frame",
+   "drift_after": 0.553,
+   "reanchor": false,
+   "refs": {
+    "images": 1,
+    "videos": 0,
+    "audios": 0
+   },
+   "refs_dropped": 1,
+   "degradations": [],
+   "dialogue": [],
+   "status": "succeeded"
+  },
+  {
+   "id": "sc03_s07",
+   "scene": "sc03",
+   "scene_title": "接触",
+   "duration_s": 7.5,
+   "shot_size": "full shot",
+   "camera_move": "camera pedestals up",
+   "lens_mm": 28,
+   "subjects": [
+    "lin_lan",
+    "kai_k7"
+   ],
+   "engine_hint": "hero",
+   "provider": "mock-official",
+   "take": 2,
+   "cost": 0.96,
+   "qc_score": 0.852,
+   "qc_verdict": "escalate",
+   "qc_metrics": [
+    {
+     "name": "freeze",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "black",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "conformance",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "temporal_flicker",
+     "value": 0.5764,
+     "passed": true
+    },
+    {
+     "name": "color_drift",
+     "value": 9.5456,
+     "passed": false
+    },
+    {
+     "name": "motion_sanity",
+     "value": 1.0308,
+     "passed": true
+    },
+    {
+     "name": "seam",
+     "value": null,
+     "passed": true
+    }
+   ],
+   "qc_advice": [
+    "单项严重超标：color_drift（已超阈值 1.5 倍以上，不参与加权表决）。",
+    "首尾亮度漂移 -9.5 码值（阈值 ±6.0）。建议：①给 Continuity 加尾帧锚（上一镜 emit_last_frame + 本镜 inherit_last_frame），让模型有固定的收尾目标；②降低 CFG / 去掉过强的 style 参考位；③把 duration_s 拆短（漂移随时长累积，>8s 的镜优先拆）；④确属轻微时可交给 grade.py 统一到场景 base_grade，不必重拍。",
+    "已重拍 2 次（上限 3），继续重摇是在烧额度；建议改工单：拆短时长、换引擎（EngineHint.HERO/OPEN）或改写这条镜头的动作描述。"
+   ],
+   "chain": {
+    "strategy": "last_frame",
+    "inputs": {
+     "first_frame_uri": "out/work/full/renders/open/mock-c54e917ac3-003/last_frame.png"
+    },
+    "notes": [
+     "provider 直出尾帧 last_frame.png（清晰度 516）"
+    ]
+   },
+   "chain_strategy": "last_frame",
+   "drift_after": 0.829,
+   "reanchor": false,
+   "refs": {
+    "images": 8,
+    "videos": 0,
+    "audios": 0
+   },
+   "refs_dropped": 1,
+   "degradations": [
+    "时长 7.5s → 8s（mock-official 档位 (4.0, 8.0, 12.0, 15.0)）",
+    "mock-official 不能挂 lin_lan 的 LoRA → 身份只靠 identity 参考图，漂移预算需上浮"
+   ],
+   "dialogue": [],
+   "status": "succeeded"
+  },
+  {
+   "id": "sc03_s08",
+   "scene": "sc03",
+   "scene_title": "接触",
+   "duration_s": 6.75,
+   "shot_size": "long shot",
+   "camera_move": "static locked-off camera",
+   "lens_mm": 24,
+   "subjects": [
+    "lin_lan"
+   ],
+   "engine_hint": "official",
+   "provider": "mock-official",
+   "take": 1,
+   "cost": 0.96,
+   "qc_score": 0.965,
+   "qc_verdict": "pass",
+   "qc_metrics": [
+    {
+     "name": "freeze",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "black",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "conformance",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "temporal_flicker",
+     "value": 0.3533,
+     "passed": true
+    },
+    {
+     "name": "color_drift",
+     "value": 1.4558,
+     "passed": true
+    },
+    {
+     "name": "motion_sanity",
+     "value": 0.7887,
+     "passed": true
+    },
+    {
+     "name": "seam",
+     "value": null,
+     "passed": true
+    }
+   ],
+   "qc_advice": [],
+   "chain": {
+    "strategy": "official_extend",
+    "inputs": {
+     "extend_from_job": "mock-caceb47ab3-021",
+     "provider": "mock-official"
+    },
+    "notes": [
+     "用 mock-official 的官方延长接口接 job mock-caceb47ab3-021"
+    ]
+   },
+   "chain_strategy": "official_extend",
+   "drift_after": 0.993,
+   "reanchor": false,
+   "refs": {
+    "images": 7,
+    "videos": 0,
+    "audios": 0
+   },
+   "refs_dropped": 0,
+   "degradations": [
+    "时长 6.75s → 8s（mock-official 档位 (4.0, 8.0, 12.0, 15.0)）",
+    "mock-official 不能挂 lin_lan 的 LoRA → 身份只靠 identity 参考图，漂移预算需上浮"
+   ],
+   "dialogue": [],
+   "status": "succeeded"
+  },
+  {
+   "id": "sc03_s09",
+   "scene": "sc03",
+   "scene_title": "接触",
+   "duration_s": 6.0,
+   "shot_size": "medium close-up",
+   "camera_move": "camera dollies in",
+   "lens_mm": 50,
+   "subjects": [
+    "lin_lan"
+   ],
+   "engine_hint": "hero",
+   "provider": "mock-official",
+   "take": 2,
+   "cost": 0.48,
+   "qc_score": 0.801,
+   "qc_verdict": "escalate",
+   "qc_metrics": [
+    {
+     "name": "freeze",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "black",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "conformance",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "temporal_flicker",
+     "value": 0.9975,
+     "passed": true
+    },
+    {
+     "name": "color_drift",
+     "value": 46.4591,
+     "passed": false
+    },
+    {
+     "name": "motion_sanity",
+     "value": 1.6568,
+     "passed": true
+    },
+    {
+     "name": "seam",
+     "value": null,
+     "passed": true
+    }
+   ],
+   "qc_advice": [
+    "单项严重超标：color_drift（已超阈值 1.5 倍以上，不参与加权表决）。",
+    "首尾亮度漂移 +46.5 码值（阈值 ±6.0）。建议：①给 Continuity 加尾帧锚（上一镜 emit_last_frame + 本镜 inherit_last_frame），让模型有固定的收尾目标；②降低 CFG / 去掉过强的 style 参考位；③把 duration_s 拆短（漂移随时长累积，>8s 的镜优先拆）；④确属轻微时可交给 grade.py 统一到场景 base_grade，不必重拍。",
+    "已重拍 2 次（上限 3），继续重摇是在烧额度；建议改工单：拆短时长、换引擎（EngineHint.HERO/OPEN）或改写这条镜头的动作描述。"
+   ],
+   "chain": null,
+   "chain_strategy": "reanchor",
+   "drift_after": 0.15,
+   "reanchor": true,
+   "refs": {
+    "images": 7,
+    "videos": 0,
+    "audios": 0
+   },
+   "refs_dropped": 0,
+   "degradations": [
+    "时长 6s → 4s（mock-official 档位 (4.0, 8.0, 12.0, 15.0)）",
+    "mock-official 不能挂 lin_lan 的 LoRA → 身份只靠 identity 参考图，漂移预算需上浮"
+   ],
+   "dialogue": [],
+   "status": "succeeded"
+  },
+  {
+   "id": "sc03_s10",
+   "scene": "sc03",
+   "scene_title": "接触",
+   "duration_s": 9.0,
+   "shot_size": "extreme long shot",
+   "camera_move": "static locked-off camera",
+   "lens_mm": 24,
+   "subjects": [],
+   "engine_hint": "hero",
+   "provider": "mock-official",
+   "take": 2,
+   "cost": 0.96,
+   "qc_score": 0.827,
+   "qc_verdict": "escalate",
+   "qc_metrics": [
+    {
+     "name": "freeze",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "black",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "conformance",
+     "value": 0.0,
+     "passed": true
+    },
+    {
+     "name": "temporal_flicker",
+     "value": 0.6329,
+     "passed": true
+    },
+    {
+     "name": "color_drift",
+     "value": 11.2908,
+     "passed": false
+    },
+    {
+     "name": "motion_sanity",
+     "value": 0.4843,
+     "passed": true
+    },
+    {
+     "name": "seam",
+     "value": null,
+     "passed": true
+    }
+   ],
+   "qc_advice": [
+    "单项严重超标：color_drift（已超阈值 1.5 倍以上，不参与加权表决）。",
+    "首尾亮度漂移 -11.3 码值（阈值 ±6.0）。建议：①给 Continuity 加尾帧锚（上一镜 emit_last_frame + 本镜 inherit_last_frame），让模型有固定的收尾目标；②降低 CFG / 去掉过强的 style 参考位；③把 duration_s 拆短（漂移随时长累积，>8s 的镜优先拆）；④确属轻微时可交给 grade.py 统一到场景 base_grade，不必重拍。",
+    "已重拍 2 次（上限 3），继续重摇是在烧额度；建议改工单：拆短时长、换引擎（EngineHint.HERO/OPEN）或改写这条镜头的动作描述。"
+   ],
+   "chain": {
+    "strategy": "official_extend",
+    "inputs": {
+     "extend_from_job": "mock-93bef5ca2d-024",
+     "provider": "mock-official"
+    },
+    "notes": [
+     "用 mock-official 的官方延长接口接 job mock-93bef5ca2d-024"
+    ]
+   },
+   "chain_strategy": "official_extend",
+   "drift_after": 0.415,
+   "reanchor": false,
+   "refs": {
+    "images": 0,
+    "videos": 0,
+    "audios": 0
+   },
+   "refs_dropped": 0,
+   "degradations": [
+    "时长 9s → 8s（mock-official 档位 (4.0, 8.0, 12.0, 15.0)）"
+   ],
+   "dialogue": [],
+   "status": "succeeded"
+  }
+ ]
+}

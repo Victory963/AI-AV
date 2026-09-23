@@ -35,6 +35,17 @@ export PYTHONPATH=$PWD/src
 
 上云见 [deploy/README.md](deploy/README.md)：选卡、实价、一键开机、LoRA 训练、成本计算器。
 
+## 操作台界面
+
+```bash
+.venv/bin/python web/build_ui.py          # 用仓库里的运行快照生成 web/index.html
+python -m http.server -d web 8080         # 打开 http://localhost:8080
+```
+
+[web/index.html](web/index.html) 是产线的操作台：首页、分镜工作台（30 镜逐镜的引擎 / 取次 / 质检分 / 成本）、产线监控（质检分布、成本账本、跨镜漂移、后处理落选原因）、角色圣经、合规交付、引擎与路由。
+
+**界面里的每个数字都来自一次真实运行**，不是设计稿里的假数据。换一次运行只要 `python web/build_ui.py --run out/work/<你的>/pipeline_result.json`，快照和页面一起更新。
+
 **仓库里不含的东西**（授权或体积原因），代码都有自动查找与兜底：
 
 | 缺的 | 为什么不放 | 怎么补 |
