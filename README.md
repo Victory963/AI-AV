@@ -44,6 +44,16 @@ python -m http.server -d web 8080         # 打开 http://localhost:8080
 
 [web/index.html](web/index.html) 是产线的操作台：首页、分镜工作台（30 镜逐镜的引擎 / 取次 / 质检分 / 成本）、产线监控（质检分布、成本账本、跨镜漂移、后处理落选原因）、角色圣经、合规交付、引擎与路由。
 
+接真引擎出样片（画质那一半）：
+
+```bash
+echo 'ARK_API_KEY=你的密钥' >> .env      # .env 已被 gitignore
+python scripts/make_showreel.py --dry-run   # 先看计划与报价，不花钱
+python scripts/make_showreel.py --budget 5  # 出片 → 质检 → 烧标识 → 进页面
+```
+
+样片走产线的正常路径（提示词编译 → 路由 → 质检门禁 → 合规标识），所以页面上的片子和真出片时的结果对得上。媒体文件不进仓库（每条素材都要单独声明来源）。
+
 **界面里的每个数字都来自一次真实运行**，不是设计稿里的假数据。换一次运行只要 `python web/build_ui.py --run out/work/<你的>/pipeline_result.json`，快照和页面一起更新。
 
 **仓库里不含的东西**（授权或体积原因），代码都有自动查找与兜底：
