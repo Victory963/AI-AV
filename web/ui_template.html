@@ -14,6 +14,10 @@
   --ok:#2FBF87; --warn:#E9A23B; --bad:#F0546B;
   --ok-soft:rgba(47,191,135,.14); --warn-soft:rgba(233,162,59,.14); --bad-soft:rgba(240,84,107,.14);
   --shadow:0 18px 44px rgba(0,0,0,.44);
+  /* 落地页是深色控制台里的一块亮纸面：两个 token 成对翻，两套主题下对比度都成立 */
+  --paper:#F5F6FA; --paper-2:#FFFFFF; --paper-3:#EEF0F7;
+  --paper-ink:#0E1017; --paper-ink-2:#555D72; --paper-ink-3:#868DA1;
+  --paper-line:#E2E5EF; --paper-accent:#6944F5;
   --r-s:8px; --r-m:14px; --r-l:22px;
   --sans:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif;
   --latin:"Archivo","Noto Sans SC",system-ui,sans-serif;
@@ -28,6 +32,9 @@
     --accent-soft:rgba(105,68,245,.10); --accent-line:rgba(105,68,245,.30);
     --ok:#129A6A; --warn:#B77413; --bad:#D62F49;
     --ok-soft:rgba(18,154,106,.12); --warn-soft:rgba(183,116,19,.12); --bad-soft:rgba(214,47,73,.12);
+    --paper:#FFFFFF; --paper-2:#F7F8FC; --paper-3:#EFF1F8;
+    --paper-ink:#0E1017; --paper-ink-2:#555D72; --paper-ink-3:#868DA1;
+    --paper-line:#E4E7F0; --paper-accent:#6944F5;
     --shadow:0 14px 36px rgba(20,24,40,.10);
   }
 }
@@ -39,6 +46,9 @@
   --accent-soft:rgba(105,68,245,.10); --accent-line:rgba(105,68,245,.30);
   --ok:#129A6A; --warn:#B77413; --bad:#D62F49;
   --ok-soft:rgba(18,154,106,.12); --warn-soft:rgba(183,116,19,.12); --bad-soft:rgba(214,47,73,.12);
+  --paper:#FFFFFF; --paper-2:#F7F8FC; --paper-3:#EFF1F8;
+  --paper-ink:#0E1017; --paper-ink-2:#555D72; --paper-ink-3:#868DA1;
+  --paper-line:#E4E7F0; --paper-accent:#6944F5;
   --shadow:0 14px 36px rgba(20,24,40,.10);
 }
 
@@ -257,6 +267,105 @@ footer{border-top:1px solid var(--line-soft);padding-top:20px;display:flex;flex-
   font-size:11.5px;color:var(--ink-3)}
 footer b{color:var(--ink-2);font-weight:500}
 
+
+/* ------------------------------------------------- 落地区（魔珐有言式浅色页） */
+.land{background:var(--paper);color:var(--paper-ink);border-radius:var(--r-l);border:1px solid var(--paper-line);
+  padding:0 clamp(18px,3.6vw,54px);overflow:hidden}
+.land-nav{display:flex;align-items:center;gap:6px;padding:16px 0;border-bottom:1px solid var(--paper-line);flex-wrap:wrap}
+.land-nav .lnav{padding:8px 13px;border-radius:9px;font-size:13.5px;color:var(--paper-ink-2);transition:background .15s,color .15s}
+.land-nav .lnav:hover{background:var(--paper-3);color:var(--paper-ink)}
+.land-nav .spacer{margin-left:auto}
+.land-cta{padding:9px 18px;border-radius:10px;background:var(--paper-accent);color:#fff;font-weight:700;font-size:13.5px;transition:filter .15s}
+.land-cta:hover{filter:brightness(1.08)}
+
+.land-hero{text-align:center;padding:clamp(42px,6vw,82px) 0 clamp(30px,4vw,44px);display:flex;flex-direction:column;align-items:center;gap:20px}
+.land-hero h1{font-size:clamp(30px,5.6vw,64px);font-weight:900;letter-spacing:-.045em;line-height:1.1;max-width:18ch}
+.land-hero h1 em{font-style:normal;color:var(--paper-accent)}
+.land-hero .sub{max-width:62ch;color:var(--paper-ink-2);font-size:clamp(14px,1.4vw,16.5px);line-height:1.85}
+.land-hero .cta-row{justify-content:center;margin-top:6px}
+.cta-dark{background:var(--paper-ink);color:var(--paper);border:0}
+.cta-dark:hover{filter:brightness(1.35)}
+.cta-line{background:transparent;color:var(--paper-ink);border:1px solid var(--paper-line)}
+.cta-line:hover{border-color:var(--paper-accent);color:var(--paper-accent)}
+
+.proof{display:grid;grid-template-columns:repeat(auto-fit,minmax(142px,1fr));gap:14px;padding:22px 0 30px;border-top:1px solid var(--paper-line)}
+.proof div{text-align:center}
+.proof b{display:block;font-family:var(--mono);font-size:clamp(20px,2.4vw,27px);font-weight:500;letter-spacing:-.02em;color:var(--paper-ink)}
+.proof span{font-size:12px;color:var(--paper-ink-3)}
+
+.land-head{text-align:center;max-width:56ch;margin:0 auto clamp(22px,3vw,34px)}
+.land-head h2{font-size:clamp(21px,2.9vw,34px);font-weight:900;letter-spacing:-.03em;line-height:1.28}
+.land-head p{margin-top:12px;color:var(--paper-ink-2);font-size:14px;line-height:1.85}
+.land-sec{padding:clamp(34px,5vw,64px) 0;border-top:1px solid var(--paper-line)}
+
+.tabs{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:22px}
+.tab{padding:9px 18px;border-radius:999px;font-size:13.5px;color:var(--paper-ink-2);border:1px solid var(--paper-line);transition:.15s}
+.tab:hover{color:var(--paper-ink);border-color:var(--paper-accent)}
+.tab[aria-selected="true"]{background:var(--paper-ink);color:var(--paper);border-color:var(--paper-ink);font-weight:500}
+.tab-panel{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(16px,2.4vw,30px);align-items:center;
+  background:var(--paper-2);border:1px solid var(--paper-line);border-radius:var(--r-l);padding:clamp(18px,2.6vw,30px)}
+.tab-panel h3{font-size:18px;letter-spacing:-.01em}
+.tab-panel p{margin-top:10px;color:var(--paper-ink-2);font-size:13.5px;line-height:1.85}
+.tab-list{margin-top:14px;display:flex;flex-direction:column;gap:8px}
+.tab-list div{display:flex;gap:9px;font-size:13px;color:var(--paper-ink-2)}
+.tab-list b{color:var(--paper-accent);font-family:var(--mono);font-size:12px;flex:none}
+.code{font-family:var(--mono);font-size:12.5px;line-height:1.95;color:#D7DBEA;background:#141722;border-radius:var(--r-m);
+  padding:18px;overflow-x:auto;white-space:pre;border:1px solid #232838}
+.code .c{color:#6E778F}
+.code .k{color:#9B86FF}
+
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(248px,1fr));gap:16px}
+.step{background:var(--paper-2);border:1px solid var(--paper-line);border-radius:var(--r-m);padding:22px;display:flex;flex-direction:column;gap:10px}
+.step .n{width:28px;height:28px;border-radius:9px;background:var(--paper-accent);color:#fff;display:grid;place-items:center;
+  font-family:var(--mono);font-size:13px}
+.step h4{font-size:15px}
+.step p{font-size:13px;color:var(--paper-ink-2);line-height:1.8}
+.step code{font-family:var(--mono);font-size:12px;background:var(--paper-3);padding:3px 7px;border-radius:6px;color:var(--paper-ink)}
+
+.feat{display:grid;grid-template-columns:repeat(auto-fit,minmax(232px,1fr));gap:16px}
+.feat-card{background:var(--paper-2);border:1px solid var(--paper-line);border-radius:var(--r-m);padding:22px;display:flex;flex-direction:column;gap:9px}
+.feat-card svg{width:22px;height:22px;stroke:var(--paper-accent);fill:none;stroke-width:1.6}
+.feat-card b{font-size:14.5px}
+.feat-card p{font-size:13px;color:var(--paper-ink-2);line-height:1.8}
+.feat-card .fig{font-family:var(--mono);font-size:12px;color:var(--paper-ink-3);border-top:1px dashed var(--paper-line);padding-top:9px;margin-top:auto}
+
+.scenes{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}
+.scene{padding:18px;border-radius:var(--r-m);border:1px solid var(--paper-line);background:var(--paper-2);transition:border-color .15s,transform .15s}
+.scene:hover{border-color:var(--paper-accent);transform:translateY(-2px)}
+.scene b{font-size:14px;display:block;margin-bottom:6px}
+.scene span{font-size:12.5px;color:var(--paper-ink-2);line-height:1.75}
+
+.faq{max-width:780px;margin:0 auto;display:flex;flex-direction:column;gap:10px}
+.faq details{background:var(--paper-2);border:1px solid var(--paper-line);border-radius:var(--r-m);padding:2px 18px}
+.faq summary{cursor:pointer;padding:15px 0;font-size:14.5px;font-weight:500;list-style:none;display:flex;align-items:center;gap:12px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";margin-left:auto;font-family:var(--mono);font-size:17px;color:var(--paper-ink-3)}
+.faq details[open] summary::after{content:"−"}
+.faq p{padding:0 0 16px;font-size:13.5px;color:var(--paper-ink-2);line-height:1.9}
+
+.land-end{margin:0 calc(-1 * clamp(18px,3.6vw,54px));padding:clamp(36px,5vw,60px) clamp(18px,3.6vw,54px);
+  background:var(--paper-ink);color:var(--paper);text-align:center;display:flex;flex-direction:column;align-items:center;gap:18px}
+.land-end h2{font-size:clamp(20px,2.8vw,32px);font-weight:900;letter-spacing:-.03em}
+.land-end p{color:#A9B0C4;font-size:13.5px;max-width:52ch}
+.land-end .cta-row{justify-content:center}
+.land-end .cta-dark{background:var(--paper);color:var(--paper-ink)}
+.land-end .cta-line{color:var(--paper);border-color:#3A4054}
+
+.land-foot{display:grid;grid-template-columns:repeat(auto-fit,minmax(168px,1fr));gap:24px;padding:clamp(28px,4vw,44px) 0}
+.land-foot h5{font-size:12px;letter-spacing:.1em;color:var(--paper-ink-3);font-weight:500;margin-bottom:12px}
+.land-foot ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.land-foot a,.land-foot button{font-size:13px;color:var(--paper-ink-2);text-decoration:none;text-align:left;padding:0}
+.land-foot a:hover,.land-foot button:hover{color:var(--paper-accent)}
+.land-bottom{border-top:1px solid var(--paper-line);padding:18px 0 26px;font-size:12px;color:var(--paper-ink-3);
+  display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
+
+.zone-head{display:flex;align-items:center;gap:12px;color:var(--ink-3);font-size:12px;letter-spacing:.14em}
+.zone-head::after{content:"";flex:1;height:1px;background:var(--line)}
+
+@media (max-width:760px){
+  .tab-panel{grid-template-columns:minmax(0,1fr)}
+}
+
 @media (max-width:900px){
   .app{grid-template-columns:minmax(0,1fr)}
   .side{position:static;height:auto;flex-direction:row;align-items:center;gap:12px;overflow-x:auto;
@@ -316,25 +425,146 @@ footer b{color:var(--ink-2);font-weight:500}
     <header class="topbar">
       <div class="crumb"><b>deep-archive</b> / ep01 / <span id="crumb-view">首页</span></div>
       <div class="run-chip"><span class="dot"></span><span id="run-chip-text">最近运行 · 6 阶段全部通过</span></div>
-      <button class="ghost-btn" id="btn-docs" type="button">架构文档</button>
+      <a class="ghost-btn" id="btn-docs" href="https://github.com/Victory963/AI-AV/blob/main/docs/ARCHITECTURE.md" target="_blank" rel="noopener" style="text-decoration:none">架构文档 ↗</a>
     </header>
 
     <div class="scroll">
       <!-- ============================================================ 首页 -->
       <section class="view" data-view="home">
-        <div class="hero">
-          <div>
-            <div class="eyebrow">分镜驱动 · 双引擎路由 · 断点续跑</div>
-            <h1>一份分镜，<br>产出一集 <em>2–8 分钟</em>成片</h1>
-            <p>单镜观感交给引擎（闭源 API 或自建开源），成片长度交给这套分镜系统：参考位编排 → 多引擎路由 → 续接链 → 质检重拍 → 调色拼接 → 超分 → 合规交付。</p>
+        <div class="land">
+          <nav class="land-nav" aria-label="落地页导航">
+            <button class="lnav" data-scroll="sec-ways" type="button">怎么开工</button>
+            <button class="lnav" data-scroll="sec-steps" type="button">三步出片</button>
+            <button class="lnav" data-scroll="sec-feat" type="button">能力</button>
+            <button class="lnav" data-scroll="sec-scene" type="button">适用场景</button>
+            <button class="lnav" data-scroll="sec-faq" type="button">常见问题</button>
+            <a class="lnav" href="https://github.com/Victory963/AI-AV" target="_blank" rel="noopener">文档与源码</a>
+            <span class="spacer"></span>
+            <button class="land-cta" id="land-cta" type="button">开启创作</button>
+          </nav>
+
+          <div class="land-hero">
+            <h1>一份分镜，产出一集<br><em>2–8 分钟</em>的成片</h1>
+            <p class="sub">不用逐镜盯着模型出片。写好节拍表，产线自动编排参考位、选引擎、接续长镜、质检重拍、统一色彩、拼接混音，最后交一条带显式标识与溯源清单的成片。单镜观感交给引擎，成片长度交给这套分镜系统。</p>
             <div class="cta-row">
-              <button class="cta cta-1" id="cta-new" type="button">新建分镜</button>
-              <button class="cta cta-2" data-goto="board" type="button">看这次运行的 30 镜</button>
+              <button class="cta cta-dark" id="cta-new" type="button">新建分镜 →</button>
+              <button class="cta cta-line" data-goto="board" type="button">看这次运行的 30 镜</button>
             </div>
           </div>
-          <div class="hero-card">
-            <h4>最近一次运行</h4>
+
+          <div class="proof" id="proof"></div>
+
+          <section class="land-sec" id="sec-ways">
+            <div class="land-head">
+              <h2>不用从零搭产线，四种方式都能开工</h2>
+              <p>四条入口通向同一份分镜 JSON —— 整条产线只认它这一个契约</p>
+            </div>
+            <div class="tabs" id="tabs" role="tablist"></div>
+            <div id="tab-body"></div>
+          </section>
+
+          <section class="land-sec" id="sec-steps">
+            <div class="land-head">
+              <h2>出一集片，就是三条命令</h2>
+              <p>每个阶段跑完就落盘，进程被杀也能用 <span class="num">--resume</span> 接上</p>
+            </div>
+            <div class="steps" id="steps"></div>
+          </section>
+
+          <section class="land-sec" id="sec-feat">
+            <div class="land-head">
+              <h2>长片难在哪，产线就补在哪</h2>
+              <p>下面每块的数字都来自本页这次运行，不是宣传口径</p>
+            </div>
+            <div class="feat" id="feat-a" style="margin-bottom:16px"></div>
+            <div class="feat" id="feat-b"></div>
+          </section>
+
+          <section class="land-sec" id="sec-scene">
+            <div class="land-head">
+              <h2>适用场景</h2>
+              <p>按产线已实现的能力推断的适用方向，不是客户案例</p>
+            </div>
+            <div class="scenes" id="scenes"></div>
+          </section>
+
+          <section class="land-sec" id="sec-faq">
+            <div class="land-head">
+              <h2>常见问题</h2>
+              <p>包括几条「做不到」—— 这些是调研后确认的边界</p>
+            </div>
+            <div class="faq" id="faq"></div>
+          </section>
+
+          <div class="land-end">
+            <h2>把你的节拍表，变成一集成片</h2>
+            <p>本机无 GPU、无密钥也能把整条调度跑通：mock 引擎出真 mp4，26 个模块自测全过。</p>
+            <div class="cta-row">
+              <button class="cta cta-dark" data-open-new type="button">新建分镜</button>
+              <button class="cta cta-line" data-goto="monitor" type="button">看产线监控</button>
+            </div>
+          </div>
+
+          <div class="land-foot">
+            <div>
+              <h5>产线</h5>
+              <ul>
+                <li><button data-goto="board" type="button">分镜工作台</button></li>
+                <li><button data-goto="monitor" type="button">产线监控</button></li>
+                <li><button data-goto="cast" type="button">角色圣经</button></li>
+                <li><button data-goto="deliver" type="button">合规交付</button></li>
+                <li><button data-goto="engines" type="button">引擎与路由</button></li>
+              </ul>
+            </div>
+            <div>
+              <h5>能力</h5>
+              <ul>
+                <li><button data-scroll="sec-feat" type="button">角色一致性</button></li>
+                <li><button data-scroll="sec-feat" type="button">长镜续接</button></li>
+                <li><button data-scroll="sec-feat" type="button">质检与重拍</button></li>
+                <li><button data-scroll="sec-feat" type="button">调色与拼接</button></li>
+                <li><button data-scroll="sec-feat" type="button">超分与插帧</button></li>
+              </ul>
+            </div>
+            <div>
+              <h5>文档</h5>
+              <ul>
+                <li><a href="https://github.com/Victory963/AI-AV/blob/main/docs/ARCHITECTURE.md" target="_blank" rel="noopener">架构详解</a></li>
+                <li><a href="https://github.com/Victory963/AI-AV/blob/main/docs/MODULES.md" target="_blank" rel="noopener">代码详解</a></li>
+                <li><a href="https://github.com/Victory963/AI-AV/blob/main/docs/PLAN.md" target="_blank" rel="noopener">调研结论与方案</a></li>
+                <li><a href="https://github.com/Victory963/AI-AV/blob/main/deploy/README.md" target="_blank" rel="noopener">云 GPU 手册</a></li>
+                <li><a href="https://github.com/Victory963/AI-AV" target="_blank" rel="noopener">GitHub 仓库</a></li>
+              </ul>
+            </div>
+            <div>
+              <h5>边界与合规</h5>
+              <ul>
+                <li><button data-goto="cast" type="button">只做虚构成年角色</button></li>
+                <li><button data-goto="deliver" type="button">显式标识与溯源清单</button></li>
+                <li><button data-goto="engines" type="button">不规避平台审核</button></li>
+                <li><a href="https://github.com/Victory963/AI-AV/blob/main/assets/cast/README.md" target="_blank" rel="noopener">参考图来源规范</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="land-bottom">
+            <span>LongFilm · 分镜驱动的长片产线</span>
+            <span>页面数据由 web/build_ui.py 从一次真实运行生成</span>
+          </div>
+        </div>
+
+        <div class="zone-head">控制台 · 最近一次运行</div>
+
+        <div class="grid-2">
+          <div class="card">
+            <h3>这一集跑出了什么</h3>
+            <p class="hint">项目 <span class="num">deep-archive/ep01</span> · mock 双通道 · 本机无 GPU</p>
             <div id="hero-kv"></div>
+          </div>
+          <div class="card">
+            <h3>阶段耗时</h3>
+            <p class="hint">六个阶段各自实测。分次运行（含 <span class="num">--resume</span> 续跑），不是一条时间轴上的连续值。</p>
+            <div id="stage-strip"></div>
           </div>
         </div>
 
@@ -348,23 +578,15 @@ footer b{color:var(--ink-2);font-weight:500}
 
         <div class="grid-2">
           <div class="card">
-            <h3>阶段耗时</h3>
-            <p class="hint">六个阶段各自实测。分次运行（含 <span class="num">--resume</span> 续跑），所以不是一条时间轴上的连续值。</p>
-            <div id="stage-strip"></div>
-          </div>
-          <div class="card">
             <h3>这一集的三场戏</h3>
             <p class="hint">节拍表生成，每场 10 镜</p>
             <div id="scene-list"></div>
           </div>
-        </div>
-
-        <div>
-          <div class="sec-head" style="margin-bottom:14px">
-            <h2>最近产出</h2>
-            <p>产线每个阶段都落盘，点开可看该阶段的真实数据</p>
+          <div class="card">
+            <h3>最近产出</h3>
+            <p class="hint">产线每个阶段都落盘，点开看该阶段的真实数据</p>
+            <div class="grid-3" id="projects" style="margin-top:12px"></div>
           </div>
-          <div class="grid-3" id="projects"></div>
         </div>
       </section>
 
@@ -821,7 +1043,6 @@ footer b{color:var(--ink-2);font-weight:500}
   }
   $$(".nav-item").forEach(b => b.addEventListener("click", () => go(b.dataset.view)));
   $$("[data-goto]").forEach(b => b.addEventListener("click", () => go(b.dataset.goto)));
-  $("#btn-docs").addEventListener("click", () => go("engines"));
 
   /* ---------------------------------------------------------- 新建分镜 */
   const dlg = $("#dlg-new");
@@ -834,6 +1055,8 @@ footer b{color:var(--ink-2);font-weight:500}
   const open = () => { if (dlg.showModal) dlg.showModal(); else dlg.setAttribute("open", ""); };
   $("#btn-new").addEventListener("click", open);
   $("#cta-new").addEventListener("click", open);
+  $("#land-cta").addEventListener("click", open);
+  $$("[data-open-new]").forEach(b => b.addEventListener("click", open));
   $("#dlg-close").addEventListener("click", () => dlg.close());
   $("#dlg-copy").addEventListener("click", async () => {
     const hint = $("#copy-hint");
@@ -850,6 +1073,134 @@ footer b{color:var(--ink-2);font-weight:500}
     }
     setTimeout(() => { hint.textContent = ""; }, 2600);
   });
+
+  /* ---------------------------------------------------- 落地区（真实数据） */
+  const maxDriftAll = Math.max(...D.shots.map(x => x.drift_after || 0));
+  $("#proof").append(...[
+    ["26/26", "模块自测通过"],
+    [R.shots + " 镜", "端到端跑通一集"],
+    ["5 类", "引擎已接入"],
+    ["0", "个密钥即可运行"],
+  ].map(([b, k]) => el("div", "", "<b>" + esc(b) + "</b><span>" + esc(k) + "</span>")));
+
+  const WAYS = [
+    { tab: "从节拍表开始", h: "写 6 拍，产线自己分镜头",
+      p: "一拍一场戏。按叙事功能给每拍分时长和镜头数，再套镜头语法模板生成镜头表 —— 每个数字都附「为什么是这个数」。",
+      li: [["plan_beats", "总时长按强度/密度分配，不是均匀切"], ["apply_pattern", "建置 → 中景 → 正反打等模板骨架"], ["screen_direction", "每个角色全片固定银幕方向，不越轴"]],
+      code: "<span class=\"c\"># 节拍表 → 30 镜 / 3 场 / 4.3 分钟</span>\npython scripts/build_demo_storyboard.py\n\n<span class=\"c\"># 节奏体检：镜长、景别、运镜分布</span>\npython -m longfilm.storyboard_gen" },
+    { tab: "从剧本用 LLM 生成", h: "把硬约束写成提示词条款",
+      p: "导出 JSON Schema 做结构化输出约束，LLM 吐回来的分镜再过一遍收拾与如实报告 —— 改了什么全列出来，不静默修。",
+      li: [["llm_prompt_for_storyboard", "角色、时长、分级都写成显式条款"], ["json_schema()", "结构化输出约束"], ["validate_and_repair", "非法值收拾干净并报告改动"]],
+      code: "<span class=\"c\"># 生成可直接喂 LLM 的提示词</span>\npython - <<'PY'\nfrom longfilm.storyboard_gen import llm_prompt_for_storyboard\nprint(llm_prompt_for_storyboard(logline, chars, cons))\nPY" },
+    { tab: "从已有分镜 JSON", h: "改完直接接着跑",
+      p: "分镜 JSON 是整条产线唯一的契约。手改、程序改、或从上一集复制过来都行，进产线前会先过一遍连续性校验。",
+      li: [["Storyboard.load", "一个文件描述整集片"], ["validate_continuity", "轴线、银幕方向、首尾帧锁检查"], ["--resume", "已渲染的镜头直接捡回，不重复扣费"]],
+      code: "<span class=\"c\"># 只跑指定阶段，装配依赖会自动补齐</span>\npython scripts/run_pipeline.py \\\n  --work out/work/ep01 \\\n  --stages render,grade,assemble \\\n  <span class=\"k\">--resume</span>" },
+    { tab: "从角色圣经开始", h: "先把人定死，再拍戏",
+      p: "一句话角色描述 → 定妆矩阵拍摄清单（视角 × 光位 × 表情 × 景别），每一格都写清它为什么必须存在，缺格会影响哪类镜头。",
+      li: [["shot_list()", "定妆矩阵，逐格给理由"], ["inspect_portrait", "分辨率/比例/透明底/UI 叠层体检"], ["consistency_anchors", "最强的几个锚点词优先进提示词"]],
+      code: "<span class=\"c\"># 角色圣经完整性 + 参考图体检</span>\npython -m longfilm.charbible\n\n<span class=\"c\"># 覆盖率：还缺哪些格</span>\n<span class=\"k\">coverage_report</span>(character, level=\"full\")" },
+  ];
+  const tabsBox = $("#tabs"), tabBody = $("#tab-body");
+  WAYS.forEach((w, i) => {
+    const b = el("button", "tab", esc(w.tab));
+    b.type = "button"; b.setAttribute("role", "tab"); b.setAttribute("aria-selected", String(i === 0));
+    b.addEventListener("click", () => {
+      $$("#tabs .tab").forEach(t => t.setAttribute("aria-selected", String(t === b)));
+      drawWay(i);
+    });
+    tabsBox.append(b);
+  });
+  function drawWay(i) {
+    const w = WAYS[i];
+    tabBody.textContent = "";
+    const panel = el("div", "tab-panel");
+    panel.innerHTML = "<div><h3>" + esc(w.h) + "</h3><p>" + esc(w.p) + '</p><div class="tab-list">' +
+      w.li.map(([k, v]) => "<div><b>" + esc(k) + "</b><span>" + esc(v) + "</span></div>").join("") +
+      '</div></div><div class="code">' + w.code + "</div>";
+    tabBody.append(panel);
+  }
+  drawWay(0);
+
+  $("#steps").append(...[
+    ["1", "写节拍表", "六拍剧本骨架，标好每拍的叙事功能与强度。产线据此分配时长与镜头数。", "build_demo_storyboard.py"],
+    ["2", "跑产线", "音频先行 → 渲染 → 调色 → 拼接 → 后处理 → 交付。每阶段落盘，断点可续。", "longfilm run --work out/work/ep01"],
+    ["3", "拿成片", "成片 + EDL / OTIO / ASS 字幕 + 溯源清单，可直接进 DaVinci 精修。", "deliver/episode_final.mp4"],
+  ].map(([n, h, p2, c]) => el("div", "step",
+    '<div class="n">' + n + "</div><h4>" + esc(h) + "</h4><p>" + esc(p2) + "</p><code>" + esc(c) + "</code>")));
+
+  const FI = {
+    id: '<circle cx="12" cy="8" r="3.4"/><path d="M5 20c.8-4 3.6-6 7-6s6.2 2 7 6"/>',
+    chain: '<path d="M9.5 14.5 14.5 9.5"/><path d="M11 7.5 13 5.5a3.5 3.5 0 0 1 5 5l-2 2"/><path d="M13 16.5 11 18.5a3.5 3.5 0 0 1-5-5l2-2"/>',
+    qc: '<path d="M4 12.5 9 17.5 20 6.5"/>',
+    money: '<circle cx="12" cy="12" r="8.5"/><path d="M12 7v10M9.5 9.5h5M9.5 14.5h5"/>',
+    wave: '<path d="M4 10v4m4-7v10m4-13v16m4-12v8m4-5v2"/>',
+    color: '<circle cx="12" cy="12" r="8.5"/><path d="M12 3.5v17"/><circle cx="8.5" cy="10" r="1"/><circle cx="15.5" cy="14" r="1"/>',
+    up: '<path d="M12 19V6m-5 5 5-5 5 5"/><path d="M4 21h16"/>',
+    shield: '<path d="M12 3.2 4.5 6v6c0 4.4 3.1 7.6 7.5 8.8 4.4-1.2 7.5-4.4 7.5-8.8V6z"/><path d="m9.4 12 1.9 1.9 3.4-3.6"/>',
+  };
+  const feat = (ic, b, p2, fig) => el("div", "feat-card",
+    '<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">' + FI[ic] + "</svg><b>" + esc(b) + "</b><p>" + esc(p2) + '</p><div class="fig">' + esc(fig) + "</div>");
+
+  $("#feat-a").append(
+    feat("id", "角色一致性", "定妆矩阵 + 身份锚按角色配额分配。参考位被裁绝不静默，裁到身份锚会置 critical，路由据此换引擎而不是照常提交。",
+      "9 图 / 3 视频 / 3 音频上限，逐位写明控制什么"),
+    feat("chain", "长镜续接", "四种续接策略按漂移从小到大排；漂移预算累计到阈值前强制重锚，不让脸一路漂下去。",
+      "本次 " + R.chain_links + " 处续接，最高累计漂移 " + fmt(maxDriftAll) + " / 1.00"),
+    feat("qc", "质检与重拍", "七项 CPU 指标，冻结 / 黑帧 / 规格不符一票否决，其余按程度计权。重拍三级：换 seed → 降级参数 → 换引擎。",
+      "本次 " + R.retakes + " 次重拍，" + R.qc_pass + " 镜一次过检"),
+    feat("money", "成本与容灾", "路由只读 Capabilities 打分，失败的调用也记账。预算超了在花钱之前就停。",
+      "本次 $" + fmt(R.cost_usd) + "，三通道共 " + Object.values(R.calls_by_provider).reduce((a, b) => a + b, 0) + " 次调用"),
+  );
+  $("#feat-b").append(
+    feat("wave", "音频先行", "先把对白轨钉死再反推画面：TTS 实测时长回填，镜头装不下就在换气处拆镜。时间戳存镜内相对秒。",
+      "本次 " + audio.cues + " 句 / 实测 " + fmt(audio.speech_s, 1) + "s，" + audio.retime_changes + " 镜改了时长"),
+    feat("color", "调色与拼接", "场景基准取各镜统计量的中位数（均值会被一条废片拖走），再仿射匹配、烘成 .cube。拼接分批做，30 路输入不会撑爆内存。",
+      "三场漂移合计收敛 " + fmt(grade.total_improvement, 1) + "，" + asm.batches + " 批拼成 " + fmt(asm.duration_s, 1) + "s"),
+    feat("up", "超分与插帧", "按检测到的硬件选链路，落选的每条都记原因 —— 排期表要能解释为什么没走最好的那条。",
+      "本机无 GPU：720p → 1080p 走 CPU 链路，" + (post.warnings || []).length + " 条落选记录"),
+    feat("shield", "合规交付", "显式标识默认常驻全片，元数据写完必须读回才算写成功，溯源清单记到每张参考图的哈希与来源类型。",
+      "溯源清单 " + deliver.manifest_shots + " 镜，门禁报出 " + (deliver.compliance_problems || []).length + " 条待处理"),
+  );
+
+  $("#scenes").append(...[
+    ["剧情短片", "最吃续接链与角色一致性：多场戏、同一批角色、跨镜光色要统一"],
+    ["知识口播", "音频先行最直接：先合成讲稿，镜长按实测语音反推"],
+    ["产品讲解", "参考位编排派上用场：产品图占 prop 位，身份锚留给出镜人"],
+    ["广告分镜预演", "先用便宜通道出粗剪，导演过了再把英雄镜换贵引擎重出"],
+    ["纪录片解说", "画面与解说分轨，时间线导出 EDL / OTIO 进 NLE 精修"],
+    ["教学课程", "同一角色跨集复用，角色圣经与 LoRA 配方保证学期内不变脸"],
+    ["有声剧改编", "对白驱动，口型靠原生对白声或自建 TTS + V2V 重配"],
+    ["虚拟主播片段", "量产集数走成本优先路由，质检门禁挡掉废片再进人工"],
+  ].map(([b, t]) => el("div", "scene", "<b>" + esc(b) + "</b><span>" + esc(t) + "</span>")));
+
+  $("#faq").append(...[
+    ["能不能微调出一台「无审查 Seedance」？",
+     "不能。官方权重不开放，闭源 API 不提供微调入口，这条路已经确认是终局。能做的是两件事：闭源通道拿画质，自建开源通道拿可控性，中间由这套分镜系统把短镜接成长片。"],
+    ["单镜最长能出多少秒？",
+     "引擎决定：Seedance 2.0 是 4–15 秒，2.5 约 30 秒，自建 Wan 2.2 约 5 秒。成片长度不靠单镜时长，靠续接链把原子镜接起来，再由漂移预算控制什么时候必须回角色圣经重锚。"],
+    ["没有 GPU 能跑吗？",
+     "能。mock 引擎产出的是真 mp4，26 个模块自测全过，本页所有数字就是在一台无 GPU、3.7G 内存的机器上跑出来的。但要说清楚：本机能跑的是调度，不是画质，画质那一半必须接真引擎。"],
+    ["换一家供应商要改多少代码？",
+     "写一个 provider 并声明它的 Capabilities，注册进 REGISTRY 就完了。路由只读能力声明打分，代码里没有一处 if provider == \"...\"，所以队列、工单、产线都不用动。"],
+    ["废片是怎么发现和重拍的？",
+     "质检门禁跑七项指标给三态裁决。判为重拍时按代价从小到大处理：先换 seed，再降级参数（运镜降级或砍时长），最后才换引擎。seed 由指纹和轮次算出来，断点续跑后第 N 次重拍会得到同一个 seed。"],
+    ["内容边界是什么？",
+     "只做虚构成年角色：is_fictional 与 age_statement 是 schema 强制字段，出镜角色查不到成年声明的镜头连打分都不进。不实现成人露骨内容功能，也不提供规避平台审核的手段 —— R 级分级直接不投给带审核的官方通道，不去试探厂商审核。"],
+    ["一集片大概多少钱？",
+     "本页这次是 $" + fmt(R.cost_usd) + "（mock 通道按真实价差模拟计价）。真实成本用 deploy/cost_calculator.py 先算再开机，价格表查证于 2026-09-20，覆盖全 API 路线与自建 GPU 路线的交叉点。"],
+    ["缺中文字体或 ffmpeg 会怎样？",
+     "都有兜底。ffmpeg 按 LONGFILM_FFMPEG → bin/ → PATH → imageio-ffmpeg 依次找；字体按 LONGFILM_FONT → assets/fonts/ → 系统 Noto CJK 依次找。字幕和标识必须能渲染中文，找不到字体会直接报错并给出补齐办法，不接受显示成方框。"],
+  ].map(([q, a]) => {
+    const d = el("details");
+    d.innerHTML = "<summary>" + esc(q) + "</summary><p>" + esc(a) + "</p>";
+    return d;
+  }));
+
+  $$("[data-scroll]").forEach(b => b.addEventListener("click", () => {
+    const t = document.getElementById(b.dataset.scroll);
+    if (t) t.scrollIntoView({ behavior: "smooth", block: "start" });
+  }));
 
   renderRows();
   renderDetail();
