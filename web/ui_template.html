@@ -442,6 +442,38 @@ footer b{color:var(--ink-2);font-weight:500}
   .ed-clips,.ed-panel{display:none}
 }
 
+
+/* ------------------------------------------------- 样片 / 画质说明 */
+.showreel{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(250px,1fr);gap:20px;align-items:stretch;
+  margin:6px 0 30px}
+.reel-main{position:relative;border-radius:var(--r-l);overflow:hidden;background:#0E1017;border:1px solid var(--paper-line);
+  aspect-ratio:16/9;max-width:100%;display:grid;place-items:center}
+.reel-main video{width:100%;height:100%;object-fit:cover;display:block}
+.reel-empty{display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;padding:26px;color:#8B93A9}
+.reel-empty b{color:#EDEFF5;font-size:15px}
+.reel-empty span{font-size:12.5px;max-width:42ch;line-height:1.8}
+.reel-tag{position:absolute;left:12px;top:12px;display:flex;gap:6px;flex-wrap:wrap}
+.reel-tag span{background:#0D1018CC;border:1px solid #2A3040;border-radius:999px;padding:4px 11px;font-size:11.5px;color:#C6CCDC;backdrop-filter:blur(6px)}
+.reel-side{display:flex;flex-direction:column;gap:10px}
+.tier{border:1px solid var(--paper-line);border-radius:var(--r-m);background:var(--paper-2);padding:14px 16px;display:flex;flex-direction:column;gap:5px}
+.tier b{font-size:13.5px;display:flex;align-items:center;gap:8px}
+.tier b i{width:8px;height:8px;border-radius:50%;flex:none;font-style:normal}
+.tier span{font-size:12px;color:var(--paper-ink-2);line-height:1.75}
+.tier .price{font-family:var(--mono);font-size:12px;color:var(--paper-ink);font-variant-numeric:tabular-nums}
+.tier.now{border-color:var(--paper-accent);box-shadow:inset 0 0 0 1px var(--paper-accent)}
+
+.reel-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.reel-card{border-radius:var(--r-m);overflow:hidden;border:1px solid var(--line);background:var(--panel);display:flex;flex-direction:column}
+.reel-card video{width:100%;aspect-ratio:16/9;max-width:100%;object-fit:cover;background:#0E1017;display:block}
+.reel-card .body{padding:14px 16px;display:flex;flex-direction:column;gap:7px}
+.reel-card b{font-size:14px}
+.reel-card p{font-size:12.5px;color:var(--ink-2);line-height:1.75}
+.kind{display:inline-flex;align-items:center;gap:6px;padding:3px 10px;border-radius:999px;font-size:11px;width:fit-content}
+.kind.engine{background:var(--ok-soft);color:var(--ok)}
+.kind.composite{background:var(--warn-soft);color:var(--warn)}
+.kind.mock{background:var(--raise);color:var(--ink-2)}
+@media (max-width:820px){.showreel{grid-template-columns:minmax(0,1fr)}}
+
 @media (max-width:900px){
   .app{grid-template-columns:minmax(0,1fr)}
   .side{position:static;height:auto;flex-direction:row;align-items:center;gap:12px;overflow-x:auto;
@@ -527,6 +559,8 @@ footer b{color:var(--ink-2);font-weight:500}
               <button class="cta cta-line" data-goto="board" type="button">看这次运行的 30 镜</button>
             </div>
           </div>
+
+          <div class="showreel" id="showreel"></div>
 
           <div class="proof" id="proof"></div>
 
@@ -763,6 +797,8 @@ footer b{color:var(--ink-2);font-weight:500}
           <h2>数字人形象</h2>
           <p>本产线只做虚构成年角色。<span class="num">is_fictional</span> 与 <span class="num">age_statement</span> 是 schema 强制字段，缺一项镜头连打分都不进</p>
         </div>
+        <div id="reel-wall"></div>
+
         <div class="ava-grid" id="ava-grid"></div>
 
         <div class="card">
@@ -1514,6 +1550,86 @@ footer b{color:var(--ink-2);font-weight:500}
     const t = document.getElementById(b.dataset.scroll);
     if (t) t.scrollIntoView({ behavior: "smooth", block: "start" });
   }));
+
+  /* ---------------------------------------------------- 样片与画质档位 */
+  /* 三档画质说清楚：现在页面上的是哪一档，真引擎那一档要花多少钱。
+     单价取自 deploy/prices.yaml（查证 2026-09-20），与成本计算器同源。 */
+  const MEDIA = D.media || [];
+  const KIND_CN = { engine: "真引擎生成", composite: "合成片", mock: "mock 引擎", unknown: "本机素材" };
+  const TIERS = [
+    ["mock", "mock 引擎", "#6B7285", "验证调度用：出的是真 mp4，但画面是合成图形，不代表画质。",
+      "$0 · 无 GPU 无密钥"],
+    ["composite", "合成片", "#E9A23B", "形象图 + 运镜 + TTS 配音。看着是真人，但动的是镜头，没有口型同步。",
+      "$0 · 本机 ffmpeg"],
+    ["engine", "真引擎生成", "#2FBF87", "视频模型直接生成表演：表情、口型、身体动作。这才是对标商用数字人的那一档。",
+      "10s 镜 ≈ $0.48 (Seedance 1.0 Pro) / $0.90 (2.0 Fast) / $0.20–0.33 (自建 4090)"],
+  ];
+  const reel = $("#showreel");
+  const main = el("div", "reel-main");
+  if (MEDIA.length) {
+    const m = MEDIA[0];
+    const v = el("video");
+    v.src = m.src; v.muted = true; v.loop = true; v.playsInline = true; v.controls = true;
+    v.setAttribute("preload", "metadata");
+    // 首屏这条静音自动播（对齐同类产品站的做法）；用户要求减少动态效果时就老实停住
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      v.autoplay = true;
+      v.setAttribute("autoplay", "");
+    }
+    v.addEventListener("error", () => {
+      main.innerHTML = '<div class="reel-empty"><b>样片文件不在这份部署里</b>' +
+        "<span>媒体文件不进仓库（每条素材都要单独声明来源）。本机用 " +
+        "<code>python web/build_ui.py --with-media</code> 生成带样片的版本。</span></div>";
+    });
+    main.append(v);
+    const tag = el("div", "reel-tag",
+      "<span>" + esc(KIND_CN[m.kind] || m.kind) + "</span><span>" + esc(m.label) + "</span>" +
+      (m.pipeline ? "<span>" + esc(m.pipeline) + "</span>" : ""));
+    main.append(tag);
+  } else {
+    main.innerHTML = '<div class="reel-empty">' +
+      '<svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="#5A6379" stroke-width="1.4" stroke-linecap="round">' +
+      '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m10 9.5 5 2.5-5 2.5z"/></svg>' +
+      "<b>这里放真实数字人片段</b><span>接上真引擎（火山方舟 Seedance / 百炼万相 / 自建 ComfyUI）后，" +
+      "把产出的片子放进 <code>web/media/</code>，用 <code>build_ui.py --with-media</code> 重建即可。" +
+      "本机无 GPU 无密钥时，产线只能用 mock 通道验证调度，出不了这一档画质。</span></div>";
+  }
+  const side = el("div", "reel-side");
+  const haveKinds = new Set(MEDIA.map(m => m.kind));
+  TIERS.forEach(([k, name, dot, desc, price]) => {
+    const isNow = MEDIA.length ? haveKinds.has(k) : k === "mock";
+    const t = el("div", "tier" + (isNow ? " now" : ""));
+    t.innerHTML = "<b><i style=\"background:" + dot + '"></i>' + esc(name) +
+      (isNow ? ' <span style="font-size:11px;color:var(--paper-accent)">· 本页当前</span>' : "") + "</b>" +
+      "<span>" + esc(desc) + '</span><span class="price">' + esc(price) + "</span>";
+    side.append(t);
+  });
+  reel.append(main, side);
+
+  const wall = $("#reel-wall");
+  if (MEDIA.length) {
+    wall.append(el("div", "sec-head", "<h3 style=\"font-size:15px\">已有样片</h3><p>每条都标明它是怎么来的 —— 合成片和模型生成片不能混为一谈</p>"));
+    const grid = el("div", "reel-grid");
+    grid.style.marginTop = "12px";
+    MEDIA.forEach(m => {
+      const card = el("div", "reel-card");
+      const v = el("video");
+      v.src = m.src; v.muted = true; v.loop = true; v.playsInline = true; v.controls = true;
+      v.setAttribute("preload", "metadata");
+      const body = el("div", "body",
+        '<span class="kind ' + esc(m.kind) + '">' + esc(KIND_CN[m.kind] || m.kind) + "</span>" +
+        "<b>" + esc(m.label) + "</b><p>" + esc(m.note || "") + "</p>" +
+        (m.pipeline ? '<p class="num" style="font-size:11.5px;color:var(--ink-3)">' + esc(m.pipeline) + "</p>" : ""));
+      card.append(v, body);
+      grid.append(card);
+    });
+    wall.append(grid);
+  } else {
+    wall.append(el("div", "card",
+      "<h3>还没有真实片段</h3><p class=\"hint\">形象图与片段都由你自己的引擎产出，仓库不附带。" +
+      "接上 ARK_API_KEY / DASHSCOPE_API_KEY / COMFY_URL 跑一镜，把产物放进 web/media/，" +
+      "用 <span class=\"num\">build_ui.py --with-media</span> 重建这一页即可。</p>"));
+  }
 
   renderRows();
   renderDetail();

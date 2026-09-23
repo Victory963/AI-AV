@@ -138,6 +138,30 @@ def embed_portraits(data: dict) -> int:
     return n
 
 
+def collect_media() -> list[dict]:
+    """列出 web/media 下的样片。
+
+    媒体文件不进仓库，所以页面按相对路径引用；文件不在时前端退回示意图。
+    每条都要在 media.json 里写明 kind 与 note —— 合成片和模型生成片不能混为一谈。
+    """
+    d = WEB / "media"
+    if not d.is_dir():
+        return []
+    meta = {}
+    mf = d / "media.json"
+    if mf.is_file():
+        meta = {m["file"]: m for m in json.loads(mf.read_text(encoding="utf-8"))}
+    out = []
+    for f in sorted(d.glob("*.mp4")):
+        m = dict(meta.get(f.name, {}))
+        m.setdefault("label", f.stem)
+        m.setdefault("kind", "unknown")
+        m["src"] = "media/" + f.name
+        m["size_mb"] = round(f.stat().st_size / 1e6, 2)
+        out.append(m)
+    return out
+
+
 def build(data: dict, out: Path) -> Path:
     tpl = (WEB / "ui_template.html").read_text(encoding="utf-8")
     payload = json.dumps(data, ensure_ascii=False, separators=(",", ":"))
@@ -150,6 +174,8 @@ def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--run", type=Path, help="pipeline_result.json；给了就重新取数并更新快照")
     ap.add_argument("--storyboard", type=Path, default=ROOT / "configs/demo_episode.json")
+    ap.add_argument("--with-media", action="store_true",
+                    help="接入 web/media/ 下的样片，输出到 index.local.html")
     ap.add_argument("--with-portraits", action="store_true",
                     help="把 assets/cast 下已有的定妆图内嵌进页面，输出到 index.local.html（不进仓库）")
     a = ap.parse_args()
@@ -162,6 +188,10 @@ def main() -> int:
         data = json.loads(snap.read_text(encoding="utf-8"))
 
     out = WEB / "index.html"
+    data["media"] = collect_media() if a.with_media else []
+    if a.with_media:
+        print(f"已接入 {len(data['media'])} 条样片（页面按相对路径引用 web/media/，文件不进仓库）")
+        out = WEB / "index.local.html"
     if a.with_portraits:
         n = embed_portraits(data)
         out = WEB / "index.local.html"
