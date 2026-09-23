@@ -8,14 +8,163 @@
    "name": "林岚",
    "age_statement": "虚构角色，设定年龄 32 岁，成年深空考古学家",
    "persona": "冷静、好奇、对失落文明有近乎固执的执着；说话简短，习惯自言自语记录观察。",
-   "fictional": true
+   "fictional": true,
+   "appearance": {
+    "face": "东亚女性面孔，高颧骨，单眼皮，左眉尾有一道浅疤",
+    "hair": "黑色短发，右侧削短，发梢略乱",
+    "body": "中等身材，肩线利落，站姿微微前倾",
+    "skin": "冷调中性肤色，鼻梁有细小雀斑",
+    "wardrobe": "深灰色考古服，左胸有橙色任务徽标，袖口卷起，腕上戴多功能终端",
+    "distinguishing": "左眉尾浅疤 + 橙色任务徽标 + 腕部终端蓝光"
+   },
+   "voice": {
+    "timbre_ref_uri": null,
+    "tts_engine": "indextts2",
+    "tts_voice_id": null,
+    "pitch_shift": 0.0,
+    "speed": 0.97,
+    "emotion_default": "calm",
+    "language": "zh"
+   },
+   "lora": {
+    "base_model": "wan2.2-i2v-a14b",
+    "path": "loras/lin_lan_v3.safetensors",
+    "trigger_word": "linlan_char",
+    "strength": 0.82,
+    "trained_steps": 2400,
+    "dataset_hash": null
+   },
+   "negative_prompt": "双眼皮, 长发, 白大褂",
+   "portraits": [
+    {
+     "role": "identity",
+     "uri": "assets/cast/lin_lan/front_neutral.png",
+     "weight": 1.0,
+     "note": "source=ai_generated 正面 平光 中性",
+     "kind": "portrait"
+    },
+    {
+     "role": "identity",
+     "uri": "assets/cast/lin_lan/three_quarter_key.png",
+     "weight": 0.9,
+     "note": "source=ai_generated 3/4 侧 主光右 微笑",
+     "kind": "portrait"
+    },
+    {
+     "role": "identity",
+     "uri": "assets/cast/lin_lan/profile_rim.png",
+     "weight": 0.8,
+     "note": "source=ai_generated 正侧 轮廓光",
+     "kind": "portrait"
+    },
+    {
+     "role": "identity",
+     "uri": "assets/cast/lin_lan/closeup_eyes.png",
+     "weight": 0.85,
+     "note": "source=ai_generated 特写 眼部细节 用于近景镜",
+     "kind": "portrait"
+    },
+    {
+     "role": "wardrobe",
+     "uri": "assets/cast/lin_lan/wardrobe_full.png",
+     "weight": 0.7,
+     "note": "source=ai_generated 全身服装",
+     "kind": "portrait"
+    },
+    {
+     "role": "identity",
+     "uri": "assets/cast/lin_lan/turn_0.png",
+     "weight": 0.6,
+     "note": "source=ai_generated 转身 0°",
+     "kind": "turnaround"
+    },
+    {
+     "role": "identity",
+     "uri": "assets/cast/lin_lan/turn_45.png",
+     "weight": 0.6,
+     "note": "source=ai_generated 转身 45°",
+     "kind": "turnaround"
+    },
+    {
+     "role": "identity",
+     "uri": "assets/cast/lin_lan/turn_90.png",
+     "weight": 0.6,
+     "note": "source=ai_generated 转身 90°",
+     "kind": "turnaround"
+    },
+    {
+     "role": "identity",
+     "uri": "assets/cast/lin_lan/turn_135.png",
+     "weight": 0.6,
+     "note": "source=ai_generated 转身 135°",
+     "kind": "turnaround"
+    },
+    {
+     "role": "identity",
+     "uri": "assets/cast/lin_lan/turn_180.png",
+     "weight": 0.6,
+     "note": "source=ai_generated 转身 180°",
+     "kind": "turnaround"
+    }
+   ],
+   "shots": 20
   },
   {
    "id": "kai_k7",
    "name": "凯 K-7",
    "age_statement": "虚构角色，非人类仿生助理，外观设定为成年男性形象（相当于 40 岁）",
    "persona": "礼貌、精确、偶尔生硬的幽默；句尾习惯补一句数据置信度。",
-   "fictional": true
+   "fictional": true,
+   "appearance": {
+    "face": "中性成年男性面孔，哑光合成皮肤，虹膜为环形发光结构",
+    "hair": "极短银灰色，发际线处可见接缝",
+    "body": "偏高瘦，动作精确无冗余",
+    "skin": "哑光浅灰合成材质，颈侧有散热格栅",
+    "wardrobe": "白色分体外骨骼，关节处露出深色纤维束，胸口有青色指示环",
+    "distinguishing": "环形发光虹膜 + 颈侧散热格栅 + 胸口青色指示环"
+   },
+   "voice": {
+    "timbre_ref_uri": null,
+    "tts_engine": "indextts2",
+    "tts_voice_id": null,
+    "pitch_shift": 0.0,
+    "speed": 1.03,
+    "emotion_default": "neutral",
+    "language": "zh"
+   },
+   "lora": null,
+   "negative_prompt": "人类皮肤纹理, 胡须, 眼白",
+   "portraits": [
+    {
+     "role": "identity",
+     "uri": "assets/cast/kai_k7/front_neutral.png",
+     "weight": 1.0,
+     "note": "source=ai_generated 正面 平光",
+     "kind": "portrait"
+    },
+    {
+     "role": "identity",
+     "uri": "assets/cast/kai_k7/three_quarter.png",
+     "weight": 0.9,
+     "note": "source=ai_generated 3/4 侧",
+     "kind": "portrait"
+    },
+    {
+     "role": "identity",
+     "uri": "assets/cast/kai_k7/closeup_iris.png",
+     "weight": 0.85,
+     "note": "source=ai_generated 虹膜特写",
+     "kind": "portrait"
+    },
+    {
+     "role": "wardrobe",
+     "uri": "assets/cast/kai_k7/exo_full.png",
+     "weight": 0.7,
+     "note": "source=ai_generated 外骨骼全身",
+     "kind": "portrait"
+    }
+   ],
+   "shots": 10
   }
  ],
  "scenes": [

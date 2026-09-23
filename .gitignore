@@ -44,3 +44,6 @@ assets/cast/*
 .idea/
 .DS_Store
 Thumbs.db
+
+# 内嵌了定妆图的本地构建产物（assets/cast 不进仓库，页面也不该带图进来）
+web/index.local.html

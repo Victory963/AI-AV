@@ -366,6 +366,82 @@ footer b{color:var(--ink-2);font-weight:500}
   .tab-panel{grid-template-columns:minmax(0,1fr)}
 }
 
+
+/* ------------------------------------------------- 数字人形象 / 编辑器预览 */
+.editor{border-radius:var(--r-l);overflow:hidden;border:1px solid var(--paper-line);background:#0E1017;box-shadow:0 26px 60px rgba(14,16,23,.22)}
+.ed-bar{display:flex;align-items:center;gap:10px;padding:10px 14px;background:#1A1D26;border-bottom:1px solid #252A38}
+.ed-dots{display:flex;gap:6px}
+.ed-dots i{width:10px;height:10px;border-radius:50%;display:block}
+.ed-url{flex:1;background:#0E1017;border-radius:7px;padding:5px 12px;font-family:var(--mono);font-size:11.5px;color:#7D869E;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ed-tool{display:flex;align-items:center;gap:8px;padding:10px 14px;background:#141722;border-bottom:1px solid #252A38}
+.ed-tab{display:flex;flex-direction:column;align-items:center;gap:3px;padding:5px 14px;border-radius:9px;color:#8B93A9;font-size:11.5px;transition:.15s}
+.ed-tab svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:1.6}
+.ed-tab:hover{color:#EDEFF5;background:#1D2130}
+.ed-tab[aria-selected="true"]{color:#EDEFF5;background:#1D2130;box-shadow:inset 0 0 0 1px var(--accent-line)}
+.ed-run{margin-left:auto;padding:8px 16px;border-radius:9px;background:linear-gradient(135deg,var(--accent),var(--accent-2));
+  color:#fff;font-size:12.5px;font-weight:700}
+.ed-body{display:grid;grid-template-columns:62px 116px minmax(0,1fr) 216px;min-height:340px}
+.ed-rail{background:#141722;border-right:1px solid #252A38;display:flex;flex-direction:column;gap:4px;padding:12px 6px}
+.ed-rail button{display:flex;flex-direction:column;align-items:center;gap:4px;padding:9px 2px;border-radius:9px;color:#7D869E;font-size:10px}
+.ed-rail button svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.6}
+.ed-rail button:hover,.ed-rail button[aria-pressed="true"]{color:#EDEFF5;background:#1D2130}
+.ed-clips{background:#101320;border-right:1px solid #252A38;padding:10px;display:flex;flex-direction:column;gap:8px;overflow:hidden}
+.ed-clips .lbl{font-size:10.5px;color:#6E778F;letter-spacing:.08em}
+.ed-clip{border-radius:8px;border:1px solid #252A38;background:#161A26;padding:7px 9px;display:flex;flex-direction:column;gap:3px;
+  font-family:var(--mono);font-size:10.5px;color:#8B93A9;text-align:left;width:100%}
+.ed-clip:hover{border-color:var(--accent-line);color:#EDEFF5}
+.ed-clip[aria-pressed="true"]{border-color:var(--accent);background:#1C1E33;color:#EDEFF5}
+.ed-clip span{font-family:var(--sans);font-size:10px;color:#6E778F}
+.ed-stage{position:relative;background:radial-gradient(120% 120% at 50% 12%,#222A3D 0%,#0D1018 72%);display:grid;place-items:center;padding:16px;min-height:280px}
+.ed-stage .grid{position:absolute;inset:0;background-image:linear-gradient(#FFFFFF08 1px,transparent 1px),linear-gradient(90deg,#FFFFFF08 1px,transparent 1px);
+  background-size:38px 38px;mask-image:radial-gradient(70% 70% at 50% 45%,#000 30%,transparent 100%)}
+.ed-fig{position:relative;height:min(300px,46vw);max-width:100%}
+.ed-fig svg{height:100%;width:auto;max-width:100%;display:block}
+.ed-frame{position:absolute;border:1px dashed rgba(123,92,255,.55);border-radius:4px;pointer-events:none}
+.ed-frame b{position:absolute;top:-10px;left:8px;background:#0D1018;padding:0 6px;font-family:var(--mono);font-size:10px;color:#9B86FF;font-weight:400}
+.ed-note{position:absolute;left:14px;bottom:12px;font-family:var(--mono);font-size:10.5px;color:#6E778F}
+.ed-badge{position:absolute;right:14px;top:12px;font-size:10.5px;color:#8B93A9;background:#0D1018AA;border:1px solid #252A38;
+  border-radius:999px;padding:3px 10px;backdrop-filter:blur(4px)}
+.ed-panel{background:#141722;border-left:1px solid #252A38;padding:14px;display:flex;flex-direction:column;gap:12px;overflow:hidden}
+.ed-panel h5{font-size:11px;letter-spacing:.1em;color:#6E778F;font-weight:500}
+.ed-row{display:flex;justify-content:space-between;gap:10px;font-size:11.5px;color:#8B93A9;padding:5px 0;border-bottom:1px dashed #1F2431}
+.ed-row:last-child{border-bottom:0}
+.ed-row b{color:#EDEFF5;font-weight:500;font-family:var(--mono);font-size:11.5px;text-align:right}
+.ed-chip{display:inline-block;padding:3px 9px;border-radius:999px;background:#1D2130;color:#B9C0D2;font-size:11px;margin:0 5px 5px 0}
+
+.ava-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
+.ava{border-radius:var(--r-m);border:1px solid var(--line);background:var(--panel);overflow:hidden;display:flex;flex-direction:column}
+.ava-art{position:relative;aspect-ratio:4/5;max-width:100%;display:grid;place-items:center;overflow:hidden;
+  background:radial-gradient(110% 100% at 50% 10%,#232B3E 0%,#0F1219 78%)}
+.ava-art svg{height:100%;width:auto;display:block}
+.ava-art img{height:100%;width:100%;object-fit:cover;display:block}
+.ava-art .mark{position:absolute;left:12px;top:12px;font-size:10.5px;color:#9AA2B6;background:#0D1018AA;border:1px solid #252A38;
+  border-radius:999px;padding:3px 10px;backdrop-filter:blur(4px)}
+.ava-body{padding:18px;display:flex;flex-direction:column;gap:12px}
+.ava-name{display:flex;align-items:baseline;gap:10px}
+.ava-name b{font-size:17px}
+.ava-name span{font-family:var(--mono);font-size:11.5px;color:var(--ink-3)}
+.ava-app{display:flex;flex-direction:column;gap:6px}
+.ava-app div{display:grid;grid-template-columns:44px minmax(0,1fr);gap:10px;font-size:12.5px;color:var(--ink-2)}
+.ava-app dt{color:var(--ink-3);font-size:11.5px}
+.anchor-chip{display:inline-block;padding:4px 10px;border-radius:999px;background:var(--accent-soft);
+  box-shadow:inset 0 0 0 1px var(--accent-line);font-size:11.5px;margin:0 6px 6px 0}
+
+.matrix{display:grid;grid-template-columns:repeat(auto-fill,minmax(112px,1fr));gap:10px}
+.cell{border-radius:10px;border:1px dashed var(--line);background:var(--panel-2);padding:10px;display:flex;flex-direction:column;gap:6px;min-height:92px}
+.cell.has{border-style:solid;border-color:var(--accent-line);background:var(--accent-soft)}
+.cell .thumb{height:30px;border-radius:6px;background:linear-gradient(140deg,#2A3246,#141826);position:relative;overflow:hidden}
+.cell .thumb i{position:absolute;left:50%;top:58%;transform:translate(-50%,-50%);width:15px;height:15px;border-radius:50% 50% 45% 45%;background:#4C5771}
+.cell b{font-size:11.5px;font-weight:500}
+.cell span{font-family:var(--mono);font-size:10px;color:var(--ink-3);line-height:1.5}
+.cell em{font-style:normal;font-size:10.5px;color:var(--ink-3)}
+
+@media (max-width:860px){
+  .ed-body{grid-template-columns:52px minmax(0,1fr)}
+  .ed-clips,.ed-panel{display:none}
+}
+
 @media (max-width:900px){
   .app{grid-template-columns:minmax(0,1fr)}
   .side{position:static;height:auto;flex-direction:row;align-items:center;gap:12px;overflow-x:auto;
@@ -408,7 +484,7 @@ footer b{color:var(--ink-2);font-weight:500}
         <svg viewBox="0 0 24 24"><path d="M4 19V9m5 10V5m5 14v-7m5 7V8"/></svg>产线监控</button>
       <div class="nav-label">资产</div>
       <button class="nav-item" data-view="cast" type="button">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.4"/><path d="M5 20c.8-4 3.6-6 7-6s6.2 2 7 6"/></svg>角色圣经<span class="nav-tag" id="tag-cast">2</span></button>
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.4"/><path d="M5 20c.8-4 3.6-6 7-6s6.2 2 7 6"/></svg>数字人形象<span class="nav-tag" id="tag-cast">2</span></button>
       <button class="nav-item" data-view="deliver" type="button">
         <svg viewBox="0 0 24 24"><path d="M12 3.2 4.5 6v6c0 4.4 3.1 7.6 7.5 8.8 4.4-1.2 7.5-4.4 7.5-8.8V6z"/><path d="m9.4 12 1.9 1.9 3.4-3.6"/></svg>合规交付</button>
       <div class="nav-label">算力</div>
@@ -461,6 +537,35 @@ footer b{color:var(--ink-2);font-weight:500}
             </div>
             <div class="tabs" id="tabs" role="tablist"></div>
             <div id="tab-body"></div>
+          </section>
+
+          <section class="land-sec" id="sec-avatar">
+            <div class="land-head">
+              <h2>数字人长什么样，先看清楚再开拍</h2>
+              <p>角色圣经把「一句话人设」变成可投产的身份锚：面部、发型、体型、肤质、服装、识别特征逐项写死，再按视角 × 光位 × 表情排定妆清单</p>
+            </div>
+            <div class="editor">
+              <div class="ed-bar">
+                <div class="ed-dots"><i style="background:#FF5F57"></i><i style="background:#FEBC2E"></i><i style="background:#28C840"></i></div>
+                <div class="ed-url" id="ed-url">longfilm.local/editor/deep-archive/ep01</div>
+              </div>
+              <div class="ed-tool" id="ed-tabs"></div>
+              <div class="ed-body">
+                <div class="ed-rail" id="ed-rail"></div>
+                <div class="ed-clips" id="ed-clips"></div>
+                <div class="ed-stage">
+                  <div class="grid"></div>
+                  <span class="ed-badge" id="ed-badge">形象示意图</span>
+                  <div class="ed-fig" id="ed-fig"></div>
+                  <div class="ed-note" id="ed-note"></div>
+                </div>
+                <div class="ed-panel" id="ed-panel"></div>
+              </div>
+            </div>
+            <p class="note" style="text-align:center;margin-top:14px;color:var(--paper-ink-3);font-size:12px">
+              画面中的形象是按角色圣经的设定画出的示意图。真实形象由你自己的文生图步骤产出（<span class="num">emit_portrait_prompts</span> → FLUX / SDXL），
+              仓库不附带任何真人肖像；本机 <span class="num">assets/cast/</span> 里有图时，用 <span class="num">build_ui.py --with-portraits</span> 就会换成真图。
+            </p>
           </section>
 
           <section class="land-sec" id="sec-steps">
@@ -655,14 +760,28 @@ footer b{color:var(--ink-2);font-weight:500}
       <!-- ======================================================== 角色圣经 -->
       <section class="view" data-view="cast" hidden>
         <div class="sec-head">
-          <h2>角色圣经</h2>
-          <p>本产线只做虚构成年角色。<span class="num">is_fictional</span> 与 <span class="num">age_statement</span> 是 schema 强制字段</p>
+          <h2>数字人形象</h2>
+          <p>本产线只做虚构成年角色。<span class="num">is_fictional</span> 与 <span class="num">age_statement</span> 是 schema 强制字段，缺一项镜头连打分都不进</p>
         </div>
-        <div class="grid-2" id="cast-list"></div>
+        <div class="ava-grid" id="ava-grid"></div>
+
         <div class="card">
-          <h3>定妆矩阵怎么排</h3>
-          <p class="hint">视角 × 光位 × 表情 × 景别，每一格都写清「为什么必须有它」</p>
-          <div class="line-list" id="cast-notes"></div>
+          <h3>定妆清单</h3>
+          <p class="hint" id="matrix-hint"></p>
+          <div class="matrix" id="matrix"></div>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <h3>定妆矩阵怎么排</h3>
+            <p class="hint">视角 × 光位 × 表情 × 景别，每一格都写清「为什么必须有它」</p>
+            <div class="line-list" id="cast-notes"></div>
+          </div>
+          <div class="card">
+            <h3>形象图从哪来</h3>
+            <p class="hint">三条路都不涉及真人肖像</p>
+            <div class="line-list" id="cast-source"></div>
+          </div>
         </div>
       </section>
 
@@ -979,15 +1098,201 @@ footer b{color:var(--ink-2);font-weight:500}
   cs.append(el("div", "kv", "<span>强制重锚</span><b>" + reanchors + " 次</b>"));
   cs.append(el("div", "kv", "<span>最高累计漂移</span><b>" + fmt(maxDrift2) + " / 1.00</b>"));
 
-  /* ---------------------------------------------------------- 角色 */
-  $("#cast-list").append(...D.characters.map(c => {
-    const card = el("div", "card");
-    card.innerHTML = "<h3>" + esc(c.name) + ' <span class="muted num">' + esc(c.id) + "</span></h3>" +
-      '<p class="hint">' + esc(c.persona || "") + "</p>" +
-      '<div class="kv"><span>虚构角色</span><b>' + (c.fictional ? "是" : "否") + "</b></div>" +
-      '<div class="line-item" style="margin-top:12px"><svg viewBox="0 0 24 24" stroke-linecap="round"><path d="M12 3.2 4.5 6v6c0 4.4 3.1 7.6 7.5 8.8 4.4-1.2 7.5-4.4 7.5-8.8V6z"/></svg><span>' + esc(c.age_statement) + "</span></div>";
+  /* ------------------------------------------------ 数字人形象（示意图） */
+  /* 按角色圣经的设定画的示意图：颜色、发型、识别特征都取自 appearance，
+     但它是几何示意，不是照片 —— 真实形象由文生图那一步产出。 */
+  const PAL = {
+    lin_lan: { skin: "#E9C4A9", shade: "#B98D72", hair: "#16181F", suit1: "#3C4352", suit2: "#252A35",
+      collar: "#1E222C", rim: "#7B5CFF", badge: "#FF7A2F", scar: true },
+    kai_k7: { skin: "#D8DAE0", shade: "#A9AEBA", hair: "#C3C8D2", suit1: "#EEF0F5", suit2: "#C7CCD8",
+      collar: "#2A2F3C", rim: "#37C6F0", ring: "#2FD6D6", iris: "#6CE0FF", grille: true },
+    _d: { skin: "#DCC3B0", shade: "#A98D79", hair: "#232733", suit1: "#3A4150", suit2: "#252A35",
+      collar: "#1E222C", rim: "#7B5CFF" },
+  };
+  function figureSVG(c, uid) {
+    const P = PAL[c.id] || PAL._d;
+    const g = "f" + uid;
+    return '<svg viewBox="0 0 300 400" role="img" aria-label="' + esc(c.name) + ' 形象示意图">' +
+      "<defs>" +
+      '<linearGradient id="s' + g + '" x1="0" y1="0" x2=".7" y2="1"><stop offset="0" stop-color="' + P.suit1 + '"/><stop offset="1" stop-color="' + P.suit2 + '"/></linearGradient>' +
+      '<radialGradient id="h' + g + '" cx=".5" cy=".3" r=".75"><stop offset="0" stop-color="' + P.rim + '" stop-opacity=".42"/><stop offset="1" stop-color="' + P.rim + '" stop-opacity="0"/></radialGradient>' +
+      "</defs>" +
+      '<circle cx="150" cy="168" r="150" fill="url(#h' + g + ')"/>' +
+      '<ellipse cx="150" cy="392" rx="104" ry="15" fill="#05070C" opacity=".45"/>' +
+      /* 肩与躯干 */
+      '<path d="M44 400 C 50 318, 96 284, 150 284 C 204 284, 250 318, 256 400 Z" fill="url(#s' + g + ')"/>' +
+      '<path d="M150 284 C 204 284, 250 318, 256 400 L232 400 C 226 330, 194 300, 150 298 Z" fill="' + P.rim + '" opacity=".18"/>' +
+      '<path d="M126 288 L150 330 L174 288 C 166 284, 134 284, 126 288 Z" fill="' + P.collar + '"/>' +
+      /* 颈 */
+      '<path d="M131 236 h38 v46 c-19 13 -38 0 -38 0 z" fill="' + P.shade + '"/>' +
+      '<path d="M131 236 h38 v22 c-19 12 -38 4 -38 4 z" fill="' + P.skin + '" opacity=".55"/>' +
+      (P.grille ? '<g stroke="#8E93A0" stroke-width="2" opacity=".8"><path d="M162 248h8M162 256h8M162 264h8"/></g>' : "") +
+      /* 头 */
+      '<ellipse cx="150" cy="172" rx="49" ry="59" fill="' + P.skin + '"/>' +
+      '<path d="M101 176 C 104 226, 126 232, 150 232 C 174 232, 196 226, 199 176 C 196 214, 176 224, 150 224 C 124 224, 104 214, 101 176 Z" fill="' + P.shade + '" opacity=".45"/>' +
+      '<ellipse cx="99" cy="180" rx="8" ry="12" fill="' + P.shade + '"/><ellipse cx="201" cy="180" rx="8" ry="12" fill="' + P.shade + '"/>' +
+      /* 发 */
+      '<path d="M99 166 C 99 108, 120 92, 150 92 C 180 92, 201 108, 201 166 C 196 140, 192 128, 150 126 C 118 125, 106 138, 99 166 Z" fill="' + P.hair + '"/>' +
+      '<path d="M99 166 C 96 140, 100 116, 112 104 C 104 124, 104 146, 106 166 Z" fill="' + P.hair + '"/>' +
+      /* 眼 */
+      (P.iris
+        ? '<g fill="none" stroke="' + P.iris + '" stroke-width="3"><circle cx="129" cy="176" r="7"/><circle cx="171" cy="176" r="7"/></g>' +
+          '<g fill="' + P.iris + '" opacity=".35"><circle cx="129" cy="176" r="3"/><circle cx="171" cy="176" r="3"/></g>'
+        : '<g fill="#1B1F2A"><ellipse cx="129" cy="177" rx="7.5" ry="3.6"/><ellipse cx="171" cy="177" rx="7.5" ry="3.6"/></g>') +
+      '<g stroke="' + P.hair + '" stroke-width="3" stroke-linecap="round" opacity=".85"><path d="M119 164 q10 -5 20 -1"/><path d="M181 164 q-10 -5 -20 -1"/></g>' +
+      (P.scar ? '<path d="M184 158 l7 -7" stroke="#C98C7A" stroke-width="2.4" stroke-linecap="round" opacity=".9"/>' : "") +
+      '<path d="M150 182 v10 l-5 4" fill="none" stroke="' + P.shade + '" stroke-width="2.4" stroke-linecap="round"/>' +
+      '<path d="M139 205 q11 6 22 0" fill="none" stroke="#8E5F52" stroke-width="2.6" stroke-linecap="round" opacity=".75"/>' +
+      /* 识别特征：徽标 / 指示环 */
+      (P.badge ? '<circle cx="113" cy="338" r="11" fill="' + P.badge + '"/><circle cx="113" cy="338" r="5" fill="#0E1017" opacity=".35"/>' : "") +
+      (P.ring ? '<circle cx="150" cy="342" r="13" fill="none" stroke="' + P.ring + '" stroke-width="3"/>' : "") +
+      "</svg>";
+  }
+
+  const FRAME = {
+    "extreme close-up": [30, 6, 40, 20], "close-up": [24, 4, 52, 30], "medium close-up": [17, 3, 66, 44],
+    "medium shot": [9, 2, 82, 64], "over the shoulder": [12, 5, 76, 60], "insert": [28, 20, 44, 34],
+    "full shot": [3, 1, 94, 96], "long shot": [2, 1, 96, 97], "extreme long shot": [1, 1, 98, 98],
+  };
+
+  /* ------------------------------------------------ 落地页：编辑器预览 */
+  const EDIT_TABS = [
+    ["场景", '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 15 5-4 4 3 3-2 6 5"/>'],
+    ["人物", '<circle cx="12" cy="8" r="3.4"/><path d="M5 20c.8-4 3.6-6 7-6s6.2 2 7 6"/>'],
+    ["音色", '<rect x="9.5" y="3" width="5" height="11" rx="2.5"/><path d="M6 12a6 6 0 0 0 12 0M12 18v3"/>'],
+  ];
+  const edClips = D.shots.filter(x => (x.subjects || []).length).slice(0, 6);
+  let edShot = edClips[0] || D.shots[0], edTab = 1;
+
+  EDIT_TABS.forEach(([label, path], i) => {
+    const b = el("button", "ed-tab", '<svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">' + path + "</svg>" + esc(label));
+    b.type = "button"; b.setAttribute("aria-selected", String(i === edTab));
+    b.addEventListener("click", () => { edTab = i; $$("#ed-tabs .ed-tab").forEach(t => t.setAttribute("aria-selected", String(t === b))); drawPanel(); });
+    $("#ed-tabs").append(b);
+  });
+  const run = el("button", "ed-run", "渲染这一镜");
+  run.type = "button";
+  run.addEventListener("click", () => { selected = edShot.id; renderRows(); renderDetail(); go("board"); });
+  $("#ed-tabs").append(run);
+
+  [["模板中心", '<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 9v11"/>'],
+   ["角色库", '<circle cx="12" cy="8" r="3.4"/><path d="M5 20c.8-4 3.6-6 7-6s6.2 2 7 6"/>'],
+   ["AI 生成", '<path d="M12 3v3m0 12v3m9-9h-3M6 12H3"/><circle cx="12" cy="12" r="3.4"/>']].forEach(([label, path], i) => {
+    const b = el("button", "", '<svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">' + path + "</svg>" + esc(label));
+    b.type = "button"; b.setAttribute("aria-pressed", String(i === 1));
+    b.addEventListener("click", () => { $$("#ed-rail button").forEach(x => x.setAttribute("aria-pressed", String(x === b))); go("cast"); });
+    $("#ed-rail").append(b);
+  });
+
+  $("#ed-clips").append(el("div", "lbl", "片段"));
+  edClips.forEach(sh => {
+    const b = el("button", "ed-clip", sh.id + "<span>" + esc(cn(SIZE_CN, sh.shot_size)) + " · " + fmt(sh.duration_s, 1) + "s</span>");
+    b.type = "button"; b.setAttribute("aria-pressed", String(sh.id === edShot.id));
+    b.addEventListener("click", () => {
+      edShot = sh;
+      $$("#ed-clips .ed-clip").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
+      drawStage(); drawPanel();
+    });
+    $("#ed-clips").append(b);
+  });
+
+  const charOf = id => D.characters.find(c => c.id === id) || D.characters[0];
+  function drawStage() {
+    const c = charOf((edShot.subjects || [])[0]);
+    const fig = $("#ed-fig");
+    fig.innerHTML = figureSVG(c, "ed");
+    const f = FRAME[edShot.shot_size] || FRAME["medium shot"];
+    const box = el("div", "ed-frame", "<b>" + esc(cn(SIZE_CN, edShot.shot_size)) + "</b>");
+    box.style.cssText = "left:" + f[0] + "%;top:" + f[1] + "%;width:" + f[2] + "%;height:" + f[3] + "%";
+    fig.append(box);
+    $("#ed-note").textContent = edShot.id + " · " + cn(MOVE_CN, edShot.camera_move) + " · " + edShot.lens_mm + "mm · " + fmt(edShot.duration_s, 1) + "s";
+    $("#ed-url").textContent = "longfilm.local/editor/" + String(D.project || "").replace("/", "/") + "/" + edShot.id;
+  }
+  function drawPanel() {
+    const c = charOf((edShot.subjects || [])[0]);
+    const panel = $("#ed-panel");
+    panel.textContent = "";
+    const row = (k, v) => el("div", "ed-row", "<span>" + esc(k) + "</span><b>" + esc(v) + "</b>");
+    if (edTab === 0) {
+      panel.append(el("h5", "", "场景"));
+      panel.append(row("场次", edShot.scene + " " + edShot.scene_title), row("景别", cn(SIZE_CN, edShot.shot_size)),
+        row("运镜", cn(MOVE_CN, edShot.camera_move)), row("焦段", edShot.lens_mm + "mm"),
+        row("时长", fmt(edShot.duration_s, 1) + "s"), row("参考位", (edShot.refs.images || 0) + " 图 / " + (edShot.refs.audios || 0) + " 音"));
+    } else if (edTab === 1) {
+      panel.append(el("h5", "", "人物"));
+      panel.append(row("角色", c.name), row("设定", c.fictional ? "虚构角色" : "—"));
+      const app = c.appearance || {};
+      const clip = t => (t || "").length > 10 ? t.slice(0, 10) + "…" : (t || "—");
+      panel.append(row("发型", clip(app.hair)), row("服装", clip(app.wardrobe)));
+      if (c.lora) panel.append(row("LoRA", c.lora.trigger_word + " · " + c.lora.strength));
+      const chips = el("div");
+      (app.distinguishing || "").split(/[+＋]/).map(t => t.trim()).filter(Boolean)
+        .forEach(t => chips.append(el("span", "ed-chip", esc(t))));
+      panel.append(el("h5", "", "识别特征"), chips);
+    } else {
+      panel.append(el("h5", "", "音色"));
+      const v = c.voice || {};
+      panel.append(row("引擎", v.tts_engine || "—"), row("语言", v.language || "—"),
+        row("语速", v.speed !== undefined ? v.speed : "—"), row("情绪", v.emotion_default || "—"));
+      panel.append(el("h5", "", "这一镜的对白"));
+      panel.append(el("div", "ed-row", edShot.dialogue.length
+        ? '<span style="color:#B9C0D2">' + esc(edShot.dialogue[0]) + "</span>"
+        : '<span>这一镜没有对白</span>'));
+    }
+  }
+  drawStage(); drawPanel();
+
+  /* ------------------------------------------------ 形象库视图 */
+  const APP_CN = { face: "面部", hair: "发型", body: "体型", skin: "肤质", wardrobe: "服装", distinguishing: "识别特征" };
+  $("#ava-grid").append(...D.characters.map(c => {
+    const card = el("div", "ava");
+    const shot = c.portraits.find(r => r.data);
+    const art = el("div", "ava-art", shot
+      ? '<img src="' + shot.data + '" alt="' + esc(c.name) + ' 定妆图">'
+      : figureSVG(c, "a" + c.id));
+    art.append(el("span", "mark", shot ? "本机定妆图" : "形象示意图"));
+    const body = el("div", "ava-body");
+    body.append(el("div", "ava-name", "<b>" + esc(c.name) + "</b><span>" + esc(c.id) + "</span>"));
+    body.append(el("div", "line-item",
+      '<svg viewBox="0 0 24 24" stroke-linecap="round"><path d="M12 3.2 4.5 6v6c0 4.4 3.1 7.6 7.5 8.8 4.4-1.2 7.5-4.4 7.5-8.8V6z"/></svg><span>' + esc(c.age_statement) + "</span>"));
+    const app = el("div", "ava-app");
+    ["face", "hair", "body", "skin", "wardrobe"].forEach(k => {
+      if (c.appearance && c.appearance[k]) {
+        app.append(el("div", "", '<dt>' + esc(APP_CN[k]) + "</dt><span>" + esc(c.appearance[k]) + "</span>"));
+      }
+    });
+    body.append(app);
+    const anchors = el("div");
+    ((c.appearance || {}).distinguishing || "").split(/[+＋]/).map(t => t.trim()).filter(Boolean)
+      .forEach(t => anchors.append(el("span", "anchor-chip", esc(t))));
+    body.append(el("div", "hint", "一致性锚点（优先拼进提示词）"), anchors);
+    const facts = el("div");
+    facts.append(el("div", "kv", "<span>出镜镜头</span><b>" + c.shots + " 镜</b>"));
+    facts.append(el("div", "kv", "<span>定妆图</span><b>" + c.portraits.length + " 张已登记</b>"));
+    facts.append(el("div", "kv", "<span>音色</span><b>" + esc((c.voice || {}).tts_engine || "—") + " · " + ((c.voice || {}).speed ?? "—") + "x</b>"));
+    facts.append(el("div", "kv", "<span>LoRA</span><b>" + (c.lora ? esc(c.lora.trigger_word) + " · " + c.lora.strength : "未训练") + "</b>"));
+    if (c.negative_prompt) facts.append(el("div", "kv", "<span>角色负面词</span><b>" + esc(c.negative_prompt) + "</b>"));
+    body.append(facts);
+    card.append(art, body);
     return card;
   }));
+
+  const allRefs = D.characters.flatMap(c => c.portraits.map(r => ({ ...r, cname: c.name })));
+  const haveFiles = allRefs.filter(r => r.exists).length;
+  $("#matrix-hint").textContent = "两个角色共登记 " + allRefs.length + " 张定妆图（" +
+    allRefs.filter(r => r.kind === "turnaround").length + " 张转身序列）。" +
+    (haveFiles ? "本机已就位 " + haveFiles + " 张。" : "本机尚未就位任何文件 —— 分镜里登记的是 uri，文件由文生图那一步产出。");
+  $("#matrix").append(...allRefs.map(r => {
+    const label = r.note.replace(/source=\S+\s*/, "").trim();
+    const cell = el("div", "cell" + (r.exists ? " has" : ""));
+    cell.innerHTML = (r.data ? '<div class="thumb" style="background-image:url(' + r.data + ');background-size:cover"></div>'
+        : '<div class="thumb"><i></i></div>') +
+      "<b>" + esc(label || r.role) + "</b>" +
+      "<span>" + esc(r.uri.split("/").pop()) + "</span>" +
+      "<em>" + esc(r.cname) + " · 权重 " + r.weight + (r.exists ? " · 已就位" : " · 待产出") + "</em>";
+    return cell;
+  }));
+
   const CAST_NOTES = [
     "正面平光是身份基准，缺了它 LoRA 和参考图都没有对齐锚点",
     "侧光三四分脸决定「这张脸的骨骼在光下怎么投影」，特写镜最吃这一格",
@@ -996,6 +1301,14 @@ footer b{color:var(--ink-2);font-weight:500}
   ];
   $("#cast-notes").append(...CAST_NOTES.map(t => el("div", "line-item",
     '<svg viewBox="0 0 24 24" stroke-linecap="round"><path d="M4 12.5 9 17.5 20 6.5"/></svg><span>' + esc(t) + "</span>")));
+  const CAST_SRC = [
+    "文生图产出：emit_portrait_prompts 按定妆矩阵逐格出提示词，喂 FLUX / SDXL 批量生成",
+    "自建引擎产出：ComfyUI 出图后再用 inspect_portrait 体检（短边、比例、透明底、UI 叠层）",
+    "已授权素材：必须在 note 里写清 source=licensed，并留存授权凭证",
+    "不做的事：不使用真人肖像，不做人脸替换，不接受未标来源的图进产线",
+  ];
+  $("#cast-source").append(...CAST_SRC.map(t => el("div", "line-item",
+    '<svg viewBox="0 0 24 24" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5m0 3h.01"/></svg><span>' + esc(t) + "</span>")));
 
   /* ---------------------------------------------------------- 交付 */
   const DSTATS = [
@@ -1034,7 +1347,7 @@ footer b{color:var(--ink-2);font-weight:500}
     '<svg viewBox="0 0 24 24" stroke-linecap="round"><path d="M4 12.5 9 17.5 20 6.5"/></svg><span><b style="color:var(--ink)">' + esc(k) + "</b> → " + esc(v) + "</span>")));
 
   /* ---------------------------------------------------------- 导航 */
-  const VIEW_CN = { home: "首页", board: "分镜工作台", monitor: "产线监控", cast: "角色圣经", deliver: "合规交付", engines: "引擎与路由" };
+  const VIEW_CN = { home: "首页", board: "分镜工作台", monitor: "产线监控", cast: "数字人形象", deliver: "合规交付", engines: "引擎与路由" };
   function go(view) {
     $$(".view").forEach(v => { v.hidden = v.dataset.view !== view; });
     $$(".nav-item").forEach(b => b.setAttribute("aria-current", b.dataset.view === view ? "page" : "false"));
