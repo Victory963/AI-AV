@@ -230,9 +230,105 @@ def cuda_ok(host: str, port: int, key: str) -> tuple[bool, str]:
     return False, tail[0][:160]
 
 
+BAD_HOSTS_FILE = ROOT / "out" / "runpod_bad_hosts.txt"
+
+
+def load_bad_hosts() -> set[str]:
+    """已知坏宿主机，**落盘**保存。
+
+    只存在内存里不够用：RunPod 会反复把新 pod 放回同一台机器上，
+    而换机循环一旦重启，内存里的黑名单就没了，于是又开回那台坏的。
+    实测同一个 IP 连续给了五次，其中还包括 SECURE 云。
+    """
+    if BAD_HOSTS_FILE.is_file():
+        return {ln.split("#")[0].strip() for ln in
+                BAD_HOSTS_FILE.read_text(encoding="utf-8").splitlines() if ln.strip()}
+    return set()
+
+
+def mark_bad_host(host: str, why: str) -> None:
+    BAD_HOSTS_FILE.parent.mkdir(parents=True, exist_ok=True)
+    if host in load_bad_hosts():
+        return
+    with BAD_HOSTS_FILE.open("a", encoding="utf-8") as f:
+        f.write(f"{host}  # {why} {time.strftime('%Y-%m-%d %H:%M')}\n")
+
+
+def power_limit_w(host: str, port: int, key: str) -> float:
+    """读卡的功耗上限。
+
+    实测踩到过：同一台宿主机把 3090 和 4090 的 power limit 都锁在 150W
+    （原厂分别是 350W 和 450W）。nvidia-smi 照常报 100% 利用率，
+    算力却只剩三分之一，单镜从 6 分钟劣化到 25 分钟以上。
+    这个值一条命令就能读到，比跑基准还快，所以放在基准前面先筛一道。
+    """
+    cmd = [
+        "ssh", "-i", key, "-p", str(port), "-o", "StrictHostKeyChecking=no",
+        "-o", "UserKnownHostsFile=/dev/null", "-o", "LogLevel=ERROR",
+        "-o", "ConnectTimeout=25", f"root@{host}",
+        "nvidia-smi --query-gpu=power.limit --format=csv,noheader,nounits",
+    ]
+    try:
+        r = subprocess.run(cmd, capture_output=True, text=True, timeout=120)
+    except subprocess.TimeoutExpired:
+        return 0.0
+    for line in (r.stdout + r.stderr).splitlines():
+        line = line.strip()
+        try:
+            return float(line)
+        except ValueError:
+            continue
+    return 0.0
+
+
+BENCH_SNIPPET = (
+    "import torch,time;"
+    "a=torch.randn(4096,4096,device='cuda',dtype=torch.half);b=torch.randn_like(a);"
+    "[a@b for _ in range(3)];torch.cuda.synchronize();t=time.time();"
+    "[a@b for _ in range(50)];torch.cuda.synchronize();"
+    "print('TFLOPS=%.1f'%(2*4096**3*50/(time.time()-t)/1e12))"
+)
+
+
+def bench_tflops(host: str, port: int, key: str) -> float:
+    """实测半精度矩阵乘吞吐。
+
+    为什么要测：社区机器会遇到**限频或被共享**的卡 —— nvidia-smi 报 100% 利用率，
+    功耗却只有 149W（4090 满载 400W+），单镜从 6 分钟变成 25 分钟以上。
+    这条基准 30 秒出结果，比下完 17GB 权重才发现机器不行便宜得多。
+    """
+    cmd = [
+        "ssh", "-i", key, "-p", str(port), "-o", "StrictHostKeyChecking=no",
+        "-o", "UserKnownHostsFile=/dev/null", "-o", "LogLevel=ERROR",
+        "-o", "ConnectTimeout=25", f"root@{host}", f'python3 -c "{BENCH_SNIPPET}"',
+    ]
+    try:
+        r = subprocess.run(cmd, capture_output=True, text=True, timeout=240)
+    except subprocess.TimeoutExpired:
+        return 0.0
+    for line in (r.stdout + r.stderr).splitlines():
+        if "TFLOPS=" in line:
+            return float(line.split("TFLOPS=")[1].strip())
+    return 0.0
+
+
+def cmd_bench(a) -> int:
+    tgt = ssh_target(a.pod)
+    if not tgt:
+        print("这个 pod 还没分配到公网 SSH"); return 1
+    tf = bench_tflops(tgt[0], tgt[1], str(Path(a.key).expanduser()))
+    print(f"{a.pod}: {tf:.1f} TFLOPS（fp16 矩阵乘）")
+    return 0 if tf >= a.min_tflops else 1
+
+
 def cmd_provision(a) -> int:
     """开机 → 等 SSH → 实测 CUDA → 坏就换一台。返回可用 pod 的 id。"""
     key = str(Path(a.key).expanduser())
+    # 同一台宿主机不重试：RunPod 会把新 pod 放回刚才那台机器上，
+    # 被限功耗的卡再开一次还是被限功耗的卡。
+    bad_hosts = load_bad_hosts()
+    if bad_hosts:
+        print(f"已知坏宿主机 {len(bad_hosts)} 台，会跳过：{', '.join(sorted(bad_hosts))}")
     for attempt in range(1, a.tries + 1):
         for gpu in a.gpus:
             print(f"\n[{attempt}/{a.tries}] 试 {gpu}")
@@ -262,12 +358,28 @@ def cmd_provision(a) -> int:
             if not tgt:
                 print("  等不到 SSH，换一台"); rest(f"/pods/{pod}", "DELETE"); continue
             host, port = tgt
+            if host in bad_hosts:
+                print(f"  又被放回已知的坏宿主机 {host}，关掉重开")
+                rest(f"/pods/{pod}", "DELETE")
+                continue
             print(f"  SSH {host}:{port}，验卡…")
             time.sleep(20)
             for _ in range(6):
                 ok, msg = cuda_ok(host, port, key)
                 if ok:
-                    print(f"  ✓ CUDA 正常 —— 用这台：{pod}")
+                    pw = power_limit_w(host, port, key)
+                    if pw and pw < a.min_watts:
+                        print(f"  ✗ 功耗上限只有 {pw:.0f}W（门槛 {a.min_watts}W）—— 卡被限功耗，换一台")
+                        bad_hosts.add(host); mark_bad_host(host, f"功耗被锁 {pw:.0f}W")
+                        rest(f"/pods/{pod}", "DELETE")
+                        break
+                    tf = bench_tflops(host, port, key)
+                    if tf < a.min_tflops:
+                        print(f"  ✗ 算力只有 {tf:.1f} TFLOPS（门槛 {a.min_tflops}）—— 限频或被共享，换一台")
+                        bad_hosts.add(host); mark_bad_host(host, f"算力仅 {tf:.1f}T")
+                        rest(f"/pods/{pod}", "DELETE")
+                        break
+                    print(f"  ✓ CUDA 正常 · 功耗上限 {pw:.0f}W · 实测 {tf:.1f} TFLOPS —— 用这台：{pod}")
                     print(f"    SSH  ssh -i {key} -p {port} root@{host}")
                     print(f"    HTTP https://{pod}-8188.proxy.runpod.net")
                     print(f"    收工 python deploy/runpod_ctl.py terminate {pod}")
@@ -276,6 +388,7 @@ def cmd_provision(a) -> int:
                     time.sleep(20); continue
                 break
             print(f"  ✗ 这台卡用不了（{msg}），关掉换下一台")
+            bad_hosts.add(host); mark_bad_host(host, "CUDA 初始化失败")
             rest(f"/pods/{pod}", "DELETE")
     print("试完都没拿到可用的卡")
     return 1
@@ -319,7 +432,20 @@ def main() -> int:
     p.add_argument("--secure", action="store_true")
     p.add_argument("--key", default="~/.ssh/id_ed25519_runpod")
     p.add_argument("--ssh-timeout", type=float, default=420)
+    # 门槛取 25：3090 实测 32.5，4090 正常应在 100 以上；被限频的那台
+    # 功耗只有 149W、单镜从 6 分钟劣化到 25 分钟以上，实测远低于 10。
+    # 定 40 会把正常的 3090 也误杀，定 25 能放行 3090 又能挡住残卡。
+    p.add_argument("--min-tflops", type=float, default=25.0,
+                   help="fp16 矩阵乘吞吐门槛；低于它说明卡被限频或共享")
+    p.add_argument("--min-watts", type=float, default=250.0,
+                   help="功耗上限门槛；3090 原厂 350W、4090 450W，150W 的是被锁了的")
     p.set_defaults(fn=cmd_provision)
+
+    p = sub.add_parser("bench", help="实测某台 pod 的算力")
+    p.add_argument("pod")
+    p.add_argument("--key", default="~/.ssh/id_ed25519_runpod")
+    p.add_argument("--min-tflops", type=float, default=25.0)
+    p.set_defaults(fn=cmd_bench)
 
     p = sub.add_parser("terminate")
     p.add_argument("pods", nargs="*", help="留空 = 关掉全部")

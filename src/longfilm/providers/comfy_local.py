@@ -349,7 +349,11 @@ class ComfyProvider(VideoProvider):
 
     def health(self) -> bool:
         try:
-            code, _ = _http.request_json("GET", self._url("/system_stats"), timeout=3.0)
+            # 3 秒对本机够用，对跨洋的反向代理（RunPod 的 *.proxy.runpod.net）不够：
+            # 实测机器明明活着却被判死，整条降级链跟着空转。跟随 provider 的超时，
+            # 但压在 15 秒内 —— 探活本来就不该等太久。
+            code, _ = _http.request_json(
+                "GET", self._url("/system_stats"), timeout=min(15.0, max(3.0, self.timeout_s / 4)))
         except ProviderError:
             return False
         return code == 200
