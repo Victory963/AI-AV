@@ -198,6 +198,89 @@ def cmd_terminate(a) -> int:
     return 0
 
 
+def ssh_target(pod_id: str) -> tuple[str, int] | None:
+    """拿 pod 的公网 SSH 地址。没分配到就返回 None。"""
+    d = gql('{ pod(input:{podId:"%s"}) { runtime { ports { ip isIpPublic privatePort publicPort } } } }' % pod_id)
+    rt = (d.get("pod") or {}).get("runtime") or {}
+    for port in rt.get("ports") or []:
+        if port["privatePort"] == 22 and port.get("isIpPublic"):
+            return port["ip"], port["publicPort"]
+    return None
+
+
+def cuda_ok(host: str, port: int, key: str) -> tuple[bool, str]:
+    """在 pod 上实测 torch 能不能拿到卡。
+
+    为什么不信 nvidia-smi：**它能列出卡，不代表 CUDA 能初始化**。
+    实测遇到过同一台宿主机连开两个 pod，nvidia-smi 正常、torch 一律
+    "CUDA unknown error"。只看 nvidia-smi 就会在坏机器上把权重下完才发现。
+    """
+    cmd = [
+        "ssh", "-i", key, "-p", str(port), "-o", "StrictHostKeyChecking=no",
+        "-o", "UserKnownHostsFile=/dev/null", "-o", "LogLevel=ERROR",
+        "-o", "ConnectTimeout=25", f"root@{host}",
+        "python3 -c \"import torch;print('CUDA_OK' if torch.cuda.is_available() else 'CUDA_BAD')\" 2>&1 | tail -1",
+    ]
+    r = subprocess.run(cmd, capture_output=True, text=True, timeout=180)
+    # 在全部输出里找标记，不能只看最后一行：ssh 的提示行会盖住真正的结论
+    out = (r.stdout + r.stderr).strip()
+    if "CUDA_OK" in out:
+        return True, "CUDA_OK"
+    tail = [ln for ln in out.splitlines() if ln.strip()][-1:] or [""]
+    return False, tail[0][:160]
+
+
+def cmd_provision(a) -> int:
+    """开机 → 等 SSH → 实测 CUDA → 坏就换一台。返回可用 pod 的 id。"""
+    key = str(Path(a.key).expanduser())
+    for attempt in range(1, a.tries + 1):
+        for gpu in a.gpus:
+            print(f"\n[{attempt}/{a.tries}] 试 {gpu}")
+            ns = argparse.Namespace(gpu=gpu, image=a.image, name=a.name, disk=a.disk,
+                                    volume=a.volume, mount=a.mount, secure=a.secure)
+            try:
+                buf: list[str] = []
+                import contextlib
+                import io
+                with contextlib.redirect_stdout(io.StringIO()) as f:
+                    cmd_create(ns)
+                buf = f.getvalue().splitlines()
+            except SystemExit as e:
+                print(f"  开机失败：{e}")
+                continue
+            pod = next((ln.split("podId=")[1].strip() for ln in buf if "podId=" in ln), None)
+            if not pod:
+                print("  没拿到 podId"); continue
+            print(f"  podId={pod}，等 SSH…")
+            t0 = time.time()
+            tgt = None
+            while time.time() - t0 < a.ssh_timeout:
+                tgt = ssh_target(pod)
+                if tgt:
+                    break
+                time.sleep(15)
+            if not tgt:
+                print("  等不到 SSH，换一台"); rest(f"/pods/{pod}", "DELETE"); continue
+            host, port = tgt
+            print(f"  SSH {host}:{port}，验卡…")
+            time.sleep(20)
+            for _ in range(6):
+                ok, msg = cuda_ok(host, port, key)
+                if ok:
+                    print(f"  ✓ CUDA 正常 —— 用这台：{pod}")
+                    print(f"    SSH  ssh -i {key} -p {port} root@{host}")
+                    print(f"    HTTP https://{pod}-8188.proxy.runpod.net")
+                    print(f"    收工 python deploy/runpod_ctl.py terminate {pod}")
+                    return 0
+                if "Connection" in msg or "closed" in msg:
+                    time.sleep(20); continue
+                break
+            print(f"  ✗ 这台卡用不了（{msg}），关掉换下一台")
+            rest(f"/pods/{pod}", "DELETE")
+    print("试完都没拿到可用的卡")
+    return 1
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -224,6 +307,19 @@ def main() -> int:
     p.add_argument("--timeout", type=float, default=900)
     p.add_argument("--interval", type=float, default=15)
     p.set_defaults(fn=cmd_wait)
+
+    p = sub.add_parser("provision", help="开机 + 验卡 + 坏了自动换")
+    p.add_argument("--gpus", nargs="*", default=["RTX 4090", "RTX A6000", "RTX 3090", "A40", "L40S"])
+    p.add_argument("--tries", type=int, default=3)
+    p.add_argument("--image", default=COMFY_IMAGE)
+    p.add_argument("--name", default="longfilm-comfy")
+    p.add_argument("--disk", type=int, default=60)
+    p.add_argument("--volume", type=int, default=80)
+    p.add_argument("--mount", default="/workspace")
+    p.add_argument("--secure", action="store_true")
+    p.add_argument("--key", default="~/.ssh/id_ed25519_runpod")
+    p.add_argument("--ssh-timeout", type=float, default=420)
+    p.set_defaults(fn=cmd_provision)
 
     p = sub.add_parser("terminate")
     p.add_argument("pods", nargs="*", help="留空 = 关掉全部")

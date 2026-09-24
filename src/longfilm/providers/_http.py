@@ -62,6 +62,19 @@ def _decode(raw: bytes) -> Any:
         return {"_raw_text": raw[:2048].decode("utf-8", "replace")}
 
 
+# 默认 User-Agent。urllib 的默认 UA（Python-urllib/3.x）会被不少反爬中间层直接拒掉：
+# 实测 RunPod 的 *.proxy.runpod.net 对它返回 403，而同一个 URL 换浏览器 UA 就正常。
+# 供应商自己的 API 不挑 UA，但产物下载经常走在这类代理后面，所以统一带上。
+DEFAULT_UA = ("Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
+              "(KHTML, like Gecko) Chrome/131.0 Safari/537.36")
+
+
+def _with_ua(headers: dict[str, str] | None) -> dict[str, str]:
+    hdrs = dict(headers or {})
+    hdrs.setdefault("User-Agent", DEFAULT_UA)
+    return hdrs
+
+
 def request_json(
     method: str,
     url: str,
@@ -71,7 +84,7 @@ def request_json(
     timeout: float = 60.0,
 ) -> tuple[int, Any]:
     """发一个 JSON 请求，返回 (http_status, 解析后的 body)。"""
-    hdrs = dict(headers or {})
+    hdrs = _with_ua(headers)
     data: bytes | None = None
     if json_body is not None:
         data = _json.dumps(json_body, ensure_ascii=False).encode("utf-8")
@@ -123,7 +136,7 @@ def post_multipart(
     chunks.append(f"--{boundary}--\r\n".encode())
     body = b"".join(chunks)
 
-    hdrs = dict(headers or {})
+    hdrs = _with_ua(headers)
     hdrs["Content-Type"] = f"multipart/form-data; boundary={boundary}"
     req = urllib.request.Request(url, data=body, headers=hdrs, method="POST")
     try:
@@ -141,7 +154,7 @@ def download(url: str, dest: str | Path, *, headers: dict[str, str] | None = Non
     p = Path(dest)
     p.parent.mkdir(parents=True, exist_ok=True)
     tmp = p.with_suffix(p.suffix + ".part")
-    req = urllib.request.Request(url, headers=dict(headers or {}), method="GET")
+    req = urllib.request.Request(url, headers=_with_ua(headers), method="GET")
     try:
         with urllib.request.urlopen(req, timeout=timeout) as resp, tmp.open("wb") as fh:
             while chunk := resp.read(1 << 20):

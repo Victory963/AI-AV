@@ -1,0 +1,136 @@
+{
+ "id": "su_qing",
+ "name": "苏晴",
+ "is_fictional": true,
+ "age_statement": "虚构角色，设定年龄 24 岁，成年，生活方式频道主持人",
+ "persona": "生活方式频道主持人。活泼直率，爱笑，说话带点跳脱的节奏；遇到喜欢的东西会忍不住原地转一圈。",
+ "appearance": {
+  "face": "圆润杏眼，双眼皮，眼尾微微下垂显得亲和；鼻梁小巧，笑起来左颊有一个梨涡",
+  "hair": "蜜茶色及腰长卷发，中分，发梢自然外翘，右耳上方别一枚小星星发夹",
+  "body": "身高一米六二，体型匀称偏纤细，站姿轻快，走路时手臂摆幅偏大",
+  "skin": "暖调白皙，脸颊有淡淡的自然红晕，锁骨下方有一颗小痣",
+  "wardrobe": "米白色针织开衫配浅樱粉连衣裙，裙长过膝，脚踩白色小皮鞋，手腕戴一条细银链",
+  "distinguishing": "星星发夹 + 左颊梨涡 + 蜜茶色外翘发梢"
+ },
+ "voice": {
+  "timbre_ref_uri": null,
+  "tts_engine": "indextts2",
+  "tts_voice_id": null,
+  "pitch_shift": 0.0,
+  "speed": 1.04,
+  "emotion_default": "happy",
+  "language": "zh"
+ },
+ "portraits": [
+  {
+   "role": "identity",
+   "uri": "assets/cast/su_qing/portrait/front_flat_neutral_bust.png",
+   "weight": 1.0,
+   "note": "正面 · 平光 · 中性 · 半身 [view=FRONT;light=FLAT;expr=NEUTRAL;frame=BUST]",
+   "subject_id": "su_qing"
+  },
+  {
+   "role": "identity",
+   "uri": "assets/cast/su_qing/portrait/tq_right_flat_neutral_bust.png",
+   "weight": 0.92,
+   "note": "右 3/4 侧 · 平光 · 中性 · 半身 [view=TQ_RIGHT;light=FLAT;expr=NEUTRAL;frame=BUST]",
+   "subject_id": "su_qing"
+  },
+  {
+   "role": "identity",
+   "uri": "assets/cast/su_qing/portrait/profile_flat_neutral_bust.png",
+   "weight": 0.92,
+   "note": "正侧 · 平光 · 中性 · 半身 [view=PROFILE;light=FLAT;expr=NEUTRAL;frame=BUST]",
+   "subject_id": "su_qing"
+  },
+  {
+   "role": "identity",
+   "uri": "assets/cast/su_qing/portrait/tq_right_key_left_neutral_bust.png",
+   "weight": 0.82,
+   "note": "右 3/4 侧 · 主光左 · 中性 · 半身 [view=TQ_RIGHT;light=KEY_LEFT;expr=NEUTRAL;frame=BUST]",
+   "subject_id": "su_qing"
+  },
+  {
+   "role": "identity",
+   "uri": "assets/cast/su_qing/portrait/tq_left_key_right_neutral_bust.png",
+   "weight": 0.82,
+   "note": "左 3/4 侧 · 主光右 · 中性 · 半身 [view=TQ_LEFT;light=KEY_RIGHT;expr=NEUTRAL;frame=BUST]",
+   "subject_id": "su_qing"
+  },
+  {
+   "role": "identity",
+   "uri": "assets/cast/su_qing/portrait/front_rim_neutral_bust.png",
+   "weight": 0.9,
+   "note": "正面 · 轮廓光 · 中性 · 半身 [view=FRONT;light=RIM;expr=NEUTRAL;frame=BUST]",
+   "subject_id": "su_qing"
+  },
+  {
+   "role": "identity",
+   "uri": "assets/cast/su_qing/portrait/front_flat_slight_smile_headshot.png",
+   "weight": 0.92,
+   "note": "正面 · 平光 · 微笑 · 头肩 [view=FRONT;light=FLAT;expr=SLIGHT_SMILE;frame=HEADSHOT]",
+   "subject_id": "su_qing"
+  },
+  {
+   "role": "identity",
+   "uri": "assets/cast/su_qing/portrait/front_flat_concern_headshot.png",
+   "weight": 0.92,
+   "note": "正面 · 平光 · 忧虑 · 头肩 [view=FRONT;light=FLAT;expr=CONCERN;frame=HEADSHOT]",
+   "subject_id": "su_qing"
+  },
+  {
+   "role": "identity",
+   "uri": "assets/cast/su_qing/portrait/front_flat_speaking_headshot.png",
+   "weight": 0.92,
+   "note": "正面 · 平光 · 说话中 · 头肩 [view=FRONT;light=FLAT;expr=SPEAKING;frame=HEADSHOT]",
+   "subject_id": "su_qing"
+  },
+  {
+   "role": "identity",
+   "uri": "assets/cast/su_qing/portrait/front_flat_neutral_eyes.png",
+   "weight": 1.0,
+   "note": "正面 · 平光 · 中性 · 眼部特写 [view=FRONT;light=FLAT;expr=NEUTRAL;frame=EYES]",
+   "subject_id": "su_qing"
+  }
+ ],
+ "turnaround": [
+  {
+   "role": "wardrobe",
+   "uri": "assets/cast/su_qing/turn/front_flat_neutral_full_body.png",
+   "weight": 0.7,
+   "note": "正面 · 平光 · 中性 · 全身 [view=FRONT;light=FLAT;expr=NEUTRAL;frame=FULL_BODY]",
+   "subject_id": "su_qing"
+  },
+  {
+   "role": "identity",
+   "uri": "assets/cast/su_qing/turn/tq_right_flat_neutral_full_body.png",
+   "weight": 0.6,
+   "note": "右 3/4 侧 · 平光 · 中性 · 全身 [view=TQ_RIGHT;light=FLAT;expr=NEUTRAL;frame=FULL_BODY]",
+   "subject_id": "su_qing"
+  },
+  {
+   "role": "identity",
+   "uri": "assets/cast/su_qing/turn/profile_flat_neutral_full_body.png",
+   "weight": 0.6,
+   "note": "正侧 · 平光 · 中性 · 全身 [view=PROFILE;light=FLAT;expr=NEUTRAL;frame=FULL_BODY]",
+   "subject_id": "su_qing"
+  },
+  {
+   "role": "identity",
+   "uri": "assets/cast/su_qing/turn/back_tq_flat_neutral_full_body.png",
+   "weight": 0.6,
+   "note": "后 3/4 侧 · 平光 · 中性 · 全身 [view=BACK_TQ;light=FLAT;expr=NEUTRAL;frame=FULL_BODY]",
+   "subject_id": "su_qing"
+  },
+  {
+   "role": "identity",
+   "uri": "assets/cast/su_qing/turn/back_flat_neutral_full_body.png",
+   "weight": 0.6,
+   "note": "背面 · 平光 · 中性 · 全身 [view=BACK;light=FLAT;expr=NEUTRAL;frame=FULL_BODY]",
+   "subject_id": "su_qing"
+  }
+ ],
+ "motion_refs": [],
+ "lora": null,
+ "negative_prompt": "暴露服装, 성인, 写实成人内容, 过度妆容, 未成年外观, 儿童"
+}

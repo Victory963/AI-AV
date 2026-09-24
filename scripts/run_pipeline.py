@@ -226,9 +226,14 @@ class Pipeline:
                 target = step.provider if step and step.provider in REGISTRY else None
                 budget = RefBudget.from_capabilities(REGISTRY.get(target).caps) if target else None
                 drops: list = []
+                # 续接链刚抽出来的尾帧要传给 refpack，否则这一步重建参考位时会把它冲掉。
+                # provider 直出尾帧（mock / 官方 API）走 self.last_frames；
+                # 自建引擎不直出，链会从上一镜视频里抽一帧，只在 link 里，别漏了。
+                chain_frame = (link or {}).get("inputs", {}).get("first_frame_uri")
+                anchor = chain_frame or (self.last_frames.get(prev_shot.id) if prev_shot else None)
                 shot.refs = build_refpack(
                     shot, self.sb, budget=budget,
-                    prev_last_frame_uri=self.last_frames.get(prev_shot.id) if prev_shot else None,
+                    prev_last_frame_uri=anchor,
                     drops_out=drops,
                 )
 
@@ -578,6 +583,8 @@ def main() -> None:
     ap.add_argument("--stages", default=",".join(STAGES))
     ap.add_argument("--work", default=str(ROOT / "out" / "work" / "pipeline"))
     ap.add_argument("--budget", type=float, default=120.0)
+    ap.add_argument("--storyboard", default=str(ROOT / "configs" / "demo_episode.json"),
+                    help="要拍的分镜 JSON")
     ap.add_argument("--resume", action="store_true", help="捡回上次已渲染的产物，只跑后续阶段")
     ap.add_argument("-v", "--verbose", action="store_true")
     args = ap.parse_args()
@@ -587,7 +594,7 @@ def main() -> None:
         format="%(levelname).1s %(name)s: %(message)s",
     )
 
-    sb = Storyboard.load(ROOT / "configs" / "demo_episode.json")
+    sb = Storyboard.load(args.storyboard)
     if args.limit:
         kept, n = [], 0
         for sc in sb.scenes:

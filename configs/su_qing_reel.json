@@ -1,0 +1,1195 @@
+{
+  "project": "character-reel",
+  "episode": "su_qing_60s",
+  "logline": "虚构角色苏晴的 60 秒全身动作样片：走动、转身、旋转、蹲起、跳跃、坐下、跟拍。",
+  "target_duration_s": 60.75,
+  "characters": [
+    {
+      "id": "su_qing",
+      "name": "苏晴",
+      "is_fictional": true,
+      "age_statement": "虚构角色，设定年龄 24 岁，成年，生活方式频道主持人",
+      "persona": "生活方式频道主持人。活泼直率，爱笑，说话带点跳脱的节奏；遇到喜欢的东西会忍不住原地转一圈。",
+      "appearance": {
+        "face": "圆润杏眼，双眼皮，眼尾微微下垂显得亲和；鼻梁小巧，笑起来左颊有一个梨涡",
+        "hair": "蜜茶色及腰长卷发，中分，发梢自然外翘，右耳上方别一枚小星星发夹",
+        "body": "身高一米六二，体型匀称偏纤细，站姿轻快，走路时手臂摆幅偏大",
+        "skin": "暖调白皙，脸颊有淡淡的自然红晕，锁骨下方有一颗小痣",
+        "wardrobe": "米白色针织开衫配浅樱粉连衣裙，裙长过膝，脚踩白色小皮鞋，手腕戴一条细银链",
+        "distinguishing": "星星发夹 + 左颊梨涡 + 蜜茶色外翘发梢"
+      },
+      "voice": {
+        "timbre_ref_uri": null,
+        "tts_engine": "indextts2",
+        "tts_voice_id": "zh_female_sweet_01",
+        "pitch_shift": 0.0,
+        "speed": 1.04,
+        "emotion_default": "happy",
+        "language": "zh"
+      },
+      "portraits": [
+        {
+          "role": "identity",
+          "uri": "assets/cast/su_qing/portrait/front_flat_neutral_bust.png",
+          "weight": 1.0,
+          "note": "正面 · 平光 · 中性 · 半身 [view=FRONT;light=FLAT;expr=NEUTRAL;frame=BUST]",
+          "subject_id": "su_qing"
+        },
+        {
+          "role": "identity",
+          "uri": "assets/cast/su_qing/portrait/tq_right_flat_neutral_bust.png",
+          "weight": 0.92,
+          "note": "右 3/4 侧 · 平光 · 中性 · 半身 [view=TQ_RIGHT;light=FLAT;expr=NEUTRAL;frame=BUST]",
+          "subject_id": "su_qing"
+        },
+        {
+          "role": "identity",
+          "uri": "assets/cast/su_qing/portrait/profile_flat_neutral_bust.png",
+          "weight": 0.92,
+          "note": "正侧 · 平光 · 中性 · 半身 [view=PROFILE;light=FLAT;expr=NEUTRAL;frame=BUST]",
+          "subject_id": "su_qing"
+        },
+        {
+          "role": "identity",
+          "uri": "assets/cast/su_qing/portrait/tq_right_key_left_neutral_bust.png",
+          "weight": 0.82,
+          "note": "右 3/4 侧 · 主光左 · 中性 · 半身 [view=TQ_RIGHT;light=KEY_LEFT;expr=NEUTRAL;frame=BUST]",
+          "subject_id": "su_qing"
+        },
+        {
+          "role": "identity",
+          "uri": "assets/cast/su_qing/portrait/tq_left_key_right_neutral_bust.png",
+          "weight": 0.82,
+          "note": "左 3/4 侧 · 主光右 · 中性 · 半身 [view=TQ_LEFT;light=KEY_RIGHT;expr=NEUTRAL;frame=BUST]",
+          "subject_id": "su_qing"
+        },
+        {
+          "role": "identity",
+          "uri": "assets/cast/su_qing/portrait/front_rim_neutral_bust.png",
+          "weight": 0.9,
+          "note": "正面 · 轮廓光 · 中性 · 半身 [view=FRONT;light=RIM;expr=NEUTRAL;frame=BUST]",
+          "subject_id": "su_qing"
+        },
+        {
+          "role": "identity",
+          "uri": "assets/cast/su_qing/portrait/front_flat_slight_smile_headshot.png",
+          "weight": 0.92,
+          "note": "正面 · 平光 · 微笑 · 头肩 [view=FRONT;light=FLAT;expr=SLIGHT_SMILE;frame=HEADSHOT]",
+          "subject_id": "su_qing"
+        },
+        {
+          "role": "identity",
+          "uri": "assets/cast/su_qing/portrait/front_flat_concern_headshot.png",
+          "weight": 0.92,
+          "note": "正面 · 平光 · 忧虑 · 头肩 [view=FRONT;light=FLAT;expr=CONCERN;frame=HEADSHOT]",
+          "subject_id": "su_qing"
+        },
+        {
+          "role": "identity",
+          "uri": "assets/cast/su_qing/portrait/front_flat_speaking_headshot.png",
+          "weight": 0.92,
+          "note": "正面 · 平光 · 说话中 · 头肩 [view=FRONT;light=FLAT;expr=SPEAKING;frame=HEADSHOT]",
+          "subject_id": "su_qing"
+        },
+        {
+          "role": "identity",
+          "uri": "assets/cast/su_qing/portrait/front_flat_neutral_eyes.png",
+          "weight": 1.0,
+          "note": "正面 · 平光 · 中性 · 眼部特写 [view=FRONT;light=FLAT;expr=NEUTRAL;frame=EYES]",
+          "subject_id": "su_qing"
+        }
+      ],
+      "turnaround": [
+        {
+          "role": "wardrobe",
+          "uri": "assets/cast/su_qing/turn/front_flat_neutral_full_body.png",
+          "weight": 0.7,
+          "note": "正面 · 平光 · 中性 · 全身 [view=FRONT;light=FLAT;expr=NEUTRAL;frame=FULL_BODY]",
+          "subject_id": "su_qing"
+        },
+        {
+          "role": "identity",
+          "uri": "assets/cast/su_qing/turn/tq_right_flat_neutral_full_body.png",
+          "weight": 0.6,
+          "note": "右 3/4 侧 · 平光 · 中性 · 全身 [view=TQ_RIGHT;light=FLAT;expr=NEUTRAL;frame=FULL_BODY]",
+          "subject_id": "su_qing"
+        },
+        {
+          "role": "identity",
+          "uri": "assets/cast/su_qing/turn/profile_flat_neutral_full_body.png",
+          "weight": 0.6,
+          "note": "正侧 · 平光 · 中性 · 全身 [view=PROFILE;light=FLAT;expr=NEUTRAL;frame=FULL_BODY]",
+          "subject_id": "su_qing"
+        },
+        {
+          "role": "identity",
+          "uri": "assets/cast/su_qing/turn/back_tq_flat_neutral_full_body.png",
+          "weight": 0.6,
+          "note": "后 3/4 侧 · 平光 · 中性 · 全身 [view=BACK_TQ;light=FLAT;expr=NEUTRAL;frame=FULL_BODY]",
+          "subject_id": "su_qing"
+        },
+        {
+          "role": "identity",
+          "uri": "assets/cast/su_qing/turn/back_flat_neutral_full_body.png",
+          "weight": 0.6,
+          "note": "背面 · 平光 · 中性 · 全身 [view=BACK;light=FLAT;expr=NEUTRAL;frame=FULL_BODY]",
+          "subject_id": "su_qing"
+        }
+      ],
+      "motion_refs": [],
+      "lora": null,
+      "negative_prompt": "暴露服装, 成人内容, 过度妆容, 未成年外观, 儿童, 多余的手指, 畸形的手"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "sc01",
+      "title": "全身动作样片",
+      "synopsis": "一个虚构角色在明亮家居摄影棚里的一分钟活动",
+      "location": "家居摄影棚",
+      "time_of_day": "day",
+      "base_grade": {
+        "palette": "",
+        "contrast": 1.0,
+        "saturation": 1.0,
+        "temperature": 0.0,
+        "lut": null
+      },
+      "shots": [
+        {
+          "id": "sq_s01",
+          "scene_id": "sc01",
+          "index": 0,
+          "duration_s": 3.375,
+          "shot_size": "full shot",
+          "camera_move": "static locked-off camera",
+          "lens_mm": 35,
+          "aperture": "f/2.8",
+          "fps": 24,
+          "subject_ids": [
+            "su_qing"
+          ],
+          "action": "站在窗前，双手自然垂放，看向镜头轻轻挥手打招呼，随后露出微笑",
+          "environment": "明亮的家居摄影棚，浅木地板，米白色墙面，身后是大面积落地窗，窗外是虚化的绿色庭院，暖白色自然光从左前方斜射进来",
+          "lighting": "暖白色自然光从左前方斜射，右侧有柔和补光，整体高调、低对比",
+          "mood": "轻松、明亮、亲切",
+          "style": "真实电影感，浅景深，皮肤质感自然，不做磨皮",
+          "dialogue": [],
+          "sfx": [],
+          "refs": {
+            "images": [],
+            "videos": [],
+            "audios": [],
+            "MAX_IMAGES": 9,
+            "MAX_VIDEOS": 3,
+            "MAX_AUDIOS": 3
+          },
+          "continuity": {
+            "prev_shot_id": null,
+            "next_shot_id": null,
+            "inherit_last_frame": false,
+            "emit_last_frame": true,
+            "extend_from_job": null,
+            "overlap_frames": 0,
+            "screen_direction": "l2r",
+            "match_on": "身份基准镜：全身、正面、平光"
+          },
+          "grade": {
+            "palette": "",
+            "contrast": 1.0,
+            "saturation": 1.0,
+            "temperature": 0.0,
+            "lut": null
+          },
+          "transition_in": "cut",
+          "content_rating": "g",
+          "engine_hint": "open",
+          "seed": 90000,
+          "negative_prompt": "暴露服装, 成人内容, 多余的手指, 畸形的手, 面部闪烁, 画面抖动",
+          "provider_used": null,
+          "job_id": null,
+          "render_uri": null,
+          "qc_score": null,
+          "takes": 0
+        },
+        {
+          "id": "sq_s02",
+          "scene_id": "sc01",
+          "index": 1,
+          "duration_s": 3.375,
+          "shot_size": "full shot",
+          "camera_move": "camera trucks left",
+          "lens_mm": 35,
+          "aperture": "f/2.8",
+          "fps": 24,
+          "subject_ids": [
+            "su_qing"
+          ],
+          "action": "从画面右侧向左走过整个房间，步伐轻快，裙摆随走动摆动，手臂自然摆动",
+          "environment": "明亮的家居摄影棚，浅木地板，米白色墙面，身后是大面积落地窗，窗外是虚化的绿色庭院，暖白色自然光从左前方斜射进来",
+          "lighting": "暖白色自然光从左前方斜射，右侧有柔和补光，整体高调、低对比",
+          "mood": "轻松、明亮、亲切",
+          "style": "真实电影感，浅景深，皮肤质感自然，不做磨皮",
+          "dialogue": [],
+          "sfx": [],
+          "refs": {
+            "images": [],
+            "videos": [],
+            "audios": [],
+            "MAX_IMAGES": 9,
+            "MAX_VIDEOS": 3,
+            "MAX_AUDIOS": 3
+          },
+          "continuity": {
+            "prev_shot_id": "sq_s01",
+            "next_shot_id": null,
+            "inherit_last_frame": true,
+            "emit_last_frame": true,
+            "extend_from_job": null,
+            "overlap_frames": 0,
+            "screen_direction": "l2r",
+            "match_on": "走动时的身形与步态"
+          },
+          "grade": {
+            "palette": "",
+            "contrast": 1.0,
+            "saturation": 1.0,
+            "temperature": 0.0,
+            "lut": null
+          },
+          "transition_in": "dissolve",
+          "content_rating": "g",
+          "engine_hint": "open",
+          "seed": 90001,
+          "negative_prompt": "暴露服装, 成人内容, 多余的手指, 畸形的手, 面部闪烁, 画面抖动",
+          "provider_used": null,
+          "job_id": null,
+          "render_uri": null,
+          "qc_score": null,
+          "takes": 0
+        },
+        {
+          "id": "sq_s03",
+          "scene_id": "sc01",
+          "index": 2,
+          "duration_s": 3.375,
+          "shot_size": "medium shot",
+          "camera_move": "static locked-off camera",
+          "lens_mm": 50,
+          "aperture": "f/2.8",
+          "fps": 24,
+          "subject_ids": [
+            "su_qing"
+          ],
+          "action": "停下脚步转身回头看向镜头，长发随转身甩动，抬手把耳边的头发别到耳后",
+          "environment": "明亮的家居摄影棚，浅木地板，米白色墙面，身后是大面积落地窗，窗外是虚化的绿色庭院，暖白色自然光从左前方斜射进来",
+          "lighting": "暖白色自然光从左前方斜射，右侧有柔和补光，整体高调、低对比",
+          "mood": "轻松、明亮、亲切",
+          "style": "真实电影感，浅景深，皮肤质感自然，不做磨皮",
+          "dialogue": [],
+          "sfx": [],
+          "refs": {
+            "images": [],
+            "videos": [],
+            "audios": [],
+            "MAX_IMAGES": 9,
+            "MAX_VIDEOS": 3,
+            "MAX_AUDIOS": 3
+          },
+          "continuity": {
+            "prev_shot_id": "sq_s02",
+            "next_shot_id": null,
+            "inherit_last_frame": true,
+            "emit_last_frame": true,
+            "extend_from_job": null,
+            "overlap_frames": 0,
+            "screen_direction": "l2r",
+            "match_on": "转身甩发：最容易崩的中间帧"
+          },
+          "grade": {
+            "palette": "",
+            "contrast": 1.0,
+            "saturation": 1.0,
+            "temperature": 0.0,
+            "lut": null
+          },
+          "transition_in": "dissolve",
+          "content_rating": "g",
+          "engine_hint": "open",
+          "seed": 90002,
+          "negative_prompt": "暴露服装, 成人内容, 多余的手指, 畸形的手, 面部闪烁, 画面抖动",
+          "provider_used": null,
+          "job_id": null,
+          "render_uri": null,
+          "qc_score": null,
+          "takes": 0
+        },
+        {
+          "id": "sq_s04",
+          "scene_id": "sc01",
+          "index": 3,
+          "duration_s": 3.375,
+          "shot_size": "medium close-up",
+          "camera_move": "camera dollies in",
+          "lens_mm": 85,
+          "aperture": "f/2.8",
+          "fps": 24,
+          "subject_ids": [
+            "su_qing"
+          ],
+          "action": "面向镜头说话，表情从平静转为开心，眨眼，微微点头",
+          "environment": "明亮的家居摄影棚，浅木地板，米白色墙面，身后是大面积落地窗，窗外是虚化的绿色庭院，暖白色自然光从左前方斜射进来",
+          "lighting": "暖白色自然光从左前方斜射，右侧有柔和补光，整体高调、低对比",
+          "mood": "轻松、明亮、亲切",
+          "style": "真实电影感，浅景深，皮肤质感自然，不做磨皮",
+          "dialogue": [],
+          "sfx": [],
+          "refs": {
+            "images": [],
+            "videos": [],
+            "audios": [],
+            "MAX_IMAGES": 9,
+            "MAX_VIDEOS": 3,
+            "MAX_AUDIOS": 3
+          },
+          "continuity": {
+            "prev_shot_id": "sq_s03",
+            "next_shot_id": null,
+            "inherit_last_frame": true,
+            "emit_last_frame": true,
+            "extend_from_job": null,
+            "overlap_frames": 0,
+            "screen_direction": "l2r",
+            "match_on": "面部细节与表情过渡"
+          },
+          "grade": {
+            "palette": "",
+            "contrast": 1.0,
+            "saturation": 1.0,
+            "temperature": 0.0,
+            "lut": null
+          },
+          "transition_in": "dissolve",
+          "content_rating": "g",
+          "engine_hint": "open",
+          "seed": 90003,
+          "negative_prompt": "暴露服装, 成人内容, 多余的手指, 畸形的手, 面部闪烁, 画面抖动",
+          "provider_used": null,
+          "job_id": null,
+          "render_uri": null,
+          "qc_score": null,
+          "takes": 0
+        },
+        {
+          "id": "sq_s05",
+          "scene_id": "sc01",
+          "index": 4,
+          "duration_s": 3.375,
+          "shot_size": "full shot",
+          "camera_move": "static locked-off camera",
+          "lens_mm": 35,
+          "aperture": "f/2.8",
+          "fps": 24,
+          "subject_ids": [
+            "su_qing"
+          ],
+          "action": "原地张开双臂转一整圈，裙摆飞起，转完停稳后笑着看向镜头",
+          "environment": "明亮的家居摄影棚，浅木地板，米白色墙面，身后是大面积落地窗，窗外是虚化的绿色庭院，暖白色自然光从左前方斜射进来",
+          "lighting": "暖白色自然光从左前方斜射，右侧有柔和补光，整体高调、低对比",
+          "mood": "轻松、明亮、亲切",
+          "style": "真实电影感，浅景深，皮肤质感自然，不做磨皮",
+          "dialogue": [],
+          "sfx": [],
+          "refs": {
+            "images": [],
+            "videos": [],
+            "audios": [],
+            "MAX_IMAGES": 9,
+            "MAX_VIDEOS": 3,
+            "MAX_AUDIOS": 3
+          },
+          "continuity": {
+            "prev_shot_id": null,
+            "next_shot_id": null,
+            "inherit_last_frame": false,
+            "emit_last_frame": true,
+            "extend_from_job": null,
+            "overlap_frames": 0,
+            "screen_direction": "l2r",
+            "match_on": "大动作：整圈旋转，回锚后做"
+          },
+          "grade": {
+            "palette": "",
+            "contrast": 1.0,
+            "saturation": 1.0,
+            "temperature": 0.0,
+            "lut": null
+          },
+          "transition_in": "dissolve",
+          "content_rating": "g",
+          "engine_hint": "open",
+          "seed": 90004,
+          "negative_prompt": "暴露服装, 成人内容, 多余的手指, 畸形的手, 面部闪烁, 画面抖动",
+          "provider_used": null,
+          "job_id": null,
+          "render_uri": null,
+          "qc_score": null,
+          "takes": 0
+        },
+        {
+          "id": "sq_s06",
+          "scene_id": "sc01",
+          "index": 5,
+          "duration_s": 3.375,
+          "shot_size": "medium long shot",
+          "camera_move": "camera orbits left around subject",
+          "lens_mm": 35,
+          "aperture": "f/2.8",
+          "fps": 24,
+          "subject_ids": [
+            "su_qing"
+          ],
+          "action": "双手在身前交握站立，身体随镜头环绕微微转动，视线跟着镜头走",
+          "environment": "明亮的家居摄影棚，浅木地板，米白色墙面，身后是大面积落地窗，窗外是虚化的绿色庭院，暖白色自然光从左前方斜射进来",
+          "lighting": "暖白色自然光从左前方斜射，右侧有柔和补光，整体高调、低对比",
+          "mood": "轻松、明亮、亲切",
+          "style": "真实电影感，浅景深，皮肤质感自然，不做磨皮",
+          "dialogue": [],
+          "sfx": [],
+          "refs": {
+            "images": [],
+            "videos": [],
+            "audios": [],
+            "MAX_IMAGES": 9,
+            "MAX_VIDEOS": 3,
+            "MAX_AUDIOS": 3
+          },
+          "continuity": {
+            "prev_shot_id": "sq_s05",
+            "next_shot_id": null,
+            "inherit_last_frame": true,
+            "emit_last_frame": true,
+            "extend_from_job": null,
+            "overlap_frames": 0,
+            "screen_direction": "l2r",
+            "match_on": "环绕镜头下的身形一致性"
+          },
+          "grade": {
+            "palette": "",
+            "contrast": 1.0,
+            "saturation": 1.0,
+            "temperature": 0.0,
+            "lut": null
+          },
+          "transition_in": "dissolve",
+          "content_rating": "g",
+          "engine_hint": "open",
+          "seed": 90005,
+          "negative_prompt": "暴露服装, 成人内容, 多余的手指, 畸形的手, 面部闪烁, 画面抖动",
+          "provider_used": null,
+          "job_id": null,
+          "render_uri": null,
+          "qc_score": null,
+          "takes": 0
+        },
+        {
+          "id": "sq_s07",
+          "scene_id": "sc01",
+          "index": 6,
+          "duration_s": 3.375,
+          "shot_size": "full shot",
+          "camera_move": "camera pedestals down",
+          "lens_mm": 35,
+          "aperture": "f/2.8",
+          "fps": 24,
+          "subject_ids": [
+            "su_qing"
+          ],
+          "action": "蹲下身去捡起地上的一本书，翻看一眼，再站起来抱在胸前",
+          "environment": "明亮的家居摄影棚，浅木地板，米白色墙面，身后是大面积落地窗，窗外是虚化的绿色庭院，暖白色自然光从左前方斜射进来",
+          "lighting": "暖白色自然光从左前方斜射，右侧有柔和补光，整体高调、低对比",
+          "mood": "轻松、明亮、亲切",
+          "style": "真实电影感，浅景深，皮肤质感自然，不做磨皮",
+          "dialogue": [],
+          "sfx": [],
+          "refs": {
+            "images": [],
+            "videos": [],
+            "audios": [],
+            "MAX_IMAGES": 9,
+            "MAX_VIDEOS": 3,
+            "MAX_AUDIOS": 3
+          },
+          "continuity": {
+            "prev_shot_id": "sq_s06",
+            "next_shot_id": null,
+            "inherit_last_frame": true,
+            "emit_last_frame": true,
+            "extend_from_job": null,
+            "overlap_frames": 0,
+            "screen_direction": "l2r",
+            "match_on": "蹲下起身：全身关节的连续运动"
+          },
+          "grade": {
+            "palette": "",
+            "contrast": 1.0,
+            "saturation": 1.0,
+            "temperature": 0.0,
+            "lut": null
+          },
+          "transition_in": "dissolve",
+          "content_rating": "g",
+          "engine_hint": "open",
+          "seed": 90006,
+          "negative_prompt": "暴露服装, 成人内容, 多余的手指, 畸形的手, 面部闪烁, 画面抖动",
+          "provider_used": null,
+          "job_id": null,
+          "render_uri": null,
+          "qc_score": null,
+          "takes": 0
+        },
+        {
+          "id": "sq_s08",
+          "scene_id": "sc01",
+          "index": 7,
+          "duration_s": 3.375,
+          "shot_size": "medium shot",
+          "camera_move": "static locked-off camera",
+          "lens_mm": 50,
+          "aperture": "f/2.8",
+          "fps": 24,
+          "subject_ids": [
+            "su_qing"
+          ],
+          "action": "抱着书走到窗边，侧身靠着窗框，低头翻了一页，抬头看向窗外",
+          "environment": "明亮的家居摄影棚，浅木地板，米白色墙面，身后是大面积落地窗，窗外是虚化的绿色庭院，暖白色自然光从左前方斜射进来",
+          "lighting": "暖白色自然光从左前方斜射，右侧有柔和补光，整体高调、低对比",
+          "mood": "轻松、明亮、亲切",
+          "style": "真实电影感，浅景深，皮肤质感自然，不做磨皮",
+          "dialogue": [],
+          "sfx": [],
+          "refs": {
+            "images": [],
+            "videos": [],
+            "audios": [],
+            "MAX_IMAGES": 9,
+            "MAX_VIDEOS": 3,
+            "MAX_AUDIOS": 3
+          },
+          "continuity": {
+            "prev_shot_id": "sq_s07",
+            "next_shot_id": null,
+            "inherit_last_frame": true,
+            "emit_last_frame": true,
+            "extend_from_job": null,
+            "overlap_frames": 0,
+            "screen_direction": "l2r",
+            "match_on": "走位加静态姿势的衔接"
+          },
+          "grade": {
+            "palette": "",
+            "contrast": 1.0,
+            "saturation": 1.0,
+            "temperature": 0.0,
+            "lut": null
+          },
+          "transition_in": "dissolve",
+          "content_rating": "g",
+          "engine_hint": "open",
+          "seed": 90007,
+          "negative_prompt": "暴露服装, 成人内容, 多余的手指, 畸形的手, 面部闪烁, 画面抖动",
+          "provider_used": null,
+          "job_id": null,
+          "render_uri": null,
+          "qc_score": null,
+          "takes": 0
+        },
+        {
+          "id": "sq_s09",
+          "scene_id": "sc01",
+          "index": 8,
+          "duration_s": 3.375,
+          "shot_size": "full shot",
+          "camera_move": "static locked-off camera",
+          "lens_mm": 35,
+          "aperture": "f/2.8",
+          "fps": 24,
+          "subject_ids": [
+            "su_qing"
+          ],
+          "action": "站在窗前伸了个懒腰，双臂举过头顶再放下，肩膀放松地转了转",
+          "environment": "明亮的家居摄影棚，浅木地板，米白色墙面，身后是大面积落地窗，窗外是虚化的绿色庭院，暖白色自然光从左前方斜射进来",
+          "lighting": "暖白色自然光从左前方斜射，右侧有柔和补光，整体高调、低对比",
+          "mood": "轻松、明亮、亲切",
+          "style": "真实电影感，浅景深，皮肤质感自然，不做磨皮",
+          "dialogue": [],
+          "sfx": [],
+          "refs": {
+            "images": [],
+            "videos": [],
+            "audios": [],
+            "MAX_IMAGES": 9,
+            "MAX_VIDEOS": 3,
+            "MAX_AUDIOS": 3
+          },
+          "continuity": {
+            "prev_shot_id": null,
+            "next_shot_id": null,
+            "inherit_last_frame": false,
+            "emit_last_frame": true,
+            "extend_from_job": null,
+            "overlap_frames": 0,
+            "screen_direction": "l2r",
+            "match_on": "伸展：躯干与四肢的大幅动作，回锚后做"
+          },
+          "grade": {
+            "palette": "",
+            "contrast": 1.0,
+            "saturation": 1.0,
+            "temperature": 0.0,
+            "lut": null
+          },
+          "transition_in": "dissolve",
+          "content_rating": "g",
+          "engine_hint": "open",
+          "seed": 90008,
+          "negative_prompt": "暴露服装, 成人内容, 多余的手指, 畸形的手, 面部闪烁, 画面抖动",
+          "provider_used": null,
+          "job_id": null,
+          "render_uri": null,
+          "qc_score": null,
+          "takes": 0
+        },
+        {
+          "id": "sq_s10",
+          "scene_id": "sc01",
+          "index": 9,
+          "duration_s": 3.375,
+          "shot_size": "medium long shot",
+          "camera_move": "camera trucks right",
+          "lens_mm": 35,
+          "aperture": "f/2.8",
+          "fps": 24,
+          "subject_ids": [
+            "su_qing"
+          ],
+          "action": "沿着窗边向右缓步走，一边走一边转头看向镜头，头发随步伐轻晃",
+          "environment": "明亮的家居摄影棚，浅木地板，米白色墙面，身后是大面积落地窗，窗外是虚化的绿色庭院，暖白色自然光从左前方斜射进来",
+          "lighting": "暖白色自然光从左前方斜射，右侧有柔和补光，整体高调、低对比",
+          "mood": "轻松、明亮、亲切",
+          "style": "真实电影感，浅景深，皮肤质感自然，不做磨皮",
+          "dialogue": [],
+          "sfx": [],
+          "refs": {
+            "images": [],
+            "videos": [],
+            "audios": [],
+            "MAX_IMAGES": 9,
+            "MAX_VIDEOS": 3,
+            "MAX_AUDIOS": 3
+          },
+          "continuity": {
+            "prev_shot_id": "sq_s09",
+            "next_shot_id": null,
+            "inherit_last_frame": true,
+            "emit_last_frame": true,
+            "extend_from_job": null,
+            "overlap_frames": 0,
+            "screen_direction": "l2r",
+            "match_on": "横移跟拍时的脸部稳定性"
+          },
+          "grade": {
+            "palette": "",
+            "contrast": 1.0,
+            "saturation": 1.0,
+            "temperature": 0.0,
+            "lut": null
+          },
+          "transition_in": "dissolve",
+          "content_rating": "g",
+          "engine_hint": "open",
+          "seed": 90009,
+          "negative_prompt": "暴露服装, 成人内容, 多余的手指, 畸形的手, 面部闪烁, 画面抖动",
+          "provider_used": null,
+          "job_id": null,
+          "render_uri": null,
+          "qc_score": null,
+          "takes": 0
+        },
+        {
+          "id": "sq_s11",
+          "scene_id": "sc01",
+          "index": 10,
+          "duration_s": 3.375,
+          "shot_size": "medium close-up",
+          "camera_move": "static locked-off camera",
+          "lens_mm": 85,
+          "aperture": "f/2.8",
+          "fps": 24,
+          "subject_ids": [
+            "su_qing"
+          ],
+          "action": "停下来对着镜头认真说话，双手在胸前比划了一个小小的手势",
+          "environment": "明亮的家居摄影棚，浅木地板，米白色墙面，身后是大面积落地窗，窗外是虚化的绿色庭院，暖白色自然光从左前方斜射进来",
+          "lighting": "暖白色自然光从左前方斜射，右侧有柔和补光，整体高调、低对比",
+          "mood": "轻松、明亮、亲切",
+          "style": "真实电影感，浅景深，皮肤质感自然，不做磨皮",
+          "dialogue": [],
+          "sfx": [],
+          "refs": {
+            "images": [],
+            "videos": [],
+            "audios": [],
+            "MAX_IMAGES": 9,
+            "MAX_VIDEOS": 3,
+            "MAX_AUDIOS": 3
+          },
+          "continuity": {
+            "prev_shot_id": "sq_s10",
+            "next_shot_id": null,
+            "inherit_last_frame": true,
+            "emit_last_frame": true,
+            "extend_from_job": null,
+            "overlap_frames": 0,
+            "screen_direction": "l2r",
+            "match_on": "手部动作：最容易画坏的部位"
+          },
+          "grade": {
+            "palette": "",
+            "contrast": 1.0,
+            "saturation": 1.0,
+            "temperature": 0.0,
+            "lut": null
+          },
+          "transition_in": "dissolve",
+          "content_rating": "g",
+          "engine_hint": "open",
+          "seed": 90010,
+          "negative_prompt": "暴露服装, 成人内容, 多余的手指, 畸形的手, 面部闪烁, 画面抖动",
+          "provider_used": null,
+          "job_id": null,
+          "render_uri": null,
+          "qc_score": null,
+          "takes": 0
+        },
+        {
+          "id": "sq_s12",
+          "scene_id": "sc01",
+          "index": 11,
+          "duration_s": 3.375,
+          "shot_size": "full shot",
+          "camera_move": "camera dollies out",
+          "lens_mm": 35,
+          "aperture": "f/2.8",
+          "fps": 24,
+          "subject_ids": [
+            "su_qing"
+          ],
+          "action": "向后退两步，双手背在身后，歪头看向镜头笑",
+          "environment": "明亮的家居摄影棚，浅木地板，米白色墙面，身后是大面积落地窗，窗外是虚化的绿色庭院，暖白色自然光从左前方斜射进来",
+          "lighting": "暖白色自然光从左前方斜射，右侧有柔和补光，整体高调、低对比",
+          "mood": "轻松、明亮、亲切",
+          "style": "真实电影感，浅景深，皮肤质感自然，不做磨皮",
+          "dialogue": [],
+          "sfx": [],
+          "refs": {
+            "images": [],
+            "videos": [],
+            "audios": [],
+            "MAX_IMAGES": 9,
+            "MAX_VIDEOS": 3,
+            "MAX_AUDIOS": 3
+          },
+          "continuity": {
+            "prev_shot_id": "sq_s11",
+            "next_shot_id": null,
+            "inherit_last_frame": true,
+            "emit_last_frame": true,
+            "extend_from_job": null,
+            "overlap_frames": 0,
+            "screen_direction": "l2r",
+            "match_on": "后退运动 + 镜头拉开的透视变化"
+          },
+          "grade": {
+            "palette": "",
+            "contrast": 1.0,
+            "saturation": 1.0,
+            "temperature": 0.0,
+            "lut": null
+          },
+          "transition_in": "dissolve",
+          "content_rating": "g",
+          "engine_hint": "open",
+          "seed": 90011,
+          "negative_prompt": "暴露服装, 成人内容, 多余的手指, 畸形的手, 面部闪烁, 画面抖动",
+          "provider_used": null,
+          "job_id": null,
+          "render_uri": null,
+          "qc_score": null,
+          "takes": 0
+        },
+        {
+          "id": "sq_s13",
+          "scene_id": "sc01",
+          "index": 12,
+          "duration_s": 3.375,
+          "shot_size": "full shot",
+          "camera_move": "static locked-off camera",
+          "lens_mm": 35,
+          "aperture": "f/2.8",
+          "fps": 24,
+          "subject_ids": [
+            "su_qing"
+          ],
+          "action": "原地轻轻跳了一下，落地后稳住，双手在身侧张开，开心地笑",
+          "environment": "明亮的家居摄影棚，浅木地板，米白色墙面，身后是大面积落地窗，窗外是虚化的绿色庭院，暖白色自然光从左前方斜射进来",
+          "lighting": "暖白色自然光从左前方斜射，右侧有柔和补光，整体高调、低对比",
+          "mood": "轻松、明亮、亲切",
+          "style": "真实电影感，浅景深，皮肤质感自然，不做磨皮",
+          "dialogue": [],
+          "sfx": [],
+          "refs": {
+            "images": [],
+            "videos": [],
+            "audios": [],
+            "MAX_IMAGES": 9,
+            "MAX_VIDEOS": 3,
+            "MAX_AUDIOS": 3
+          },
+          "continuity": {
+            "prev_shot_id": null,
+            "next_shot_id": null,
+            "inherit_last_frame": false,
+            "emit_last_frame": true,
+            "extend_from_job": null,
+            "overlap_frames": 0,
+            "screen_direction": "l2r",
+            "match_on": "跳跃：重心变化，回锚后做"
+          },
+          "grade": {
+            "palette": "",
+            "contrast": 1.0,
+            "saturation": 1.0,
+            "temperature": 0.0,
+            "lut": null
+          },
+          "transition_in": "dissolve",
+          "content_rating": "g",
+          "engine_hint": "open",
+          "seed": 90012,
+          "negative_prompt": "暴露服装, 成人内容, 多余的手指, 畸形的手, 面部闪烁, 画面抖动",
+          "provider_used": null,
+          "job_id": null,
+          "render_uri": null,
+          "qc_score": null,
+          "takes": 0
+        },
+        {
+          "id": "sq_s14",
+          "scene_id": "sc01",
+          "index": 13,
+          "duration_s": 3.375,
+          "shot_size": "medium shot",
+          "camera_move": "camera pans right",
+          "lens_mm": 50,
+          "aperture": "f/2.8",
+          "fps": 24,
+          "subject_ids": [
+            "su_qing"
+          ],
+          "action": "坐到窗边的浅色单人沙发上，双腿并拢侧放，双手放在膝上，转头看镜头",
+          "environment": "明亮的家居摄影棚，浅木地板，米白色墙面，身后是大面积落地窗，窗外是虚化的绿色庭院，暖白色自然光从左前方斜射进来",
+          "lighting": "暖白色自然光从左前方斜射，右侧有柔和补光，整体高调、低对比",
+          "mood": "轻松、明亮、亲切",
+          "style": "真实电影感，浅景深，皮肤质感自然，不做磨皮",
+          "dialogue": [],
+          "sfx": [],
+          "refs": {
+            "images": [],
+            "videos": [],
+            "audios": [],
+            "MAX_IMAGES": 9,
+            "MAX_VIDEOS": 3,
+            "MAX_AUDIOS": 3
+          },
+          "continuity": {
+            "prev_shot_id": "sq_s13",
+            "next_shot_id": null,
+            "inherit_last_frame": true,
+            "emit_last_frame": true,
+            "extend_from_job": null,
+            "overlap_frames": 0,
+            "screen_direction": "l2r",
+            "match_on": "坐下：从站姿到坐姿的过渡"
+          },
+          "grade": {
+            "palette": "",
+            "contrast": 1.0,
+            "saturation": 1.0,
+            "temperature": 0.0,
+            "lut": null
+          },
+          "transition_in": "dissolve",
+          "content_rating": "g",
+          "engine_hint": "open",
+          "seed": 90013,
+          "negative_prompt": "暴露服装, 成人内容, 多余的手指, 畸形的手, 面部闪烁, 画面抖动",
+          "provider_used": null,
+          "job_id": null,
+          "render_uri": null,
+          "qc_score": null,
+          "takes": 0
+        },
+        {
+          "id": "sq_s15",
+          "scene_id": "sc01",
+          "index": 14,
+          "duration_s": 3.375,
+          "shot_size": "medium close-up",
+          "camera_move": "static locked-off camera",
+          "lens_mm": 85,
+          "aperture": "f/2.8",
+          "fps": 24,
+          "subject_ids": [
+            "su_qing"
+          ],
+          "action": "坐姿，双手撑着下巴，眨眼后露出笑容，轻轻点头",
+          "environment": "明亮的家居摄影棚，浅木地板，米白色墙面，身后是大面积落地窗，窗外是虚化的绿色庭院，暖白色自然光从左前方斜射进来",
+          "lighting": "暖白色自然光从左前方斜射，右侧有柔和补光，整体高调、低对比",
+          "mood": "轻松、明亮、亲切",
+          "style": "真实电影感，浅景深，皮肤质感自然，不做磨皮",
+          "dialogue": [],
+          "sfx": [],
+          "refs": {
+            "images": [],
+            "videos": [],
+            "audios": [],
+            "MAX_IMAGES": 9,
+            "MAX_VIDEOS": 3,
+            "MAX_AUDIOS": 3
+          },
+          "continuity": {
+            "prev_shot_id": "sq_s14",
+            "next_shot_id": null,
+            "inherit_last_frame": true,
+            "emit_last_frame": true,
+            "extend_from_job": null,
+            "overlap_frames": 0,
+            "screen_direction": "l2r",
+            "match_on": "坐姿特写的表情细节"
+          },
+          "grade": {
+            "palette": "",
+            "contrast": 1.0,
+            "saturation": 1.0,
+            "temperature": 0.0,
+            "lut": null
+          },
+          "transition_in": "dissolve",
+          "content_rating": "g",
+          "engine_hint": "open",
+          "seed": 90014,
+          "negative_prompt": "暴露服装, 成人内容, 多余的手指, 畸形的手, 面部闪烁, 画面抖动",
+          "provider_used": null,
+          "job_id": null,
+          "render_uri": null,
+          "qc_score": null,
+          "takes": 0
+        },
+        {
+          "id": "sq_s16",
+          "scene_id": "sc01",
+          "index": 15,
+          "duration_s": 3.375,
+          "shot_size": "full shot",
+          "camera_move": "camera pedestals up",
+          "lens_mm": 35,
+          "aperture": "f/2.8",
+          "fps": 24,
+          "subject_ids": [
+            "su_qing"
+          ],
+          "action": "从沙发上站起来，整理了一下裙摆，向镜头走近两步",
+          "environment": "明亮的家居摄影棚，浅木地板，米白色墙面，身后是大面积落地窗，窗外是虚化的绿色庭院，暖白色自然光从左前方斜射进来",
+          "lighting": "暖白色自然光从左前方斜射，右侧有柔和补光，整体高调、低对比",
+          "mood": "轻松、明亮、亲切",
+          "style": "真实电影感，浅景深，皮肤质感自然，不做磨皮",
+          "dialogue": [],
+          "sfx": [],
+          "refs": {
+            "images": [],
+            "videos": [],
+            "audios": [],
+            "MAX_IMAGES": 9,
+            "MAX_VIDEOS": 3,
+            "MAX_AUDIOS": 3
+          },
+          "continuity": {
+            "prev_shot_id": "sq_s15",
+            "next_shot_id": null,
+            "inherit_last_frame": true,
+            "emit_last_frame": true,
+            "extend_from_job": null,
+            "overlap_frames": 0,
+            "screen_direction": "l2r",
+            "match_on": "起身走近：纵深方向的运动"
+          },
+          "grade": {
+            "palette": "",
+            "contrast": 1.0,
+            "saturation": 1.0,
+            "temperature": 0.0,
+            "lut": null
+          },
+          "transition_in": "dissolve",
+          "content_rating": "g",
+          "engine_hint": "open",
+          "seed": 90015,
+          "negative_prompt": "暴露服装, 成人内容, 多余的手指, 畸形的手, 面部闪烁, 画面抖动",
+          "provider_used": null,
+          "job_id": null,
+          "render_uri": null,
+          "qc_score": null,
+          "takes": 0
+        },
+        {
+          "id": "sq_s17",
+          "scene_id": "sc01",
+          "index": 16,
+          "duration_s": 3.375,
+          "shot_size": "medium long shot",
+          "camera_move": "steadicam follow",
+          "lens_mm": 35,
+          "aperture": "f/2.8",
+          "fps": 24,
+          "subject_ids": [
+            "su_qing"
+          ],
+          "action": "跟着她在房间里走动，她边走边回头说话，最后停在房间中央",
+          "environment": "明亮的家居摄影棚，浅木地板，米白色墙面，身后是大面积落地窗，窗外是虚化的绿色庭院，暖白色自然光从左前方斜射进来",
+          "lighting": "暖白色自然光从左前方斜射，右侧有柔和补光，整体高调、低对比",
+          "mood": "轻松、明亮、亲切",
+          "style": "真实电影感，浅景深，皮肤质感自然，不做磨皮",
+          "dialogue": [],
+          "sfx": [],
+          "refs": {
+            "images": [],
+            "videos": [],
+            "audios": [],
+            "MAX_IMAGES": 9,
+            "MAX_VIDEOS": 3,
+            "MAX_AUDIOS": 3
+          },
+          "continuity": {
+            "prev_shot_id": null,
+            "next_shot_id": null,
+            "inherit_last_frame": false,
+            "emit_last_frame": true,
+            "extend_from_job": null,
+            "overlap_frames": 0,
+            "screen_direction": "l2r",
+            "match_on": "跟拍：镜头与人物同时运动"
+          },
+          "grade": {
+            "palette": "",
+            "contrast": 1.0,
+            "saturation": 1.0,
+            "temperature": 0.0,
+            "lut": null
+          },
+          "transition_in": "dissolve",
+          "content_rating": "g",
+          "engine_hint": "open",
+          "seed": 90016,
+          "negative_prompt": "暴露服装, 成人内容, 多余的手指, 畸形的手, 面部闪烁, 画面抖动",
+          "provider_used": null,
+          "job_id": null,
+          "render_uri": null,
+          "qc_score": null,
+          "takes": 0
+        },
+        {
+          "id": "sq_s18",
+          "scene_id": "sc01",
+          "index": 17,
+          "duration_s": 3.375,
+          "shot_size": "full shot",
+          "camera_move": "static locked-off camera",
+          "lens_mm": 35,
+          "aperture": "f/2.8",
+          "fps": 24,
+          "subject_ids": [
+            "su_qing"
+          ],
+          "action": "站定在房间中央，双手在身前交叠，对镜头挥手告别，笑着定格",
+          "environment": "明亮的家居摄影棚，浅木地板，米白色墙面，身后是大面积落地窗，窗外是虚化的绿色庭院，暖白色自然光从左前方斜射进来",
+          "lighting": "暖白色自然光从左前方斜射，右侧有柔和补光，整体高调、低对比",
+          "mood": "轻松、明亮、亲切",
+          "style": "真实电影感，浅景深，皮肤质感自然，不做磨皮",
+          "dialogue": [],
+          "sfx": [],
+          "refs": {
+            "images": [],
+            "videos": [],
+            "audios": [],
+            "MAX_IMAGES": 9,
+            "MAX_VIDEOS": 3,
+            "MAX_AUDIOS": 3
+          },
+          "continuity": {
+            "prev_shot_id": "sq_s17",
+            "next_shot_id": null,
+            "inherit_last_frame": true,
+            "emit_last_frame": true,
+            "extend_from_job": null,
+            "overlap_frames": 0,
+            "screen_direction": "l2r",
+            "match_on": "收尾镜：回到与开场同构的站姿"
+          },
+          "grade": {
+            "palette": "",
+            "contrast": 1.0,
+            "saturation": 1.0,
+            "temperature": 0.0,
+            "lut": null
+          },
+          "transition_in": "dissolve",
+          "content_rating": "g",
+          "engine_hint": "open",
+          "seed": 90017,
+          "negative_prompt": "暴露服装, 成人内容, 多余的手指, 畸形的手, 面部闪烁, 画面抖动",
+          "provider_used": null,
+          "job_id": null,
+          "render_uri": null,
+          "qc_score": null,
+          "takes": 0
+        }
+      ]
+    }
+  ],
+  "audio": {
+    "dialogue_track": null,
+    "foley_track": null,
+    "music_track": null,
+    "ambience_track": null,
+    "audio_first": false,
+    "loudness_lufs": -16.0
+  },
+  "delivery": {
+    "resolution": [
+      1280,
+      704
+    ],
+    "upscale_to": null,
+    "fps": 24,
+    "interpolate_to_fps": null,
+    "codec": "h264",
+    "crf": 18,
+    "aspect": "16:9",
+    "burn_subtitles": false,
+    "ai_disclosure": true,
+    "c2pa": true
+  },
+  "style_bible": "明亮家居摄影棚，暖白高调，真实电影感，浅景深，35–85mm",
+  "global_negative": "暴露服装, 成人内容, 未成年外观, 真人肖像, 多余的手指, 畸形的手"
+}

@@ -12,6 +12,7 @@ from __future__ import annotations
 import argparse
 import dataclasses
 import json
+import os
 import sys
 import time
 from pathlib import Path
@@ -105,6 +106,34 @@ def setup_engines(render_dir: Path) -> None:
 
     for p in (official, openp, flaky):
         REGISTRY.register(p)
+
+    # 设了 COMFY_URL 就把真引擎也挂上。README 里那句「接真引擎只是换环境变量」
+    # 到这里才算兑现：注册多一家 provider，队列、工单、质检、拼接一行都不用改。
+    comfy_url = os.environ.get("COMFY_URL", "").strip()
+    if comfy_url:
+        from longfilm.providers.comfy_local import ComfyProvider
+
+        comfy = ComfyProvider(
+            base_url=comfy_url,
+            template_dir=ROOT / "deploy" / "comfy_workflows",
+            i2v_template="wan22_ti2v_5b_i2v",
+            t2v_template="wan22_ti2v_5b_t2v",
+            out_dir=render_dir / "comfy",
+            name="comfy-wan22",
+            quality_tier=4,
+            max_duration_s=5.0,            # TI2V-5B 单条的实用上限
+            cost_per_second_usd=0.0068,    # 2026-09-24 在 3090 上实测，见 deploy/prices.yaml
+            timeout_s=900.0,
+        )
+        REGISTRY.register(comfy)
+        print(f"  已挂真引擎 comfy-wan22 → {comfy_url}")
+        if os.environ.get("COMFY_ONLY") == "1":
+            # 出对外样片时用：真引擎失败就让它失败，不要悄悄回退到 mock。
+            # 成片里混进合成画面而记录里写着「已出片」，比直接失败难查得多。
+            for name in list(REGISTRY._providers):
+                if name != comfy.name:
+                    REGISTRY._providers.pop(name)
+            print("  COMFY_ONLY=1：已摘掉所有 mock 通道，失败不回退")
 
 
 def main() -> None:
