@@ -197,6 +197,7 @@ selfhost_overheads:
 # TODO(2026-09-20)：未检索到 Wan2.2 A14B 在 ComfyUI 下的公开吞吐基准。
 # 这里是按「双专家各跑一半步数、14B fp8、A100/H100 公开算力规格」外推的量级估计。
 # 上线前必须跑一次 `deploy/bootstrap_gpu.sh --smoke` 记录真实耗时，用 --calibrate 覆盖。
+# 已实测一档：showreel_5b_720p_30step（2026-09-24，RTX 3090）。其余仍是外推估计。
 presets:
   - key: hero_720p_20step
     label: "英雄镜 720p / A14B 双专家 / 20 步"
@@ -222,6 +223,24 @@ presets:
     h100_gpu_seconds_per_output_second_high: 9.0
     min_vram_gb: 24
     estimate: true
+  # 本项目唯一实测过的一档：2026-09-24 在 RunPod 的 RTX 3090 上出三条样片记下来的。
+  # 三次运行：81帧/3.38s 成品→373s、81帧/3.38s→394s、61帧/2.54s→266s，
+  # 即 105~117 GPU 秒每成品秒。H100 两列是按 gpus[].rel_throughput=0.18 线性折算的，
+  # **那个比值本身仍是估计**，没在 H100 上实测过。
+  - key: showreel_5b_720p_30step
+    label: "样片 720p / TI2V-5B 单体 / 30 步（实测）"
+    resolution: [1280, 704]
+    fps: 24
+    h100_gpu_seconds_per_output_second_low: 18.8
+    h100_gpu_seconds_per_output_second_high: 21.0
+    min_vram_gb: 24
+    estimate: false
+    measured_on: "RTX 3090 24GB / RunPod community / ComfyUI 0.30.0"
+    measured_date: "2026-09-24"
+    measured_gpu_seconds_per_output_second_low: 104.7
+    measured_gpu_seconds_per_output_second_high: 116.7
+    measured_usd_per_output_second: 0.0068
+
   - key: previz_5b_480p
     label: "预演 480p / TI2V-5B 单体"
     resolution: [832, 480]

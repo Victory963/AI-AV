@@ -176,9 +176,24 @@ def main() -> int:
     ap.add_argument("--only", nargs="*", help="只跑这几条（key）")
     ap.add_argument("--timeout", type=float, default=1800)
     ap.add_argument("--dry-run", action="store_true")
+    # 冒烟用：先用低步数小分辨率验证图能跑通，再上正式参数。租来的卡按小时计费，
+    # 拿正式参数去试错是最贵的调试方式。
+    ap.add_argument("--steps", type=int, help="覆盖采样步数")
+    ap.add_argument("--length", type=int, help="覆盖帧数（必须 4k+1）")
+    ap.add_argument("--size", help="覆盖分辨率，如 1024x576")
     a = ap.parse_args()
 
     shots = [s for s in REEL if not a.only or s.key in a.only]
+    if a.steps or a.length or a.size:
+        import dataclasses
+        w, h = (int(x) for x in a.size.split("x")) if a.size else (None, None)
+        shots = [dataclasses.replace(
+            s,
+            steps=a.steps or s.steps,
+            length=a.length or s.length,
+            width=w or s.width,
+            height=h or s.height,
+        ) for s in shots]
     print("=" * 72)
     for s in shots:
         print(f"  {s.key:16} {s.label:16} {s.width}x{s.height} {s.length}帧"
